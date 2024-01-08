@@ -21,6 +21,9 @@ const getWorkspaceAlias = () => {
       })
     })
   }
+
+  // eslint-disable-next-line no-console
+  console.log('results:', results)
   return results
 }
 
