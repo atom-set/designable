@@ -1,8 +1,6 @@
 import 'antd/dist/antd.less'
 import React, { useMemo } from 'react'
 import ReactDOM from 'react-dom'
-// import * as monaco from 'monaco-editor';
-// import { loader } from '@monaco-editor/react';
 import {
   Designer,
   DesignerToolsWidget,
@@ -67,9 +65,6 @@ import {
   FormLayout,
   FormGrid,
 } from '../src'
-
-// 设置 monaco-editor 源
-// loader.config({ monaco });
 
 setNpmCDNRegistry('//unpkg.com')
 
