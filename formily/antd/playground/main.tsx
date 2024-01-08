@@ -1,6 +1,8 @@
 import 'antd/dist/antd.less'
 import React, { useMemo } from 'react'
 import ReactDOM from 'react-dom'
+// import * as monaco from 'monaco-editor';
+// import { loader } from '@monaco-editor/react';
 import {
   Designer,
   DesignerToolsWidget,
@@ -66,6 +68,9 @@ import {
   FormGrid,
 } from '../src'
 
+// 设置 monaco-editor 源
+// loader.config({ monaco });
+
 setNpmCDNRegistry('//unpkg.com')
 
 GlobalRegistry.registerDesignerLocales({
@@ -83,14 +88,6 @@ GlobalRegistry.registerDesignerLocales({
       Layouts: 'Layouts',
       Arrays: 'Arrays',
       Displays: 'Displays',
-    },
-  },
-  'ko-KR': {
-    sources: {
-      Inputs: '입력',
-      Layouts: '레이아웃',
-      Arrays: '배열',
-      Displays: '디스플레이',
     },
   },
 })
