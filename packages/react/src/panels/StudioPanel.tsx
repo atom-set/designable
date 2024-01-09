@@ -1,5 +1,5 @@
 /**
- * @description 2024-01-08 Login 和右侧操作按钮
+ * @description 2024-01-08 Logo 和右侧操作按钮
  */
 import React from 'react'
 import { usePrefix, usePosition } from '../hooks'

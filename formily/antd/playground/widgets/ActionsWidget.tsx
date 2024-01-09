@@ -1,3 +1,8 @@
+/**
+ * @description 2024-01-09 常用功能入口
+ * 1、语言切换
+ * 2、保存和发布schema
+ */
 import React, { useEffect } from 'react'
 import { Space, Button, Radio } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'

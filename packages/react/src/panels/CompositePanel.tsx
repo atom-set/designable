@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { isValid } from '@designable/shared'
+import { isValid, sendLog } from '@designable/shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
@@ -13,6 +13,7 @@ export interface ICompositePanelProps {
   activeKey?: number | string
   onChange?: (activeKey: number | string) => void
 }
+
 export interface ICompositePanelItemProps {
   shape?: 'tab' | 'button' | 'link'
   title?: React.ReactNode
@@ -123,6 +124,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
     )
   }
 
+  sendLog(true, '2024-01-09 CompositePanel:', props, items)
   return (
     <div
       className={cls(prefix, {
