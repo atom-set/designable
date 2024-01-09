@@ -102,7 +102,7 @@ const DESIGNER_GlobalRegistry = {
   },
 
   getDesignerLanguage: () => {
-    sendLog(true, '2024-01-09 registry code:', DESIGNER_LANGUAGE_STORE.value)
+    sendLog(false, '2024-01-09 registry code:', DESIGNER_LANGUAGE_STORE.value)
     return getISOCode(DESIGNER_LANGUAGE_STORE.value)
   },
 
@@ -111,7 +111,7 @@ const DESIGNER_GlobalRegistry = {
     const locale = locales ? locales[lang] : DESIGNER_LOCALES_STORE.value[lang]
     if (token === 'Save') {
       sendLog(
-        true,
+        false,
         '2024-01-09 TextWidget getDesignerMessage:',
         locale,
         token,
@@ -126,7 +126,7 @@ const DESIGNER_GlobalRegistry = {
         )
         if (token === 'Save') {
           sendLog(
-            true,
+            false,
             '2024-01-09 TextWidget getDesignerMessage DESIGNER_LOCALES_STORE:',
             key,
             DESIGNER_LOCALES_STORE.value[key],
@@ -142,7 +142,7 @@ const DESIGNER_GlobalRegistry = {
 
     if (token === 'Save') {
       sendLog(
-        true,
+        false,
         '2024-01-09 TextWidget getDesignerMessage getIn:',
         locale,
         lowerSnake(token)
@@ -152,19 +152,19 @@ const DESIGNER_GlobalRegistry = {
   },
 
   registerDesignerIcons: (map: IDesignerIcons) => {
-    sendLog(true, '2024-01-09 registerDesignerIcons:', map)
+    sendLog(false, '2024-01-09 registerDesignerIcons:', map)
     Object.assign(DESIGNER_ICONS_STORE, map)
   },
 
   registerDesignerLocales: (...packages: IDesignerLocales[]) => {
-    sendLog(true, '2024-01-09 registerDesignerLocales:', packages)
+    sendLog(false, '2024-01-09 registerDesignerLocales:', packages)
     packages.forEach((locales) => {
       mergeLocales(DESIGNER_LOCALES_STORE.value, locales)
     })
   },
 
   registerDesignerBehaviors: (...packages: IDesignerBehaviors[]) => {
-    sendLog(true, '2024-01-09 registerDesignerBehaviors:', packages)
+    sendLog(false, '2024-01-09 registerDesignerBehaviors:', packages)
     const results: IBehavior[] = []
     packages.forEach((sources) => {
       reSortBehaviors(results, sources)

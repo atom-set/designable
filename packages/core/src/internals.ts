@@ -27,7 +27,7 @@ export const mergeLocales = (target: any, source: any) => {
 
 export const getBrowserLanguage = () => {
   sendLog(
-    true,
+    false,
     '2024-01-09 globalThisPolyfill navigator language:',
     globalThisPolyfill.navigator.language
   )

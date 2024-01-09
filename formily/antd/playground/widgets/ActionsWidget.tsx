@@ -18,7 +18,7 @@ export const ActionsWidget = observer(() => {
 
   useEffect(() => {
     sendLog(
-      true,
+      false,
       '2024-01-09: default Language:',
       GlobalRegistry.getDesignerLanguage()
     )
@@ -28,7 +28,7 @@ export const ActionsWidget = observer(() => {
   }, [])
 
   sendLog(
-    true,
+    false,
     '2024-01-09 GlobalRegistry:',
     GlobalRegistry.getDesignerLanguage()
   )

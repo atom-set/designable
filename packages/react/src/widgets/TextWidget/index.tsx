@@ -31,7 +31,7 @@ export const TextWidget: React.FC<ITextWidgetProps> = observer((props) => {
       : token
 
     sendLog(
-      true,
+      false,
       '2024-01-09 TextWidget takeMessage:',
       isStr(token),
       GlobalRegistry.getDesignerMessage(token)
@@ -41,7 +41,7 @@ export const TextWidget: React.FC<ITextWidgetProps> = observer((props) => {
     return token
   }
   sendLog(
-    true,
+    false,
     '2024-01-09 TextWidget render:',
     props.children,
     props.token,
