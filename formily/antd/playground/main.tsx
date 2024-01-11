@@ -156,7 +156,7 @@ const App = () => {
             <HistoryWidget />
           </CompositePanel.Item>
         </CompositePanel>
-        <Workspace id="form">
+        <Workspace id="form" title="workspace">
           <WorkspacePanel>
             <ToolbarPanel>
               <DesignerToolsWidget />

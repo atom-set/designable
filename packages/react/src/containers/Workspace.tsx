@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, Fragment } from 'react'
 import { useDesigner } from '../hooks'
 import { WorkspaceContext } from '../context'
+import { sendLog } from '@designable/shared'
 export interface IWorkspaceProps {
   id?: string
   title?: string
@@ -15,6 +16,7 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
 }) => {
   const oldId = useRef<string>()
   const designer = useDesigner()
+
   const workspace = useMemo(() => {
     if (!designer) return
     if (oldId.current && oldId.current !== id) {
@@ -30,6 +32,10 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
     oldId.current = workspace.id
     return workspace
   }, [id, designer])
+
+  sendLog(true, '2024-01-11-Workspace props:', props)
+  sendLog(true, '2024-01-11-Workspace designer:', designer)
+  sendLog(true, '2024-01-11-Workspace workspace:', workspace)
   return (
     <Fragment>
       <WorkspaceContext.Provider value={workspace}>
