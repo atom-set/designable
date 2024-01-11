@@ -89,7 +89,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
   // 2024-01-11 渲染 Tab 的内容
   const renderContent = () => {
     sendLog(
-      true,
+      false,
       '2024-01-11 CompositePanel renderContent:',
       pinning,
       currentItem
@@ -145,7 +145,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
     )
   }
 
-  sendLog(true, '2024-01-11 CompositePanel:', props, activeKey, items)
+  sendLog(false, '2024-01-11 CompositePanel:', props, activeKey, items)
   return (
     <div
       className={cls(prefix, {
@@ -179,7 +179,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
           const shape = item.shape ?? 'tab'
           const Comp = shape === 'link' ? 'a' : 'div'
           sendLog(
-            true,
+            false,
             '2024-01-11 CompositePanel render:',
             'props.showNavTitle:',
             props.showNavTitle,
