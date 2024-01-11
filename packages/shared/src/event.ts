@@ -1,5 +1,5 @@
 /**
- * @description 设计器的驱动事件
+ * @description 设计器的事件引擎
  * 1、Engine 初始化 调用 effects
  * 2、Engine mount 绑定 drivers
  * 3、注册 subscribeTo 和 subscribeWith
@@ -119,6 +119,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   context: Context
 
   constructor(engine: Engine, context?: Context) {
+    sendLog(false, 'Engine EventDriver: ', 'constructor')
     this.engine = engine
     this.context = context
   }
@@ -283,6 +284,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     })
   }
 }
+
 /**
  * 事件引擎
  */
