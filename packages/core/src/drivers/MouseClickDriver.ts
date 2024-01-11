@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver, sendLog } from '@designable/shared'
 import { Engine } from '../models/Engine'
 import { MouseClickEvent, MouseDoubleClickEvent } from '../events'
 
@@ -42,6 +42,8 @@ export class MouseClickDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    sendLog(true, '2024-01-11 Engine MouseClickDriver:', 'attach')
+
     this.addEventListener('click', this.onMouseClick, {
       mode: 'onlyChild',
     })

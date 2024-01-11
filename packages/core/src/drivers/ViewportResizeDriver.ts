@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver, sendLog } from '@designable/shared'
 import { Engine } from '../models/Engine'
 import { ViewportResizeEvent } from '../events'
 import { ResizeObserver } from '@juggle/resize-observer'
@@ -29,6 +29,7 @@ export class ViewportResizeDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    sendLog(true, '2024-01-11 Engine ViewportResizeDriver:', 'attach')
     if (this.contentWindow && this.contentWindow !== globalThisPolyfill) {
       this.addEventListener('resize', this.onResize)
     } else {

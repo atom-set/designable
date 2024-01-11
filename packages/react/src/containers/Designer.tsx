@@ -35,8 +35,8 @@ export const Designer: React.FC<IDesignerProps> = (props) => {
       'There can only be one Designable Engine Context in the React Tree'
     )
 
-  sendLog(true, '2024-01-08 Designer-props:', props)
-  sendLog(true, '2024-01-08 Layout render')
+  sendLog(true, '2024-01-08 Designer props:', props)
+  sendLog(true, '2024-01-08 Layout: render')
   return (
     <Layout {...props}>
       <DesignerEngineContext.Provider value={props.engine}>

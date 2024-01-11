@@ -36,6 +36,7 @@ import {
   MarkupSchemaWidget,
 } from './widgets'
 import { saveSchema } from './service'
+import { sendLog } from '../../../packages/shared/src/sendLog'
 import {
   Form,
   Field,
@@ -106,6 +107,8 @@ const App = () => {
       }),
     []
   )
+
+  sendLog(true, '2024-01-11 main Engine:', engine)
   return (
     <Designer engine={engine}>
       <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>

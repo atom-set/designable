@@ -33,9 +33,9 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
     return workspace
   }, [id, designer])
 
-  sendLog(true, '2024-01-11-Workspace props:', props)
-  sendLog(true, '2024-01-11-Workspace designer:', designer)
-  sendLog(true, '2024-01-11-Workspace workspace:', workspace)
+  sendLog(false, '2024-01-11 Engine Workspace props:', props)
+  sendLog(false, '2024-01-11 Engine Workspace designer:', designer)
+  sendLog(false, '2024-01-11 Engine Workspace workspace:', workspace)
   return (
     <Fragment>
       <WorkspaceContext.Provider value={workspace}>

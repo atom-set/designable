@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver, sendLog } from '@designable/shared'
 import { Engine } from '../models/Engine'
 import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 
@@ -119,6 +119,7 @@ export class DragDropDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    sendLog(true, '2024-01-11 Engine DragDropDriver:', 'attach')
     this.batchAddEventListener('mousedown', this.onMouseDown, true)
   }
 

@@ -11,9 +11,11 @@ import {
   DragStopEvent,
   ViewportScrollEvent,
 } from '../events'
-import { Point } from '@designable/shared'
+import { Point, sendLog } from '@designable/shared'
 
 export const useDragDropEffect = (engine: Engine) => {
+  sendLog(true, '2024-01-11 Engine useDragDropEffect:', 'attach')
+
   engine.subscribeTo(DragStartEvent, (event) => {
     if (engine.cursor.type !== CursorType.Normal) return
     const target = event.data.target as HTMLElement

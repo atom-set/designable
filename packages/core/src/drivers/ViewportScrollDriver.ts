@@ -1,4 +1,4 @@
-import { EventDriver, globalThisPolyfill } from '@designable/shared'
+import { EventDriver, globalThisPolyfill, sendLog } from '@designable/shared'
 import { Engine } from '../models/Engine'
 import { ViewportScrollEvent } from '../events'
 
@@ -25,6 +25,8 @@ export class ViewportScrollDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    sendLog(true, '2024-01-11 Engine ViewportScrollDriver:', 'attach')
+
     this.addEventListener('scroll', this.onScroll)
   }
 
