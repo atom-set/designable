@@ -1,6 +1,13 @@
+/**
+ * @description 设计器的驱动事件
+ * 1、Engine 初始化 调用 effects
+ * 2、Engine mount 绑定 drivers
+ * 3、注册 subscribeTo 和 subscribeWith
+ */
 import { isArr, isWindow } from './types'
 import { Subscribable, ISubscriber } from './subscribable'
 import { globalThisPolyfill } from './globalThisPolyfill'
+import { sendLog } from './sendLog'
 
 const ATTACHED_SYMBOL = Symbol('ATTACHED_SYMBOL')
 const EVENTS_SYMBOL = Symbol('__EVENTS_SYMBOL__')
@@ -283,9 +290,17 @@ export class Event extends Subscribable<ICustomEvent<any>> {
   private drivers: IEventDriverClass<any>[] = []
   private containers: EventContainer[] = []
   constructor(props?: IEventProps) {
+    sendLog(
+      false,
+      'Engine Event: ',
+      'constructor',
+      props?.effects,
+      props?.drivers
+    )
     super()
     if (isArr(props?.effects)) {
       props.effects.forEach((plugin) => {
+        sendLog(false, 'Engine Event effects: ', plugin, typeof plugin)
         plugin(this)
       })
     }
@@ -299,6 +314,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     subscriber: ISubscriber<InstanceType<T>>
   ) {
     return this.subscribe((event) => {
+      sendLog(false, 'Engine Event: ', 'subscribeTo', event)
       if (type && event instanceof type) {
         return subscriber(event)
       }
@@ -310,6 +326,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     subscriber: ISubscriber<T>
   ) {
     return this.subscribe((event) => {
+      sendLog(true, 'Engine Event: ', 'subscribeWith', event)
       if (isArr(type)) {
         if (type.includes(event?.type)) {
           return subscriber(event)
@@ -327,6 +344,13 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     contentWindow: Window = globalThisPolyfill,
     context?: any
   ) {
+    sendLog(
+      true,
+      'Engine Event: ',
+      'attach',
+      isWindow(container),
+      container[ATTACHED_SYMBOL]
+    )
     if (!container) return
     if (isWindow(container)) {
       return this.attachEvents(container.document, container, context)

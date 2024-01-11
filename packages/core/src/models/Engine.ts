@@ -13,6 +13,9 @@ import { Event, uid, globalThisPolyfill, sendLog } from '@designable/shared'
  * 设计器引擎
  */
 
+{
+  /* 2024-01-11 继承了 Event */
+}
 export class Engine extends Event {
   id: string
 
@@ -83,7 +86,7 @@ export class Engine extends Event {
   }
 
   mount() {
-    sendLog(true, '2024-01-11 Engine:', 'attach')
+    sendLog(true, '2024-01-11 Engine mount:', 'attach')
     this.attachEvents(globalThisPolyfill)
   }
 
