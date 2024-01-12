@@ -3,7 +3,7 @@ import { MouseClickEvent } from '../events'
 import { KeyCode, Point, sendLog } from '@designable/shared'
 
 export const useSelectionEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useSelectionEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useSelectionEffect:', 'attach')
 
   engine.subscribeTo(MouseClickEvent, (event) => {
     if (engine.cursor.status !== CursorStatus.Normal) return

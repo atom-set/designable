@@ -3,7 +3,7 @@ import { Engine, GlobalRegistry } from '@designable/core'
 import { sendLog } from '@designable/shared'
 import { DesignerEngineContext } from '../context'
 import { IDesignerProps } from '../types'
-// import { GhostWidget } from '../widgets'
+import { GhostWidget } from '../widgets'
 import { useDesigner } from '../hooks'
 import { Layout } from './Layout'
 import * as icons from '../icons'
@@ -35,14 +35,14 @@ export const Designer: React.FC<IDesignerProps> = (props) => {
       'There can only be one Designable Engine Context in the React Tree'
     )
 
-  sendLog(true, '2024-01-08 Designer props:', props)
-  sendLog(true, '2024-01-08 Layout: render')
+  sendLog(false, '2024-01-08 Designer props:', props)
+  sendLog(false, '2024-01-08 Layout: render')
   return (
     <Layout {...props}>
       <DesignerEngineContext.Provider value={props.engine}>
         {props.children}
-        {/* TODO: 2024-01-08 隐藏 GhostWidget 组件*/}
-        {/* <GhostWidget /> */}
+        {/* TODO: 2024-01-08  GhostWidget 组件*/}
+        <GhostWidget />
       </DesignerEngineContext.Provider>
     </Layout>
   )

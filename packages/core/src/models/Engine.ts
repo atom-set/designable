@@ -87,6 +87,7 @@ export class Engine extends Event {
 
   mount() {
     sendLog(true, '2024-01-11 Engine mount:', 'attach')
+    debugger
     this.attachEvents(globalThisPolyfill)
   }
 

@@ -4,6 +4,7 @@ import { MouseClickEvent, MouseDoubleClickEvent } from '../events'
 
 export class MouseClickDriver extends EventDriver<Engine> {
   onMouseClick = (e: MouseEvent) => {
+    debugger
     const target = e.target as HTMLElement
     if (
       target?.closest(`*[${this.engine.props.clickStopPropagationAttrName}]`)
@@ -23,6 +24,7 @@ export class MouseClickDriver extends EventDriver<Engine> {
   }
 
   onMouseDoubleClick = (e: MouseEvent) => {
+    debugger
     const target = e.target as HTMLElement
     if (
       target?.closest(`*[${this.engine.props.clickStopPropagationAttrName}]`)
@@ -42,7 +44,7 @@ export class MouseClickDriver extends EventDriver<Engine> {
   }
 
   attach() {
-    sendLog(true, '2024-01-11 Engine MouseClickDriver:', 'attach')
+    sendLog(false, '2024-01-11 Engine MouseClickDriver:', 'attach')
 
     this.addEventListener('click', this.onMouseClick, {
       mode: 'onlyChild',

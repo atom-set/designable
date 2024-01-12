@@ -25,7 +25,7 @@ export class ViewportScrollDriver extends EventDriver<Engine> {
   }
 
   attach() {
-    sendLog(true, '2024-01-11 Engine ViewportScrollDriver:', 'attach')
+    sendLog(false, '2024-01-11 Engine ViewportScrollDriver:', 'attach')
 
     this.addEventListener('scroll', this.onScroll)
   }

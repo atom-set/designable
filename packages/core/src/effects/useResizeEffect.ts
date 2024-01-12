@@ -3,7 +3,7 @@ import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 import { sendLog } from '@designable/shared'
 
 export const useResizeEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useResizeEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useResizeEffect:', 'attach')
 
   const findStartNodeHandler = (target: HTMLElement) => {
     const handler = target?.closest(

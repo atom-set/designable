@@ -5,8 +5,10 @@ export class MouseMoveDriver extends EventDriver<Engine> {
   request = null
 
   onMouseMove = (e: MouseEvent) => {
+    debugger
     this.request = requestAnimationFrame(() => {
       cancelAnimationFrame(this.request)
+      debugger
       this.dispatch(
         new MouseMoveEvent({
           clientX: e.clientX,
@@ -21,7 +23,7 @@ export class MouseMoveDriver extends EventDriver<Engine> {
   }
 
   attach() {
-    sendLog(true, '2024-01-11 Engine MouseMoveDriver:', 'attach')
+    sendLog(false, '2024-01-11 Engine MouseMoveDriver:', 'attach')
     this.addEventListener('mousemove', this.onMouseMove, {
       mode: 'onlyOne',
     })

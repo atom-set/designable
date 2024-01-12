@@ -42,7 +42,7 @@ const StudioPanelInternal: React.FC<IStudioPanelProps> = ({
   )
 }
 
-sendLog(true, '2024-01-08 StudioPanel render')
+sendLog(false, '2024-01-08 StudioPanel render')
 
 export const StudioPanel: React.FC<IStudioPanelProps> = (props) => {
   return (

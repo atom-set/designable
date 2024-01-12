@@ -28,6 +28,7 @@ import {
   Shortcut,
   KeyCode,
 } from '@designable/core'
+import { sendLog } from '@designable/shared'
 import {
   LogoWidget,
   ActionsWidget,
@@ -36,7 +37,6 @@ import {
   MarkupSchemaWidget,
 } from './widgets'
 import { saveSchema } from './service'
-import { sendLog } from '../../../packages/shared/src/sendLog'
 import {
   Form,
   Field,

@@ -4,7 +4,7 @@ import { IEngineContext } from '../types'
 import { SelectNodeEvent } from '../events'
 
 export const useWorkspaceEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useWorkspaceEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useWorkspaceEffect:', 'attach')
 
   engine.subscribeWith<ICustomEvent<any, IEngineContext>>(
     [

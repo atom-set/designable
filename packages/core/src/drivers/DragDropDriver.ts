@@ -119,7 +119,7 @@ export class DragDropDriver extends EventDriver<Engine> {
   }
 
   attach() {
-    sendLog(true, '2024-01-11 Engine DragDropDriver:', 'attach')
+    sendLog(false, '2024-01-11 Engine DragDropDriver:', 'attach')
     this.batchAddEventListener('mousedown', this.onMouseDown, true)
   }
 

@@ -3,7 +3,7 @@ import { KeyDownEvent, KeyUpEvent } from '../events'
 import { sendLog } from '@designable/shared'
 
 export const useKeyboardEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useKeyboardEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useKeyboardEffect:', 'attach')
 
   engine.subscribeTo(KeyDownEvent, (event) => {
     const keyboard = engine.keyboard

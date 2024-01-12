@@ -8,7 +8,7 @@ import {
 import { requestIdle, sendLog } from '@designable/shared'
 
 export const useCursorEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useCursorEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useCursorEffect:', 'attach')
 
   engine.subscribeTo(MouseMoveEvent, (event) => {
     engine.cursor.setStatus(

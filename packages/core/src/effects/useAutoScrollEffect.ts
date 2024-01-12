@@ -10,7 +10,7 @@ import {
 } from '@designable/shared'
 
 export const useAutoScrollEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useAutoScrollEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useAutoScrollEffect:', 'attach')
 
   let xScroller: IAutoScrollBasicInfo = null
   let yScroller: IAutoScrollBasicInfo = null

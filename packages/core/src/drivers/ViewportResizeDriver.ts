@@ -29,7 +29,7 @@ export class ViewportResizeDriver extends EventDriver<Engine> {
   }
 
   attach() {
-    sendLog(true, '2024-01-11 Engine ViewportResizeDriver:', 'attach')
+    sendLog(false, '2024-01-11 Engine ViewportResizeDriver:', 'attach')
     if (this.contentWindow && this.contentWindow !== globalThisPolyfill) {
       this.addEventListener('resize', this.onResize)
     } else {

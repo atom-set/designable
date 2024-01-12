@@ -3,7 +3,7 @@ import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 import { sendLog } from '@designable/shared'
 
 export const useTranslateEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useTranslateEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useTranslateEffect:', 'attach')
 
   engine.subscribeTo(DragStartEvent, (event) => {
     const target = event.data.target as HTMLElement

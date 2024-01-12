@@ -52,7 +52,7 @@ function createCaretCache(el: Element) {
 }
 
 export const useContentEditableEffect = (engine: Engine) => {
-  sendLog(true, '2024-01-11 Engine useContentEditableEffect:', 'attach')
+  sendLog(false, '2024-01-11 Engine useContentEditableEffect:', 'attach')
 
   const globalState: GlobalState = {
     activeElements: new Map(),

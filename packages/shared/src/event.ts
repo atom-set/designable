@@ -168,11 +168,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   addEventListener(type: any, listener: any, options: any) {
     const target = this.eventTarget(type)
     if (isOnlyMode(options?.mode)) {
@@ -215,11 +217,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   removeEventListener(type: any, listener: any, options?: any) {
     const target = this.eventTarget(type)
     if (isOnlyMode(options?.mode)) {
@@ -242,11 +246,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   batchAddEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   batchAddEventListener(type: any, listener: any, options?: any) {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
       this.engine[DRIVER_INSTANCES_SYMBOL] || []
@@ -268,11 +274,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   batchRemoveEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   batchRemoveEventListener(type: any, listener: any, options: any) {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
       this.engine[DRIVER_INSTANCES_SYMBOL] || []
@@ -328,7 +336,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     subscriber: ISubscriber<T>
   ) {
     return this.subscribe((event) => {
-      sendLog(true, 'Engine Event: ', 'subscribeWith', event)
+      sendLog(false, 'Engine Event: ', 'subscribeWith', event)
       if (isArr(type)) {
         if (type.includes(event?.type)) {
           return subscriber(event)

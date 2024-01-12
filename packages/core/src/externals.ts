@@ -88,7 +88,6 @@ export const createDesigner = (props: IEngineProps<Engine> = {}) => {
     ...shortcuts,
     ...DEFAULT_SHORTCUTS,
   ])
-
   return untracked(
     () =>
       new Engine({
