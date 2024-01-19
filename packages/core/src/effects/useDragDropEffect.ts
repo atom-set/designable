@@ -44,6 +44,8 @@ export const useDragDropEffect = (engine: Engine) => {
       el.attributes
     )
 
+    debugger
+
     if (!el?.getAttribute && !handler) return
     const sourceId = el?.getAttribute(engine.props.sourceIdAttrName)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName)

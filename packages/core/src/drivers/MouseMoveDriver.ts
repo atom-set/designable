@@ -5,10 +5,8 @@ export class MouseMoveDriver extends EventDriver<Engine> {
   request = null
 
   onMouseMove = (e: MouseEvent) => {
-    debugger
     this.request = requestAnimationFrame(() => {
       cancelAnimationFrame(this.request)
-      debugger
       this.dispatch(
         new MouseMoveEvent({
           clientX: e.clientX,
