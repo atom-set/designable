@@ -78,6 +78,7 @@ const DESIGNER_GlobalRegistry = {
   },
 
   setDesignerBehaviors: (behaviors: IBehaviorLike[]) => {
+    debugger
     DESIGNER_BEHAVIORS_STORE.value = behaviors.reduce<IBehavior[]>(
       (buf, behavior) => {
         if (isBehaviorHost(behavior)) {

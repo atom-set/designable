@@ -52,7 +52,12 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
       })
     }, [node, node?.props, schema, operation, isEmpty])
 
-    sendLog(true, '2024-01-24 SettingsForm isEmpty:', isEmpty)
+    sendLog(
+      true,
+      '2024-01-24 SettingsForm node?.designerProps?.defaultProps:',
+      node?.designerProps?.defaultProps
+    )
+    sendLog(true, '2024-01-24 SettingsForm node?.props:', node?.props)
     sendLog(true, '2024-01-24 SettingsForm node:', node)
     sendLog(true, '2024-01-24 SettingsForm schema:', schema)
     sendLog(true, '2024-01-24 SettingsForm operation:', operation)
@@ -82,7 +87,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
                 <SchemaField
                   schema={schema}
                   components={props.components}
-                  scope={{ $node: node, ...props.scope }}
+                  // scope={{ $node: node, ...props.scope }}
                 />
               </Form>
             </SettingsFormContext.Provider>

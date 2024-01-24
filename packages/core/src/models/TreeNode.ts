@@ -169,6 +169,7 @@ export class TreeNode {
 
   get designerProps(): IDesignerProps {
     const behaviors = GlobalRegistry.getDesignerBehaviors(this)
+    debugger
     const designerProps: IDesignerProps = behaviors.reduce((buf, pattern) => {
       if (!pattern.designerProps) return buf
       Object.assign(buf, resolveDesignerProps(this, pattern.designerProps))
