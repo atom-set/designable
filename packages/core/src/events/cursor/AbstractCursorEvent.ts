@@ -34,6 +34,7 @@ export class AbstractCursorEvent {
     this.transformCoordinates()
   }
 
+  // 转换坐标
   transformCoordinates() {
     const { frameElement } = this.data?.view || {}
     if (frameElement && this.data.view !== globalThisPolyfill) {

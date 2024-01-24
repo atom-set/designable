@@ -53,6 +53,7 @@ export class Engine extends Event {
   }
 
   getCurrentTree() {
+    debugger
     return this.workbench?.currentWorkspace?.operation?.tree
   }
 
