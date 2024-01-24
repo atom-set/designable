@@ -67,7 +67,7 @@ import {
   FormGrid,
 } from '../src'
 
-setNpmCDNRegistry('//unpkg.com')
+setNpmCDNRegistry('//npm.elemecdn.com')
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
