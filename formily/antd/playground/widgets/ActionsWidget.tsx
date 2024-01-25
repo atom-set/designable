@@ -39,7 +39,7 @@ export const ActionsWidget = observer(() => {
   )
   return (
     <Space style={{ marginRight: 10 }}>
-      <Radio.Group
+      {/* <Radio.Group
         value={GlobalRegistry.getDesignerLanguage()}
         optionType="button"
         options={[
@@ -49,11 +49,11 @@ export const ActionsWidget = observer(() => {
         onChange={(e) => {
           GlobalRegistry.setDesignerLanguage(e.target.value)
         }}
-      />
-      <Button href="https://github.com/atom-set/designable" target="_blank">
+      /> */}
+      {/* <Button href="https://github.com/atom-set/designable" target="_blank">
         <GithubOutlined />
         Github
-      </Button>
+      </Button> */}
 
       <Button
         onClick={() => {

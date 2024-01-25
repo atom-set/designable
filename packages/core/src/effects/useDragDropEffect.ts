@@ -41,7 +41,7 @@ export const useDragDropEffect = (engine: Engine) => {
       '2024-01-12 Engine Drag DragStartEvent:',
       'el-',
       el,
-      el.attributes
+      el?.attributes
     )
 
     if (!el?.getAttribute && !handler) return

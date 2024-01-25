@@ -57,15 +57,18 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
       '2024-01-24 SettingsForm node?.designerProps?.defaultProps:',
       node?.designerProps?.defaultProps
     )
-    sendLog(true, '2024-01-24 SettingsForm node?.props:', node?.props)
-    sendLog(true, '2024-01-24 SettingsForm node:', node)
-    sendLog(true, '2024-01-24 SettingsForm schema:', schema)
-    sendLog(true, '2024-01-24 SettingsForm operation:', operation)
-    sendLog(true, '2024-01-24 SettingsForm form:', form)
-    sendLog(true, '2024-01-24 SettingsForm props:', props)
-    sendLog(true, '2024-01-24 SettingsForm props.components:', props.components)
-    sendLog(true, '2024-01-24 SettingsForm props.scope:', props.scope)
-    debugger
+    sendLog(false, '2024-01-24 SettingsForm node?.props:', node?.props)
+    sendLog(false, '2024-01-24 SettingsForm node:', node)
+    sendLog(false, '2024-01-24 SettingsForm schema:', schema)
+    sendLog(false, '2024-01-24 SettingsForm operation:', operation)
+    sendLog(false, '2024-01-24 SettingsForm form:', form)
+    sendLog(false, '2024-01-24 SettingsForm props:', props)
+    sendLog(
+      false,
+      '2024-01-24 SettingsForm props.components:',
+      props.components
+    )
+    sendLog(false, '2024-01-24 SettingsForm props.scope:', props.scope)
     const render = () => {
       if (!isEmpty) {
         return (

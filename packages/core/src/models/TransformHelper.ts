@@ -543,7 +543,6 @@ export class TransformHelper {
   }
 
   dragStart(props: ITransformHelperDragStartProps) {
-    debugger
     const dragNodes = props?.dragNodes
     const type = props?.type
     const direction = props?.direction
