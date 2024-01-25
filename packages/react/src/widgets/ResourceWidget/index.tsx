@@ -36,9 +36,9 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
     const renderNode = (source: IResource) => {
       const { node, icon, title, thumb, span } = source
       sendLog(
-        false,
+        true,
         '2024-01-11 ResourceWidget renderNode:',
-        node,
+        node.children[0],
         icon,
         title,
         thumb,

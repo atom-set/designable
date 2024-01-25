@@ -307,11 +307,7 @@ export class TreeNode {
   }
 
   getMessage(token: string) {
-    sendLog(
-      false,
-      '2024-01-09 getMessage this.designerLocales:',
-      this.designerLocales
-    )
+    sendLog(false, '2024-01-09 getMessage this.designerLocales:', token)
     return GlobalRegistry.getDesignerMessage(token, this.designerLocales)
   }
 
