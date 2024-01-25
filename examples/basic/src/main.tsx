@@ -242,9 +242,7 @@ const CardBehavior = createBehavior({
 GlobalRegistry.setDesignerBehaviors([RootBehavior, InputBehavior, CardBehavior])
 
 const Input = createResource({
-  title: {
-    'zh-CN': '输入框',
-  },
+  title: '输入框',
   icon: 'InputSource',
   elements: [
     {
@@ -260,9 +258,7 @@ const Input = createResource({
 })
 
 const Card = createResource({
-  title: {
-    'zh-CN': '卡片',
-  },
+  title: '卡片',
   icon: 'CardSource',
   elements: [
     {
