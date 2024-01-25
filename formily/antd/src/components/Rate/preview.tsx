@@ -3,8 +3,10 @@ import { Rate as AntdRate } from 'antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+import { RateLocal } from './local'
+import { RateSchema } from './schema'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 
 export const Rate: DnFC<React.ComponentProps<typeof AntdRate>> = AntdRate
 
@@ -13,9 +15,11 @@ Rate.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'Rate',
   designerProps: {
-    propsSchema: createFieldSchema(AllSchemas.Rate),
+    // propsSchema: createFieldSchema(AllSchemas.Rate),
+    propsSchema: createFieldSchema(RateSchema),
   },
-  designerLocales: AllLocales.Rate,
+  // designerLocales: AllLocales.Rate,
+  designerLocales: RateLocal,
 })
 
 Rate.Resource = createResource({

@@ -160,7 +160,7 @@ export const Field: DnFC<ISchema> = observer((props) => {
       </VoidField>
     )
   }
-  sendLog(true, '2024-01-25 fieldProps:', fieldProps)
+  sendLog(true, '2024-01-25 fieldProps:', fieldProps, node.id)
   return <InternalField {...fieldProps} name={node.id} />
 })
 

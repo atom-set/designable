@@ -3,8 +3,10 @@ import { TimePicker as FormilyTimePicker } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+import { TimePickerSchema } from './schema'
+import { TimePickerLocal, TimeRangePickerLocal } from './local'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 
 export const TimePicker: DnFC<React.ComponentProps<typeof FormilyTimePicker>> =
   FormilyTimePicker
@@ -15,18 +17,22 @@ TimePicker.Behavior = createBehavior(
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'TimePicker',
     designerProps: {
-      propsSchema: createFieldSchema(AllSchemas.TimePicker),
+      // propsSchema: createFieldSchema(AllSchemas.TimePicker),
+      propsSchema: createFieldSchema(TimePickerSchema),
     },
-    designerLocales: AllLocales.TimePicker,
+    // designerLocales: AllLocales.TimePicker,
+    designerLocales: TimePickerLocal,
   },
   {
     name: 'TimePicker.RangePicker',
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'TimePicker.RangePicker',
     designerProps: {
-      propsSchema: createFieldSchema(AllSchemas.TimePicker.RangePicker),
+      // propsSchema: createFieldSchema(AllSchemas.TimePicker.RangePicker),
+      propsSchema: createFieldSchema(TimePickerSchema.RangePicker),
     },
-    designerLocales: AllLocales.TimeRangePicker,
+    // designerLocales: AllLocales.TimeRangePicker,
+    designerLocales: TimeRangePickerLocal,
   }
 )
 

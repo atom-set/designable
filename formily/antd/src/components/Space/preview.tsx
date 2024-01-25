@@ -4,8 +4,10 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createVoidFieldSchema } from '../Field'
 import { withContainer } from '../../common/Container'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+import { SpaceSchema } from './schema'
+import { SpaceLocal } from './local'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 
 export const Space: DnFC<React.ComponentProps<typeof FormilySpace>> =
   withContainer(FormilySpace)
@@ -17,9 +19,11 @@ Space.Behavior = createBehavior({
   designerProps: {
     droppable: true,
     inlineChildrenLayout: true,
-    propsSchema: createVoidFieldSchema(AllSchemas.Space),
+    propsSchema: createVoidFieldSchema(SpaceSchema),
+    // propsSchema: createVoidFieldSchema(AllSchemas.Space),
   },
-  designerLocales: AllLocales.Space,
+  designerLocales: SpaceLocal,
+  // designerLocales: AllLocales.Space,
 })
 
 Space.Resource = createResource({
