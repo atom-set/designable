@@ -4,7 +4,6 @@ import { createForm } from '@formily/core'
 import { observer } from '@formily/react'
 import { Form as FormilyForm } from '@formily/antd'
 import { usePrefix, DnFC } from '@designable/react'
-import { createVoidFieldSchema } from '../Field'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 import './styles.less'
@@ -50,7 +49,7 @@ Form.Behavior = createBehavior({
       //     style: AllSchemas.CSSStyle,
       //   },
       // },
-      propsSchema: createVoidFieldSchema(FormSchema),
+      propsSchema: FormSchema,
       defaultProps: {
         labelCol: 6,
         wrapperCol: 12,
