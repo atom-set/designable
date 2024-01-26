@@ -1,4 +1,17 @@
 import { GlobalRegistry } from '@designable/core'
+GlobalRegistry.registerDesignerLocales({
+  'zh-CN': {
+    Previews: {
+      droppable: '可以拖入组件',
+      addTabPane: '添加选项卡',
+      addCollapsePanel: '添加手风琴卡片',
+      addTableColumn: '添加表格列',
+      addTableSortHandle: '添加排序',
+      addIndex: '添加索引',
+      addOperation: '添加操作',
+    },
+  },
+})
 
 export const DatePickerLocal = {
   zh: {
@@ -260,17 +273,3 @@ export const ArrayCards = {
     addOperation: 'Add Operations',
   },
 }
-
-GlobalRegistry.registerDesignerLocales({
-  'zh-CN': {
-    Previews: {
-      droppable: '可以拖入组件',
-      addTabPane: '添加选项卡',
-      addCollapsePanel: '添加手风琴卡片',
-      addTableColumn: '添加表格列',
-      addTableSortHandle: '添加排序',
-      addIndex: '添加索引',
-      addOperation: '添加操作',
-    },
-  },
-})
