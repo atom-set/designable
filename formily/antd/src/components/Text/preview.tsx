@@ -6,7 +6,7 @@ import { createVoidFieldSchema } from '../Field'
 // import { AllLocales } from '../../locales'
 import cls from 'classnames'
 import './styles.less'
-import { TextLocal } from './local'
+import { TextLocales } from './locales'
 import { TextSchema } from './schema'
 
 export interface IDesignableTextProps {
@@ -39,7 +39,7 @@ Text.Behavior = createBehavior({
     propsSchema: createVoidFieldSchema(TextSchema),
   },
   // designerLocales: AllLocales.Text,
-  designerLocales: TextLocal,
+  designerLocales: TextLocales,
 })
 
 Text.Resource = createResource({

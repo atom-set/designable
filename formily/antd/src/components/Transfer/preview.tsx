@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { TransferSchema } from './schema'
-import { TransferLocal } from './local'
+import { TransferLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -20,7 +20,7 @@ Transfer.Behavior = createBehavior({
     propsSchema: createFieldSchema(TransferSchema),
   },
   // designerLocales: AllLocales.Transfer,
-  designerLocales: TransferLocal,
+  designerLocales: TransferLocales,
 })
 
 Transfer.Resource = createResource({

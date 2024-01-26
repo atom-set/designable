@@ -21,7 +21,8 @@ import {
 } from '@designable/react'
 import { isArr, isStr, sendLog } from '@designable/shared'
 import { Container } from '../../common/Container'
-import { AllLocales } from '../../locales'
+import { FieldLocales } from './locales'
+// import { AllLocales } from '../../locales'
 
 Schema.silent(true)
 
@@ -167,5 +168,6 @@ export const Field: DnFC<ISchema> = observer((props) => {
 Field.Behavior = createBehavior({
   name: 'Field',
   selector: 'Field',
-  designerLocales: AllLocales.Field,
+  // designerLocales: AllLocales.Field,
+  designerLocales: FieldLocales,
 })

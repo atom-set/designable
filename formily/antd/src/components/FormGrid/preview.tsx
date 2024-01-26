@@ -10,9 +10,11 @@ import {
 import { observer } from '@formily/reactive-react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 import './styles.less'
+import { FormGridSchema } from './schema'
+import { FormGridColumnLocales, FormGridLocales } from './locales'
 
 type formilyGrid = typeof FormilyGird
 
@@ -64,9 +66,11 @@ FormGrid.Behavior = createBehavior(
     designerProps: {
       droppable: true,
       allowDrop: (node) => node.props['x-component'] !== 'FormGrid',
-      propsSchema: createFieldSchema(AllSchemas.FormGrid),
+      // propsSchema: createFieldSchema(AllSchemas.FormGrid),
+      propsSchema: createFieldSchema(FormGridSchema),
     },
-    designerLocales: AllLocales.FormGrid,
+    // designerLocales: AllLocales.FormGrid,
+    designerLocales: FormGridLocales,
   },
   {
     name: 'FormGrid.GridColumn',
@@ -98,9 +102,11 @@ FormGrid.Behavior = createBehavior(
       resizeMin: 1,
       resizeMax: 12,
       allowDrop: (node) => node.props['x-component'] === 'FormGrid',
-      propsSchema: createFieldSchema(AllSchemas.FormGrid.GridColumn),
+      // propsSchema: createFieldSchema(AllSchemas.FormGrid.GridColumn),
+      propsSchema: FormGridSchema.GridColumn,
     },
-    designerLocales: AllLocales.FormGridColumn,
+    // designerLocales: AllLocales.FormGridColumn,
+    designerLocales: FormGridColumnLocales,
   }
 )
 

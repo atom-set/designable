@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { TreeSelectSchema } from './schema'
-import { TreeSelectLocal } from './local'
+import { TreeSelectLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -20,7 +20,7 @@ TreeSelect.Behavior = createBehavior({
     propsSchema: createFieldSchema(TreeSelectSchema),
   },
   // designerLocales: AllLocales.TreeSelect,
-  designerLocales: TreeSelectLocal,
+  designerLocales: TreeSelectLocales,
 })
 
 TreeSelect.Resource = createResource({

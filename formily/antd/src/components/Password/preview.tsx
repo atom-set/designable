@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { PasswordSchema } from './schema'
-import { PasswordLocal } from './local'
+import { PasswordLocal } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 

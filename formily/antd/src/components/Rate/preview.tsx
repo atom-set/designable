@@ -3,7 +3,7 @@ import { Rate as AntdRate } from 'antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { RateLocal } from './local'
+import { RateLocales } from './locales'
 import { RateSchema } from './schema'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
@@ -19,7 +19,7 @@ Rate.Behavior = createBehavior({
     propsSchema: createFieldSchema(RateSchema),
   },
   // designerLocales: AllLocales.Rate,
-  designerLocales: RateLocal,
+  designerLocales: RateLocales,
 })
 
 Rate.Resource = createResource({

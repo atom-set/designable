@@ -3,8 +3,10 @@ import { Input as FormilyInput } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+import { InputSchema } from './schema'
+import { InputLocales, TextAreaLocales } from './locales'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 
 export const Input: DnFC<React.ComponentProps<typeof FormilyInput>> =
   FormilyInput
@@ -15,18 +17,22 @@ Input.Behavior = createBehavior(
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Input',
     designerProps: {
-      propsSchema: createFieldSchema(AllSchemas.Input),
+      // propsSchema: createFieldSchema(AllSchemas.Input),
+      propsSchema: createFieldSchema(InputSchema),
     },
-    designerLocales: AllLocales.Input,
+    designerLocales: InputLocales,
+    // designerLocales: AllLocales.Input,
   },
   {
     name: 'Input.TextArea',
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Input.TextArea',
     designerProps: {
-      propsSchema: createFieldSchema(AllSchemas.Input.TextArea),
+      // propsSchema: createFieldSchema(AllSchemas.Input.TextArea),
+      propsSchema: createFieldSchema(InputSchema.TextArea),
     },
-    designerLocales: AllLocales.TextArea,
+    // designerLocales: AllLocales.TextArea,
+    designerLocales: TextAreaLocales,
   }
 )
 

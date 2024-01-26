@@ -5,7 +5,7 @@ import { DnFC } from '@designable/react'
 import { createVoidFieldSchema } from '../Field'
 import { withContainer } from '../../common/Container'
 import { SpaceSchema } from './schema'
-import { SpaceLocal } from './local'
+import { SpaceLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -22,7 +22,7 @@ Space.Behavior = createBehavior({
     propsSchema: createVoidFieldSchema(SpaceSchema),
     // propsSchema: createVoidFieldSchema(AllSchemas.Space),
   },
-  designerLocales: SpaceLocal,
+  designerLocales: SpaceLocales,
   // designerLocales: AllLocales.Space,
 })
 

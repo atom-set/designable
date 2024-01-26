@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { TimePickerSchema } from './schema'
-import { TimePickerLocal, TimeRangePickerLocal } from './local'
+import { TimePickerLocales, TimeRangePickerLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -21,7 +21,7 @@ TimePicker.Behavior = createBehavior(
       propsSchema: createFieldSchema(TimePickerSchema),
     },
     // designerLocales: AllLocales.TimePicker,
-    designerLocales: TimePickerLocal,
+    designerLocales: TimePickerLocales,
   },
   {
     name: 'TimePicker.RangePicker',
@@ -32,7 +32,7 @@ TimePicker.Behavior = createBehavior(
       propsSchema: createFieldSchema(TimePickerSchema.RangePicker),
     },
     // designerLocales: AllLocales.TimeRangePicker,
-    designerLocales: TimeRangePickerLocal,
+    designerLocales: TimeRangePickerLocales,
   }
 )
 

@@ -3,7 +3,7 @@ import { NumberPicker as FormilyNumberPicker } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { NumberPickerLocal } from './local'
+import { NumberPickerLocales } from './locales'
 import { NumberPickerSchema } from './schema'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
@@ -21,7 +21,7 @@ NumberPicker.Behavior = createBehavior({
     propsSchema: createFieldSchema(NumberPickerSchema),
   },
   // designerLocales: AllLocales.NumberPicker,
-  designerLocales: NumberPickerLocal,
+  designerLocales: NumberPickerLocales,
 })
 
 NumberPicker.Resource = createResource({

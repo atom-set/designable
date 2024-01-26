@@ -6,7 +6,7 @@ import { createFieldSchema } from '../Field'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 import { UploadSchema } from './schema'
-import { UploadLocal, UploadDraggerLocal } from './local'
+import { UploadLocales, UploadDraggerLocales } from './locales'
 
 export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> =
   FormilyUpload
@@ -21,7 +21,7 @@ Upload.Behavior = createBehavior(
       propsSchema: createFieldSchema(UploadSchema),
     },
     //  designerLocales: AllLocales.Upload,
-    designerLocales: UploadLocal,
+    designerLocales: UploadLocales,
   },
   {
     name: 'Upload.Dragger',
@@ -32,7 +32,7 @@ Upload.Behavior = createBehavior(
       propsSchema: createFieldSchema(UploadSchema.Dragger),
     },
     // designerLocales: AllLocales.UploadDragger,
-    designerLocales: UploadDraggerLocal,
+    designerLocales: UploadDraggerLocales,
   }
 )
 

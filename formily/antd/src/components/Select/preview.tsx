@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { SelectSchema } from './schema'
-import { SelectLocal } from './local'
+import { SelectLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -20,7 +20,7 @@ Select.Behavior = createBehavior({
     propsSchema: createFieldSchema(SelectSchema),
   },
   // designerLocales: AllLocales.Select,
-  designerLocales: SelectLocal,
+  designerLocales: SelectLocales,
 })
 
 Select.Resource = createResource({

@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { SwitchSchema } from './schema'
-import { SwitchLocal } from './local'
+import { SwitchLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -19,7 +19,7 @@ Switch.Behavior = createBehavior({
     propsSchema: createFieldSchema(SwitchSchema),
   },
   // designerLocales: AllLocales.Switch,
-  designerLocales: SwitchLocal,
+  designerLocales: SwitchLocales,
 })
 
 Switch.Resource = createResource({

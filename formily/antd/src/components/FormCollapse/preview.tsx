@@ -14,9 +14,11 @@ import { toArr } from '@formily/shared'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
 import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
+import { FormCollapseSchema } from './schema'
+import { FormCollapseLocales, FormCollapsePanelLocales } from './locales'
 
 const parseCollapse = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
@@ -137,9 +139,11 @@ FormCollapse.Behavior = createBehavior(
         source.every(
           (node) => node.props['x-component'] === 'FormCollapse.CollapsePanel'
         ),
-      propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse),
+      // propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse),
+      propsSchema: createVoidFieldSchema(FormCollapseSchema),
     },
-    designerLocales: AllLocales.FormCollapse,
+    designerLocales: FormCollapseLocales,
+    // designerLocales: AllLocales.FormCollapse,
   },
   {
     name: 'FormCollapse.CollapsePanel',
@@ -149,9 +153,11 @@ FormCollapse.Behavior = createBehavior(
     designerProps: {
       droppable: true,
       allowDrop: (node) => node.props['x-component'] === 'FormCollapse',
-      propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse.CollapsePanel),
+      // propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse.CollapsePanel),
+      propsSchema: createVoidFieldSchema(FormCollapseSchema.CollapsePanel),
     },
-    designerLocales: AllLocales.FormCollapsePanel,
+    // designerLocales: AllLocales.FormCollapsePanel,
+    designerLocales: FormCollapsePanelLocales,
   }
 )
 

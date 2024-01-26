@@ -4,7 +4,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { SliderSchema } from './schema'
-import { SliderLocal } from './local'
+import { SliderLocales } from './locales'
 // import { AllSchemas } from '../../schemas'
 // import { AllLocales } from '../../locales'
 
@@ -19,7 +19,7 @@ Slider.Behavior = createBehavior({
     propsSchema: createFieldSchema(SliderSchema),
   },
   // designerLocales: AllLocales.Slider,
-  designerLocales: SliderLocal,
+  designerLocales: SliderLocales,
 })
 
 Slider.Resource = createResource({

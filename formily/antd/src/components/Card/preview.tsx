@@ -4,8 +4,10 @@ import { Card as AntdCard } from 'antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+import { CardLocales } from './locales'
+import { CardSchema } from './schema'
+// import { AllSchemas } from '../../schemas'
+// import { AllLocales } from '../../locales'
 
 export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
   return (
@@ -28,9 +30,11 @@ Card.Behavior = createBehavior({
   selector: (node) => node.props['x-component'] === 'Card',
   designerProps: {
     droppable: true,
-    propsSchema: createVoidFieldSchema(AllSchemas.Card),
+    // propsSchema: createVoidFieldSchema(AllSchemas.Card),
+    propsSchema: createVoidFieldSchema(CardSchema),
   },
-  designerLocales: AllLocales.Card,
+  // designerLocales: AllLocales.Card,
+  designerLocales: CardLocales,
 })
 
 Card.Resource = createResource({
