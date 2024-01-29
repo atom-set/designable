@@ -23,22 +23,22 @@
     "build:umd": "rollup --config"
   },
   "peerDependencies": {
-    "@formily/antd": "^2.0.2",
-    "@formily/core": "^2.0.2",
-    "@formily/react": "^2.0.2",
-    "@formily/reactive": "^2.0.2",
-    "@formily/reactive-react": "^2.0.2",
-    "@formily/shared": "^2.0.2",
-    "antd": "^4.0.0"
+    "@formily/antd": "^2.3.1",
+    "@formily/core": "^2.3.1",
+    "@formily/react": "^2.3.1",
+    "@formily/reactive": "^2.3.1",
+    "@formily/reactive-react": "^2.3.1",
+    "@formily/shared": "^2.3.1",
+    "antd": "^4.24.15"
   },
   "devDependencies": {
-    "@formily/antd": "^2.0.2",
-    "@formily/core": "^2.0.2",
-    "@formily/react": "^2.0.2",
-    "@formily/reactive": "^2.0.2",
-    "@formily/reactive-react": "^2.0.2",
-    "@formily/shared": "^2.0.2",
-    "antd": "^4.15.5"
+    "@formily/antd": "^2.3.1",
+    "@formily/core": "^2.3.1",
+    "@formily/react": "^2.3.1",
+    "@formily/reactive": "^2.3.1",
+    "@formily/reactive-react": "^2.3.1",
+    "@formily/shared": "^2.3.1",
+    "antd": "^4.24.15"
   },
   "dependencies": {
     "@babel/parser": "^7.14.7",
