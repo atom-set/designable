@@ -16,7 +16,6 @@ import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
-import { uid } from '@formily/shared'
 
 const parseTabs = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
@@ -49,7 +48,6 @@ export const FormTab: DnFC<TabProps> & {
           'x-component': 'FormTab.TabPane',
           'x-component-props': {
             title: `Unnamed Title`,
-            key: uid(),
           },
         },
         children: source,

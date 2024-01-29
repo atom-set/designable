@@ -10,7 +10,7 @@ import { AllSchemas } from '../../schemas'
 export const createComponentSchema = (
   component: ISchema,
   decorator: ISchema
-): ISchema => {
+) => {
   return {
     'component-group': component && {
       type: 'void',
@@ -77,7 +77,7 @@ export const createComponentSchema = (
 export const createFieldSchema = (
   component?: ISchema,
   decorator: ISchema = AllSchemas.FormItem
-) => {
+): ISchema => {
   return {
     type: 'object',
     properties: {

@@ -1,4 +1,4 @@
-import { ISchema } from '@formily/json-schema'
+import { ISchema } from '@formily/react'
 
 export const Checkbox: ISchema & { Group?: ISchema } = {
   type: 'object',
