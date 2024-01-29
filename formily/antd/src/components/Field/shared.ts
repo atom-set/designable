@@ -1,4 +1,5 @@
 import { ISchema } from '@formily/json-schema'
+import { ISchemaExtend } from '@designable/core'
 import {
   ReactionsSetter,
   DataSourceSetter,
@@ -10,7 +11,7 @@ import { AllSchemas } from '../../schemas'
 export const createComponentSchema = (
   component: ISchema,
   decorator: ISchema
-) => {
+): ISchema | ISchemaExtend => {
   return {
     'component-group': component && {
       type: 'void',
@@ -77,7 +78,7 @@ export const createComponentSchema = (
 export const createFieldSchema = (
   component?: ISchema,
   decorator: ISchema = AllSchemas.FormItem
-): ISchema => {
+): ISchema | ISchemaExtend => {
   return {
     type: 'object',
     properties: {
@@ -149,7 +150,7 @@ export const createFieldSchema = (
 export const createVoidFieldSchema = (
   component?: ISchema,
   decorator: ISchema = AllSchemas.FormItem
-) => {
+): ISchema | ISchemaExtend => {
   return {
     type: 'object',
     properties: {

@@ -11,6 +11,15 @@ import {
   TreeNode,
 } from './models'
 
+export type ISchemaExtend = {
+  ['properties']?: any
+  ['component-group']?: any
+  ['decorator-group']?: any
+  ['component-style-group']?: any
+  ['decorator-style-group']?: any
+  ['x-component-props.style']?: any
+}
+
 export type IEngineProps<T = Event> = IEventProps<T> & {
   shortcuts?: Shortcut[]
   sourceIdAttrName?: string //拖拽源Id的dom属性名
@@ -86,7 +95,7 @@ export interface IDesignerProps {
   translatable?: ITranslate // 自由布局
   inlineChildrenLayout?: boolean //子节点内联，用于指定复杂布局容器，强制内联
   selfRenderChildren?: boolean //是否自己渲染子节点
-  propsSchema?: ISchema //Formily JSON Schema
+  propsSchema?: ISchema | ISchemaExtend //Formily JSON Schema
   defaultProps?: any //默认属性
   getDragNodes?: (node: TreeNode) => TreeNode | TreeNode[] //拦截转换Drag节点
   getDropNodes?: (node: TreeNode, parent: TreeNode) => TreeNode | TreeNode[] //拦截转换Drop节点
