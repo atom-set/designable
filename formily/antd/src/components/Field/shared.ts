@@ -5,8 +5,7 @@ import {
   ValidatorSetter,
 } from '@designable/formily-setters'
 import { FormItemSwitcher } from '../../common/FormItemSwitcher'
-import { CSSStyle, FormItem } from '../Base/schema'
-// import { AllSchemas } from '../../schemas'
+import { AllSchemas } from '../../schemas'
 
 export const createComponentSchema = (
   component: ISchema,
@@ -54,8 +53,7 @@ export const createComponentSchema = (
         },
       },
       properties: {
-        // 'x-component-props.style': AllSchemas.CSSStyle,
-        'x-component-props.style': CSSStyle,
+        'x-component-props.style': AllSchemas.CSSStyle,
       },
     },
     'decorator-style-group': {
@@ -70,8 +68,7 @@ export const createComponentSchema = (
         },
       },
       properties: {
-        // 'x-decorator-props.style': AllSchemas.CSSStyle,
-        'x-component-props.style': CSSStyle,
+        'x-decorator-props.style': AllSchemas.CSSStyle,
       },
     },
   }
@@ -79,8 +76,7 @@ export const createComponentSchema = (
 
 export const createFieldSchema = (
   component?: ISchema,
-  // decorator: ISchema = AllSchemas.FormItem
-  decorator: ISchema = FormItem
+  decorator: ISchema = AllSchemas.FormItem
 ): ISchema => {
   return {
     type: 'object',
@@ -152,8 +148,7 @@ export const createFieldSchema = (
 
 export const createVoidFieldSchema = (
   component?: ISchema,
-  // decorator: ISchema = AllSchemas.FormItem
-  decorator: ISchema = FormItem
+  decorator: ISchema = AllSchemas.FormItem
 ) => {
   return {
     type: 'object',
