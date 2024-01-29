@@ -3,7 +3,7 @@ import { createFieldSchema, createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 
-export const createArrayBehavior = (name: string) => {
+export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
   return createBehavior(
     {
       name,

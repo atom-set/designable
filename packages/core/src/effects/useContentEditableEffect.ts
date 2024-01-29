@@ -1,5 +1,5 @@
 import { Path } from '@formily/path'
-import { requestIdle, globalThisPolyfill } from '@designable/shared'
+import { requestIdle, globalThisPolyfill, sendLog } from '@designable/shared'
 import { Engine, TreeNode } from '../models'
 import { MouseDoubleClickEvent, MouseClickEvent } from '../events'
 
@@ -52,6 +52,8 @@ function createCaretCache(el: Element) {
 }
 
 export const useContentEditableEffect = (engine: Engine) => {
+  sendLog(false, '2024-01-11 Engine useContentEditableEffect:', 'attach')
+
   const globalState: GlobalState = {
     activeElements: new Map(),
     queue: [],

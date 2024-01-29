@@ -1,0 +1,218 @@
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseDown: {dragging: false, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent}
+moveEvent = {
+  button: 0,
+  clientX: 385,
+  clientY: 165,
+  ctrlKey: false,
+  currentTarget: null,
+  defaultPrevented : false,
+  offsetX: 32,
+  offsetY: 26,
+  pageX: 385,
+  pageY: 165,
+  srcElement: "div.ant-formily-item-label.ant-formily-item-item-col-6",
+  target: "div.ant-formily-item-label.ant-formily-item-item-col-6",
+  timeStamp: 22128.39999985695,
+  toElement: "div.ant-formily-item-label.ant-formily-item-item-col-6",
+  type: "mousemove",
+  x: 385,
+  y: 165
+}
+startEvent = {
+  clientX: 311,
+  clientY: 156,
+  pageX: 311,
+  pageY: 156,
+  srcElement : "span.dn-icon.dn-resource-item-icon",
+  target: "span.dn-icon.dn-resource-item-icon",
+  timeStamp: 21711.699999809265
+  toElement: "span.dn-icon.dn-resource-item-icon"
+  type: "mousemove"
+  x: 311,
+  y: 156,
+}
+GlobalState = {
+  dragging: false, 
+  onMouseDownAt: 1705650426239, 
+  startEvent: startEvent, 
+  moveEvent: moveEvent
+}
+
+sendLog.ts:41 2024-01-16 DragDropDriver onStartDrag: {dragging: false, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 311, screenY: 302, clientX: 311, clientY: 156, …}
+sendLog.ts:41 2024-01-19 DragDropDriver dragstart evt: MouseEvent {isTrusted: true, screenX: 311, screenY: 302, clientX: 311, clientY: 156, …}
+sendLog.ts:41 2024-01-19 DragDropDriver dragstart target: <span class=​"dn-icon dn-resource-item-icon" infer=​"PasswordSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+GlobalState = {
+  dragging: false, 
+  onMouseDownAt: 1705650426239, 
+  startEvent: startEvent, 
+  moveEvent: startEvent
+}
+
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: event- DragStartEvent {data: {…}, type: 'drag:start', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: handler- null
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: helper- undefined
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: el- <div class=​"dn-resource-item" data-designer-source-id=​"21qv2czj5rf" style=​"grid-column-start:​ span 1;​">​…​</div>​flex NamedNodeMap {0: class, 1: data-designer-source-id, 2: style, class: class, data-designer-source-id: data-designer-source-id, style: style, length: 3}
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: sourceId- 21qv2czj5rf
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: outlineId- null
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: handlerId- undefined
+sendLog.ts:41 2024-01-12 Engine Drag DragStartEvent: nodeId- null
+event = {
+ type: "drag:start",
+ context: undefined,
+ data:  {
+  clientX: 301,
+  clientY: 156,
+  pageX: 301,
+  pageY: 156,
+  target: span.dn-icon.dn-resource-item-icon,
+  topClientX: 301,
+  topClientY: 156,
+  topPageX: 301,
+  topPageY: 156,
+ }
+}
+el = <div class=​"dn-resource-item" data-designer-source-id=​"21qv2czj5rf" style=​"grid-column-start:​ span 1;​">​…​</div>
+el.attributes = NamedNodeMap {0: class, 1: data-designer-source-id, 2: style, class: class, data-designer-source-id: data-designer-source-id, style: style, length: 3}
+handler = null
+helper = undefined
+# 拖拽源Id
+sourceId = 21qv2czj5rf
+# 大纲树节点ID
+outlineId = null
+# 节点工具栏属性
+handlerId = undefined
+# 节点Id的dom
+nodeId = null
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 323, screenY: 303, clientX: 323, clientY: 157, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"PasswordSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 323, y: 157}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 338, screenY: 304, clientX: 338, clientY: 158, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"PasswordSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 338, y: 158}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 352, screenY: 306, clientX: 352, clientY: 160, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"dn-workspace-panel">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 352, y: 160}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 366, screenY: 308, clientX: 366, clientY: 162, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 366, y: 162}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 366, screenY: 308, clientX: 366, clientY: 162, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 375, screenY: 309, clientX: 375, clientY: 163, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 375, y: 163}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 375, screenY: 309, clientX: 375, clientY: 163, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 382, screenY: 311, clientX: 382, clientY: 165, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 382, y: 165}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 382, screenY: 311, clientX: 382, clientY: 165, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 386, screenY: 311, clientX: 386, clientY: 165, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 386, y: 165}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 386, screenY: 311, clientX: 386, clientY: 165, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 387, screenY: 312, clientX: 387, clientY: 166, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 387, y: 166}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 387, screenY: 312, clientX: 387, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 388, y: 166}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 388, screenY: 312, clientX: 388, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 387, screenY: 312, clientX: 387, clientY: 166, …}
+
+
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 387, y: 166}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 387, screenY: 312, clientX: 387, clientY: 166, …}
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 385, screenY: 311, clientX: 385, clientY: 165, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: target- <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: el- <div data-designer-node-id=​"1a238rneahv" class=​"ant-formily-item ant-formily-item-layout-horizontal ant-formily-item-feedback-layout-loose ant-formily-item-label-align-right ant-formily-item-control-align-left">​…​</div>​flex
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 385, y: 165}
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: nodeId- 1a238rneahv
+sendLog.ts:41 2024-01-12 Engine Drag DragMoveEvent: outlineId- null
+
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 385, screenY: 311, clientX: 385, clientY: 165, …}
+
+sendLog.ts:41 2024-01-16 DragDropDriver onMouseUp: {dragging: true, onMouseDownAt: 1705650426239, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 385, screenY: 311, clientX: 385, clientY: 165, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragStopEvent: operation- Operation {requests: {…}, engine: Engine, workspace: Workspace, tree: TreeNode, hover: Hover, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragStopEvent: moveHelper- MoveHelper {activeViewport: Viewport, …}
+sendLog.ts:41 2024-01-12 Engine Drag DragStopEvent: dragNodes- [TreeNode]
+sendLog.ts:41 2024-01-12 Engine Drag DragStopEvent: closestNode- TreeNode {depth: 1, sourceName: '', …}
+sendLog.ts:41 2024-01-12 Engine Drag DragStopEvent: closestDirection- UNDER
+sendLog.ts:41 2024-01-12 Engine Drag DragStopEvent: selection- Selection {indexes: {…}, operation: Operation, select: ƒ, batchSelect: ƒ, …}
+sendLog.ts:41 2024-01-19 DragDropDriver dragend target: <div class=​"ant-formily-item-label ant-formily-item-item-col-6">​…​</div>​flex
+sendLog.ts:41 2024-01-19 DragDropDriver dragend evt: MouseEvent {isTrusted: true, screenX: 385, screenY: 311, clientX: 385, clientY: 165, …}
+
+useForceUpdate.js:36 [Violation] 'requestIdleCallback' handler took 122ms
+127.0.0.1/:1 [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) <input type=​"password" class=​"ant-input">​

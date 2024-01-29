@@ -1,6 +1,7 @@
-import { each, isPlainObj } from '@designable/shared'
+import { each, isPlainObj, sendLog } from '@designable/shared'
 import { globalThisPolyfill } from '@designable/shared'
 
+// 大写转成小写
 export const lowerSnake = (str: string) => {
   return String(str).replace(/\s+/g, '_').toLocaleLowerCase()
 }
@@ -25,6 +26,11 @@ export const mergeLocales = (target: any, source: any) => {
 }
 
 export const getBrowserLanguage = () => {
+  sendLog(
+    false,
+    '2024-01-09 globalThisPolyfill navigator language:',
+    globalThisPolyfill.navigator.language
+  )
   /* istanbul ignore next */
   if (!globalThisPolyfill.navigator) {
     return 'en'

@@ -1,6 +1,13 @@
+/**
+ * @description 设计器的事件引擎
+ * 1、Engine 初始化 调用 effects
+ * 2、Engine mount 绑定 drivers
+ * 3、注册 subscribeTo 和 subscribeWith
+ */
 import { isArr, isWindow } from './types'
 import { Subscribable, ISubscriber } from './subscribable'
 import { globalThisPolyfill } from './globalThisPolyfill'
+import { sendLog } from './sendLog'
 
 const ATTACHED_SYMBOL = Symbol('ATTACHED_SYMBOL')
 const EVENTS_SYMBOL = Symbol('__EVENTS_SYMBOL__')
@@ -112,6 +119,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   context: Context
 
   constructor(engine: Engine, context?: Context) {
+    sendLog(false, 'Engine EventDriver: ', 'constructor')
     this.engine = engine
     this.context = context
   }
@@ -160,11 +168,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   addEventListener(type: any, listener: any, options: any) {
     const target = this.eventTarget(type)
     if (isOnlyMode(options?.mode)) {
@@ -207,11 +217,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   removeEventListener(type: any, listener: any, options?: any) {
     const target = this.eventTarget(type)
     if (isOnlyMode(options?.mode)) {
@@ -234,11 +246,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   batchAddEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   batchAddEventListener(type: any, listener: any, options?: any) {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
       this.engine[DRIVER_INSTANCES_SYMBOL] || []
@@ -260,11 +274,13 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | EventOptions
   ): void
+
   batchRemoveEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
     options?: boolean | EventOptions
   ): void
+
   batchRemoveEventListener(type: any, listener: any, options: any) {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
       this.engine[DRIVER_INSTANCES_SYMBOL] || []
@@ -276,6 +292,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
     })
   }
 }
+
 /**
  * 事件引擎
  */
@@ -283,9 +300,17 @@ export class Event extends Subscribable<ICustomEvent<any>> {
   private drivers: IEventDriverClass<any>[] = []
   private containers: EventContainer[] = []
   constructor(props?: IEventProps) {
+    sendLog(
+      false,
+      'Engine Event: ',
+      'constructor',
+      props?.effects,
+      props?.drivers
+    )
     super()
     if (isArr(props?.effects)) {
       props.effects.forEach((plugin) => {
+        sendLog(false, 'Engine Event effects: ', plugin, typeof plugin)
         plugin(this)
       })
     }
@@ -299,6 +324,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     subscriber: ISubscriber<InstanceType<T>>
   ) {
     return this.subscribe((event) => {
+      sendLog(false, 'Engine Event: ', 'subscribeTo', event)
       if (type && event instanceof type) {
         return subscriber(event)
       }
@@ -310,6 +336,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     subscriber: ISubscriber<T>
   ) {
     return this.subscribe((event) => {
+      sendLog(false, 'Engine Event: ', 'subscribeWith', event)
       if (isArr(type)) {
         if (type.includes(event?.type)) {
           return subscriber(event)
@@ -327,6 +354,13 @@ export class Event extends Subscribable<ICustomEvent<any>> {
     contentWindow: Window = globalThisPolyfill,
     context?: any
   ) {
+    sendLog(
+      true,
+      'Engine Event: ',
+      'attach',
+      isWindow(container),
+      container[ATTACHED_SYMBOL]
+    )
     if (!container) return
     if (isWindow(container)) {
       return this.attachEvents(container.document, container, context)

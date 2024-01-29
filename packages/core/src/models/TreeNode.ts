@@ -1,5 +1,5 @@
 import { action, define, observable, toJS } from '@formily/reactive'
-import { uid, isFn, each } from '@designable/shared'
+import { uid, isFn, each, sendLog } from '@designable/shared'
 import { Operation } from './Operation'
 import {
   InsertBeforeEvent,
@@ -307,6 +307,7 @@ export class TreeNode {
   }
 
   getMessage(token: string) {
+    sendLog(false, '2024-01-09 getMessage this.designerLocales:', token)
     return GlobalRegistry.getDesignerMessage(token, this.designerLocales)
   }
 

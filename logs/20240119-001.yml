@@ -1,0 +1,123 @@
+sendLog.ts:36 2024-01-11 main Engine: Engine {subscribers: {…}, drivers: Array(6), containers: Array(0), props: {…}, unsubscribe: ƒ, …}
+sendLog.ts:36 2024-01-11 Engine mount: attach
+sendLog.ts:36 Engine Event:  attach true undefined
+sendLog.ts:36 Engine Event:  attach false undefined
+127.0.0.1/:1 [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) <input type=​"password" class=​"ant-input">​
+sendLog.ts:36 Engine Event:  attach false undefined
+
+
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseDown: {dragging: false, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: null}
+sendLog.ts:36 2024-01-16 DragDropDriver onStartDrag: {dragging: false, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: null} MouseEvent {isTrusted: true, screenX: 96, screenY: 308, clientX: 96, clientY: 162, …}
+sendLog.ts:36 2024-01-19 DragDropDriver dragstart evt: MouseEvent {isTrusted: true, screenX: 96, screenY: 308, clientX: 96, clientY: 162, …}
+sendLog.ts:36 2024-01-19 DragDropDriver dragstart target: <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: event- DragStartEvent {data: {…}, type: 'drag:start', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: handler- null
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: helper- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: el- <div class=​"dn-resource-item" data-designer-source-id=​"4au55ah6nkd" style=​"grid-column-start:​ span 1;​">​…​</div>​flex NamedNodeMap {0: class, 1: data-designer-source-id, 2: style, class: class, data-designer-source-id: data-designer-source-id, style: style, length: 3}
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: sourceId- 4au55ah6nkd
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: outlineId- null
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: handlerId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragStartEvent: nodeId- null
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: null} MouseEvent {isTrusted: true, screenX: 98, screenY: 308, clientX: 98, clientY: 162, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 98, y: 162}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 100, screenY: 309, clientX: 100, clientY: 163, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 100, y: 163}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 101, screenY: 310, clientX: 101, clientY: 164, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 101, y: 164}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 102, screenY: 310, clientX: 102, clientY: 164, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 102, y: 164}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 103, screenY: 310, clientX: 103, clientY: 164, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 103, y: 164}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 103, screenY: 310, clientX: 103, clientY: 164, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 103, screenY: 310, clientX: 103, clientY: 164, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 103, screenY: 310, clientX: 103, clientY: 164, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 103, screenY: 310, clientX: 103, clientY: 164, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 104, screenY: 310, clientX: 104, clientY: 164, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 104, y: 164}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 105, screenY: 311, clientX: 105, clientY: 165, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 105, y: 165}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 107, screenY: 311, clientX: 107, clientY: 165, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 107, y: 165}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 108, screenY: 311, clientX: 108, clientY: 165, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 108, y: 165}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 109, screenY: 312, clientX: 109, clientY: 166, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 109, y: 166}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 110, y: 166}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 110, screenY: 312, clientX: 110, clientY: 166, …}
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseMove: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 108, screenY: 312, clientX: 108, clientY: 166, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: DragMoveEvent {data: {…}, type: 'drag:move', context: undefined}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: target- <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: el- null
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: point- Point {x: 108, y: 166}
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: nodeId- undefined
+sendLog.ts:36 2024-01-12 Engine Drag DragMoveEvent: outlineId- undefined
+sendLog.ts:36 2024-01-16 DragDropDriver onMouseUp: {dragging: true, onMouseDownAt: 1705648151175, startEvent: MouseEvent, moveEvent: MouseEvent} MouseEvent {isTrusted: true, screenX: 108, screenY: 312, clientX: 108, clientY: 166, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragStopEvent: operation- Operation {requests: {…}, engine: Engine, workspace: Workspace, tree: TreeNode, hover: Hover, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragStopEvent: moveHelper- MoveHelper {activeViewport: null, …}
+sendLog.ts:36 2024-01-12 Engine Drag DragStopEvent: dragNodes- [TreeNode]
+sendLog.ts:36 2024-01-12 Engine Drag DragStopEvent: closestNode- null
+sendLog.ts:36 2024-01-12 Engine Drag DragStopEvent: closestDirection- null
+sendLog.ts:36 2024-01-12 Engine Drag DragStopEvent: selection- Selection {indexes: {…}, operation: Operation, select: ƒ, batchSelect: ƒ, …}
+sendLog.ts:36 2024-01-19 DragDropDriver dragend target: <span class=​"dn-icon dn-resource-item-icon" infer=​"InputSource" style=​"width:​ 150px;​ height:​ 40px;​">​…​</span>​
+sendLog.ts:36 2024-01-19 DragDropDriver dragend evt: MouseEvent {isTrusted: true, screenX: 108, screenY: 312, clientX: 108, clientY: 166, …}

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
 import { Form } from '@formily/antd'
 import { observer } from '@formily/react'
-import { requestIdle, cancelIdle } from '@designable/shared'
+import { requestIdle, cancelIdle, sendLog } from '@designable/shared'
 import {
   usePrefix,
   useSelected,
@@ -45,6 +45,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         initialValues: node?.designerProps?.defaultProps,
         values: node?.props,
         effects(form) {
+          sendLog(true, '2024-01-24 SettingsForm effects:', form)
           useLocales(node)
           useSnapshot(operation)
           props.effects?.(form)
@@ -52,6 +53,19 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
       })
     }, [node, node?.props, schema, operation, isEmpty])
 
+    sendLog(
+      true,
+      '2024-01-24 SettingsForm node?.designerProps?.defaultProps:',
+      node?.designerProps?.defaultProps
+    )
+    sendLog(true, '2024-01-24 SettingsForm node?.props:', node?.props)
+    sendLog(true, '2024-01-24 SettingsForm node:', node)
+    sendLog(true, '2024-01-24 SettingsForm schema:', schema)
+    sendLog(true, '2024-01-24 SettingsForm operation:', operation)
+    sendLog(true, '2024-01-24 SettingsForm form:', form)
+    sendLog(true, '2024-01-24 SettingsForm props:', props)
+    sendLog(true, '2024-01-24 SettingsForm props.components:', props.components)
+    sendLog(false, '2024-01-24 SettingsForm props.scope:', props.scope)
     const render = () => {
       if (!isEmpty) {
         return (
@@ -73,7 +87,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
                 <SchemaField
                   schema={schema}
                   components={props.components}
-                  scope={{ $node: node, ...props.scope }}
+                  // scope={{ $node: node, ...props.scope }}
                 />
               </Form>
             </SettingsFormContext.Provider>

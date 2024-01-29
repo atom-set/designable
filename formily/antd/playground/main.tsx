@@ -28,6 +28,7 @@ import {
   Shortcut,
   KeyCode,
 } from '@designable/core'
+import { sendLog } from '@designable/shared'
 import {
   LogoWidget,
   ActionsWidget,
@@ -66,7 +67,7 @@ import {
   FormGrid,
 } from '../src'
 
-setNpmCDNRegistry('//unpkg.com')
+setNpmCDNRegistry('//npm.elemecdn.com')
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
@@ -83,14 +84,6 @@ GlobalRegistry.registerDesignerLocales({
       Layouts: 'Layouts',
       Arrays: 'Arrays',
       Displays: 'Displays',
-    },
-  },
-  'ko-KR': {
-    sources: {
-      Inputs: '입력',
-      Layouts: '레이아웃',
-      Arrays: '배열',
-      Displays: '디스플레이',
     },
   },
 })
@@ -114,6 +107,8 @@ const App = () => {
       }),
     []
   )
+
+  sendLog(true, '2024-01-11 main Engine:', engine)
   return (
     <Designer engine={engine}>
       <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
@@ -164,7 +159,7 @@ const App = () => {
             <HistoryWidget />
           </CompositePanel.Item>
         </CompositePanel>
-        <Workspace id="form">
+        <Workspace id="form" title="workspace">
           <WorkspacePanel>
             <ToolbarPanel>
               <DesignerToolsWidget />

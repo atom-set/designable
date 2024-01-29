@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver, sendLog } from '@designable/shared'
 import { Engine } from '../models/Engine'
 import { MouseMoveEvent } from '../events'
 export class MouseMoveDriver extends EventDriver<Engine> {
@@ -21,6 +21,7 @@ export class MouseMoveDriver extends EventDriver<Engine> {
   }
 
   attach() {
+    sendLog(false, '2024-01-11 Engine MouseMoveDriver:', 'attach')
     this.addEventListener('mousemove', this.onMouseMove, {
       mode: 'onlyOne',
     })

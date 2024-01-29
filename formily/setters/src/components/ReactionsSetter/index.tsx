@@ -167,6 +167,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
       setInnerVisible(false)
     }
   }, [modalVisible])
+
   return (
     <>
       <Button block onClick={openModal}>

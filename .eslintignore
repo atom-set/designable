@@ -9,3 +9,7 @@ gh-pages
 weex
 build.ts
 docs
+unpkg
+packages
+docs
+logs

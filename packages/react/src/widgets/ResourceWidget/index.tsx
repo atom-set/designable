@@ -1,3 +1,6 @@
+/**
+ * @description 2024-01-11 资源组件面板；渲染设计器所需要的组件
+ */
 import React, { useState } from 'react'
 import {
   isResourceHost,
@@ -5,7 +8,7 @@ import {
   IResourceLike,
   IResource,
 } from '@designable/core'
-import { isFn } from '@designable/shared'
+import { isFn, sendLog } from '@designable/shared'
 import { observer } from '@formily/reactive-react'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
@@ -23,12 +26,24 @@ export interface IResourceWidgetProps {
   children?: SourceMapper | React.ReactElement
 }
 
+{
+  /* TODO: 2024-01-11 observer 包裹？ */
+}
 export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
   (props) => {
     const prefix = usePrefix('resource')
     const [expand, setExpand] = useState(props.defaultExpand)
     const renderNode = (source: IResource) => {
       const { node, icon, title, thumb, span } = source
+      sendLog(
+        false,
+        '2024-01-11 ResourceWidget renderNode:',
+        node.children[0],
+        icon,
+        title,
+        thumb,
+        span
+      )
       return (
         <div
           className={prefix + '-item'}
@@ -36,7 +51,9 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
           key={node.id}
           data-designer-source-id={node.id}
         >
+          {/* 缩略图 */}
           {thumb && <img className={prefix + '-item-thumb'} src={thumb} />}
+          {/* Icon */}
           {icon && React.isValidElement(icon) ? (
             <>{icon}</>
           ) : (
@@ -46,6 +63,7 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
               style={{ width: 150, height: 40 }}
             />
           )}
+          {/* 标题 */}
           <span className={prefix + '-item-text'}>
             {
               <TextWidget>
@@ -62,18 +80,23 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
       } else if (isResourceHost(source)) {
         return buf.concat(source.Resource)
       }
+      sendLog(false, '2024-01-11 ResourceWidget sources:', sources)
       return buf
     }, [])
+
     const remainItems =
       sources.reduce((length, source) => {
         return length + (source.span ?? 1)
       }, 0) % 3
+
+    sendLog(false, '2024-01-11 ResourceWidget remainItems:', remainItems, props)
     return (
       <div
         className={cls(prefix, props.className, {
           expand,
         })}
       >
+        {/* 2024-01-11 容器标题 */}
         <div
           className={prefix + '-header'}
           onClick={(e) => {
@@ -89,6 +112,7 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
             <TextWidget>{props.title}</TextWidget>
           </div>
         </div>
+        {/* 2024-01-11 容器内容 */}
         <div className={prefix + '-content-wrapper'}>
           <div className={prefix + '-content'}>
             {sources.map(isFn(props.children) ? props.children : renderNode)}

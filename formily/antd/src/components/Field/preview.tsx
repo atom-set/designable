@@ -19,7 +19,7 @@ import {
   useComponents,
   DnFC,
 } from '@designable/react'
-import { isArr, isStr } from '@designable/shared'
+import { isArr, isStr, sendLog } from '@designable/shared'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
 
@@ -160,6 +160,7 @@ export const Field: DnFC<ISchema> = observer((props) => {
       </VoidField>
     )
   }
+  sendLog(true, '2024-01-25 fieldProps:', fieldProps, node.id)
   return <InternalField {...fieldProps} name={node.id} />
 })
 

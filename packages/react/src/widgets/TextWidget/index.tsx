@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { isStr, isPlainObj } from '@designable/shared'
+import { isStr, isPlainObj, sendLog } from '@designable/shared'
 import { GlobalRegistry, IDesignerMiniLocales } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 
@@ -29,9 +29,24 @@ export const TextWidget: React.FC<ITextWidgetProps> = observer((props) => {
     const message = isStr(token)
       ? GlobalRegistry.getDesignerMessage(token)
       : token
+
+    sendLog(
+      false,
+      '2024-01-09 TextWidget takeMessage:',
+      isStr(token),
+      GlobalRegistry.getDesignerMessage(token)
+    )
+
     if (message) return takeLocale(message)
     return token
   }
+  sendLog(
+    false,
+    '2024-01-09 TextWidget render:',
+    props.children,
+    props.token,
+    props.defaultMessage
+  )
   return (
     <Fragment>
       {takeMessage(props.children) ||

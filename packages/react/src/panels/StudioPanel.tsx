@@ -1,7 +1,11 @@
+/**
+ * @description 2024-01-08 Logo 和右侧操作按钮
+ */
 import React from 'react'
 import { usePrefix, usePosition } from '../hooks'
 import { Layout } from '../containers'
 import cls from 'classnames'
+import { sendLog } from '@designable/shared'
 export interface IStudioPanelProps {
   style?: React.CSSProperties
   className?: string
@@ -37,6 +41,8 @@ const StudioPanelInternal: React.FC<IStudioPanelProps> = ({
     </div>
   )
 }
+
+sendLog(false, '2024-01-08 StudioPanel render')
 
 export const StudioPanel: React.FC<IStudioPanelProps> = (props) => {
   return (

@@ -156,6 +156,7 @@ export const ArrayTable: DnFC<TableProps<any>> = observer((props) => {
     })
     return [objectNode, additionNode]
   })
+
   const columns = queryNodesByComponentPath(node, [
     'ArrayTable',
     '*',
@@ -308,6 +309,7 @@ export const ArrayTable: DnFC<TableProps<any>> = observer((props) => {
                   },
                 ],
               })
+
               const sortNode = findNodeByComponentPath(node, [
                 'ArrayTable',
                 '*',

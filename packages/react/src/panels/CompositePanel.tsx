@@ -1,5 +1,11 @@
+/**
+ * @description 2024-01-11 左侧面板
+ * 1、组件
+ * 2、大纲树
+ * 3、历史记录
+ */
 import React, { useEffect, useRef, useState } from 'react'
-import { isValid } from '@designable/shared'
+import { isValid, sendLog } from '@designable/shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
@@ -13,6 +19,7 @@ export interface ICompositePanelProps {
   activeKey?: number | string
   onChange?: (activeKey: number | string) => void
 }
+
 export interface ICompositePanelItemProps {
   shape?: 'tab' | 'button' | 'link'
   title?: React.ReactNode
@@ -23,6 +30,7 @@ export interface ICompositePanelItemProps {
   extra?: React.ReactNode
 }
 
+// 解析 props.children
 const parseItems = (
   children: React.ReactNode
 ): React.PropsWithChildren<ICompositePanelItemProps>[] => {
@@ -35,6 +43,7 @@ const parseItems = (
   return items
 }
 
+// 查找当前选中的 PanelItem
 const findItem = (
   items: React.PropsWithChildren<ICompositePanelItemProps>[],
   key: string | number
@@ -46,6 +55,7 @@ const findItem = (
   }
 }
 
+// 获取当下选中的 KEY
 const getDefaultKey = (children: React.ReactNode) => {
   const items = parseItems(children)
   return items?.[0].key
@@ -67,6 +77,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
 
   activeKeyRef.current = activeKey
 
+  // 2024-01-11 Tab Active Key
   useEffect(() => {
     if (isValid(props.activeKey)) {
       if (props.activeKey !== activeKeyRef.current) {
@@ -75,7 +86,14 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
     }
   }, [props.activeKey])
 
+  // 2024-01-11 渲染 Tab 的内容
   const renderContent = () => {
+    sendLog(
+      false,
+      '2024-01-11 CompositePanel renderContent:',
+      pinning,
+      currentItem
+    )
     if (!content || !visible) return
     return (
       <div
@@ -83,14 +101,17 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
           pinning,
         })}
       >
+        {/* title */}
         <div className={prefix + '-tabs-header'}>
           <div className={prefix + '-tabs-header-title'}>
             <TextWidget>{currentItem.title}</TextWidget>
           </div>
+          {/* extra */}
           <div className={prefix + '-tabs-header-actions'}>
             <div className={prefix + '-tabs-header-extra'}>
               {currentItem.extra}
             </div>
+            {/* 吸附逻辑 */}
             {!pinning && (
               <IconWidget
                 infer="PushPinOutlined"
@@ -109,6 +130,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
                 }}
               />
             )}
+            {/* 隐藏逻辑 */}
             <IconWidget
               infer="Close"
               className={prefix + '-tabs-header-close'}
@@ -123,6 +145,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
     )
   }
 
+  sendLog(false, '2024-01-11 CompositePanel:', props, activeKey, items)
   return (
     <div
       className={cls(prefix, {
@@ -131,6 +154,9 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
     >
       <div className={prefix + '-tabs'}>
         {items.map((item, index) => {
+          {
+            /* 2024-01-11 TabPanel 逻辑: <链接 | Icon> */
+          }
           const takeTab = () => {
             if (item.href) {
               return <a href={item.href}>{item.icon}</a>
@@ -152,6 +178,15 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
           }
           const shape = item.shape ?? 'tab'
           const Comp = shape === 'link' ? 'a' : 'div'
+          sendLog(
+            false,
+            '2024-01-11 CompositePanel render:',
+            'props.showNavTitle:',
+            props.showNavTitle,
+            'item.href:',
+            item.href,
+            item
+          )
           return (
             <Comp
               className={cls(prefix + '-tabs-pane', {
@@ -183,6 +218,7 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
           )
         })}
       </div>
+      {/* tabContent 逻辑 */}
       {renderContent()}
     </div>
   )

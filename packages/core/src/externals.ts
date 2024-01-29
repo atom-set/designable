@@ -1,4 +1,4 @@
-import { isArr } from '@designable/shared'
+import { isArr, sendLog } from '@designable/shared'
 import { untracked } from '@formily/reactive'
 import { DEFAULT_DRIVERS, DEFAULT_EFFECTS, DEFAULT_SHORTCUTS } from './presets'
 import { Engine, TreeNode } from './models'
@@ -75,6 +75,19 @@ export const createDesigner = (props: IEngineProps<Engine> = {}) => {
   const drivers = props.drivers || []
   const effects = props.effects || []
   const shortcuts = props.shortcuts || []
+  sendLog(false, '2024-01-11 Engine createDesigner props: ', props)
+  sendLog(false, '2024-01-11 Engine createDesigner param effects:', [
+    ...effects,
+    ...DEFAULT_EFFECTS,
+  ])
+  sendLog(false, '2024-01-11 Engine createDesigner param drivers:', [
+    ...drivers,
+    ...DEFAULT_DRIVERS,
+  ])
+  sendLog(false, '2024-01-11 Engine createDesigner param shortcuts:', [
+    ...shortcuts,
+    ...DEFAULT_SHORTCUTS,
+  ])
   return untracked(
     () =>
       new Engine({

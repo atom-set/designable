@@ -118,6 +118,7 @@ export const ArrayTable: DnFC<TableProps> = observer((props) => {
         },
       ],
     })
+
     const objectNode = new TreeNode({
       componentName: 'Field',
       props: {
@@ -125,6 +126,7 @@ export const ArrayTable: DnFC<TableProps> = observer((props) => {
       },
       children: [sortHandleNode, indexNode, columnNode, operationNode],
     })
+
     const additionNode = new TreeNode({
       componentName: 'Field',
       props: {
@@ -133,17 +135,21 @@ export const ArrayTable: DnFC<TableProps> = observer((props) => {
         'x-component': 'ArrayTable.Addition',
       },
     })
+
     return [objectNode, additionNode]
   })
+
   const columns = queryNodesByComponentPath(node, [
     'ArrayTable',
     '*',
     'ArrayTable.Column',
   ])
+
   const additions = queryNodesByComponentPath(node, [
     'ArrayTable',
     'ArrayTable.Addition',
   ])
+
   const defaultRowKey = () => {
     return node.id
   }

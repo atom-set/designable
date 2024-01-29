@@ -11,10 +11,14 @@ import {
   DragStopEvent,
   ViewportScrollEvent,
 } from '../events'
-import { Point } from '@designable/shared'
+import { Point, sendLog } from '@designable/shared'
 
 export const useDragDropEffect = (engine: Engine) => {
+  sendLog(false, '2024-01-11 Engine useDragDropEffect:', 'attach')
+
   engine.subscribeTo(DragStartEvent, (event) => {
+    sendLog(true, '2024-01-12 Engine Drag DragStartEvent:', 'event-', event)
+
     if (engine.cursor.type !== CursorType.Normal) return
     const target = event.data.target as HTMLElement
     const el = target?.closest(`
@@ -28,11 +32,42 @@ export const useDragDropEffect = (engine: Engine) => {
     const helper = handler?.closest(
       `*[${engine.props.nodeSelectionIdAttrName}]`
     )
+
+    sendLog(true, '2024-01-12 Engine Drag DragStartEvent:', 'handler-', handler)
+    sendLog(true, '2024-01-12 Engine Drag DragStartEvent:', 'helper-', helper)
+
+    sendLog(
+      true,
+      '2024-01-12 Engine Drag DragStartEvent:',
+      'el-',
+      el,
+      el?.attributes
+    )
+
     if (!el?.getAttribute && !handler) return
     const sourceId = el?.getAttribute(engine.props.sourceIdAttrName)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName)
     const handlerId = helper?.getAttribute(engine.props.nodeSelectionIdAttrName)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName)
+    sendLog(
+      true,
+      '2024-01-12 Engine Drag DragStartEvent:',
+      'sourceId-',
+      sourceId
+    )
+    sendLog(
+      true,
+      '2024-01-12 Engine Drag DragStartEvent:',
+      'outlineId-',
+      outlineId
+    )
+    sendLog(
+      true,
+      '2024-01-12 Engine Drag DragStartEvent:',
+      'handlerId-',
+      handlerId
+    )
+    sendLog(true, '2024-01-12 Engine Drag DragStartEvent:', 'nodeId-', nodeId)
     engine.workbench.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
@@ -61,6 +96,7 @@ export const useDragDropEffect = (engine: Engine) => {
   })
 
   engine.subscribeTo(DragMoveEvent, (event) => {
+    sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', event)
     if (engine.cursor.type !== CursorType.Normal) return
     if (engine.cursor.dragType !== CursorDragType.Move) return
     const target = event.data.target as HTMLElement
@@ -68,9 +104,21 @@ export const useDragDropEffect = (engine: Engine) => {
       *[${engine.props.nodeIdAttrName}],
       *[${engine.props.outlineNodeIdAttrName}]
     `)
+    sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', 'target-', target)
+    sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', 'el-', el)
+
     const point = new Point(event.data.topClientX, event.data.topClientY)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName)
+
+    sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', 'point-', point)
+    sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', 'nodeId-', nodeId)
+    sendLog(
+      true,
+      '2024-01-12 Engine Drag DragMoveEvent:',
+      'outlineId-',
+      outlineId
+    )
     engine.workbench.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
@@ -124,6 +172,7 @@ export const useDragDropEffect = (engine: Engine) => {
   engine.subscribeTo(DragStopEvent, () => {
     if (engine.cursor.type !== CursorType.Normal) return
     if (engine.cursor.dragType !== CursorDragType.Move) return
+
     engine.workbench.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
@@ -131,6 +180,44 @@ export const useDragDropEffect = (engine: Engine) => {
       const closestNode = moveHelper.closestNode
       const closestDirection = moveHelper.closestDirection
       const selection = operation.selection
+
+      sendLog(
+        true,
+        '2024-01-12 Engine Drag DragStopEvent:',
+        'operation-',
+        operation
+      )
+      sendLog(
+        true,
+        '2024-01-12 Engine Drag DragStopEvent:',
+        'moveHelper-',
+        moveHelper
+      )
+      sendLog(
+        true,
+        '2024-01-12 Engine Drag DragStopEvent:',
+        'dragNodes-',
+        dragNodes
+      )
+      sendLog(
+        true,
+        '2024-01-12 Engine Drag DragStopEvent:',
+        'closestNode-',
+        closestNode
+      )
+      sendLog(
+        true,
+        '2024-01-12 Engine Drag DragStopEvent:',
+        'closestDirection-',
+        closestDirection
+      )
+      sendLog(
+        true,
+        '2024-01-12 Engine Drag DragStopEvent:',
+        'selection-',
+        selection
+      )
+
       if (!dragNodes.length) return
       if (dragNodes.length && closestNode && closestDirection) {
         if (

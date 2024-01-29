@@ -1,7 +1,10 @@
 import { Engine } from '../models'
 import { ViewportResizeEvent, ViewportScrollEvent } from '../events'
+import { sendLog } from '@designable/shared'
 
 export const useViewportEffect = (engine: Engine) => {
+  sendLog(false, '2024-01-11 Engine useViewportEffect:', 'attach')
+
   engine.subscribeTo(ViewportResizeEvent, (event) => {
     const currentWorkspace = event?.context?.workspace
     if (!currentWorkspace) return

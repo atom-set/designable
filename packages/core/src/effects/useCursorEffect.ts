@@ -5,9 +5,11 @@ import {
   DragMoveEvent,
   DragStopEvent,
 } from '../events'
-import { requestIdle } from '@designable/shared'
+import { requestIdle, sendLog } from '@designable/shared'
 
 export const useCursorEffect = (engine: Engine) => {
+  sendLog(false, '2024-01-11 Engine useCursorEffect:', 'attach')
+
   engine.subscribeTo(MouseMoveEvent, (event) => {
     engine.cursor.setStatus(
       engine.cursor.status === CursorStatus.Dragging ||

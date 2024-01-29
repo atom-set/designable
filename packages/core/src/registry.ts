@@ -1,4 +1,4 @@
-import { each } from '@designable/shared'
+import { each, sendLog } from '@designable/shared'
 import { Path } from '@formily/path'
 import { observable } from '@formily/reactive'
 import {
@@ -102,36 +102,69 @@ const DESIGNER_GlobalRegistry = {
   },
 
   getDesignerLanguage: () => {
+    sendLog(false, '2024-01-09 registry code:', DESIGNER_LANGUAGE_STORE.value)
     return getISOCode(DESIGNER_LANGUAGE_STORE.value)
   },
 
   getDesignerMessage: (token: string, locales?: IDesignerLocales) => {
     const lang = getISOCode(DESIGNER_LANGUAGE_STORE.value)
     const locale = locales ? locales[lang] : DESIGNER_LOCALES_STORE.value[lang]
+    if (token === 'Save') {
+      sendLog(
+        false,
+        '2024-01-09 TextWidget getDesignerMessage:',
+        locale,
+        token,
+        locales
+      )
+    }
     if (!locale) {
       for (let key in DESIGNER_LOCALES_STORE.value) {
         const message = Path.getIn(
           DESIGNER_LOCALES_STORE.value[key],
           lowerSnake(token)
         )
-        if (message) return message
+        if (token === 'Save') {
+          sendLog(
+            false,
+            '2024-01-09 TextWidget getDesignerMessage DESIGNER_LOCALES_STORE:',
+            key,
+            DESIGNER_LOCALES_STORE.value[key],
+            message
+          )
+        }
+        if (message) {
+          return message
+        }
       }
       return
+    }
+
+    if (token === 'Save') {
+      sendLog(
+        false,
+        '2024-01-09 TextWidget getDesignerMessage getIn:',
+        locale,
+        lowerSnake(token)
+      )
     }
     return Path.getIn(locale, lowerSnake(token))
   },
 
   registerDesignerIcons: (map: IDesignerIcons) => {
+    sendLog(false, '2024-01-09 registerDesignerIcons:', map)
     Object.assign(DESIGNER_ICONS_STORE, map)
   },
 
   registerDesignerLocales: (...packages: IDesignerLocales[]) => {
+    sendLog(false, '2024-01-09 registerDesignerLocales:', packages)
     packages.forEach((locales) => {
       mergeLocales(DESIGNER_LOCALES_STORE.value, locales)
     })
   },
 
   registerDesignerBehaviors: (...packages: IDesignerBehaviors[]) => {
+    sendLog(false, '2024-01-09 registerDesignerBehaviors:', packages)
     const results: IBehavior[] = []
     packages.forEach((sources) => {
       reSortBehaviors(results, sources)

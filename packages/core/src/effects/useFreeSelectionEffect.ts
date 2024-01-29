@@ -5,9 +5,12 @@ import {
   isCrossRectInRect,
   isRectInRect,
   Point,
+  sendLog,
 } from '@designable/shared'
 
 export const useFreeSelectionEffect = (engine: Engine) => {
+  sendLog(false, '2024-01-11 Engine useFreeSelectionEffect:', 'attach')
+
   engine.subscribeTo(DragStopEvent, (event) => {
     if (engine.cursor.dragType !== CursorDragType.Move) {
       return

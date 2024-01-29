@@ -49,7 +49,7 @@
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,
     "no-console": [
-      "error",
+      "off",
       {
         "allow": ["warn", "error", "info"]
       }
