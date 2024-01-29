@@ -1,22 +1,7 @@
 import { createBehavior } from '@designable/core'
 import { createFieldSchema, createVoidFieldSchema } from '../Field'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
-import {
-  ArrayCards as ArrayCardsSchema,
-  ArrayTable as ArrayTableSchema,
-} from '../Base/schema'
-import {
-  ArrayTable as ArrayTableLocales,
-  ArrayCards as ArrayCardsLocales,
-} from '../Base/locales'
-import {
-  ArrayAddition,
-  ArrayIndex,
-  ArrayMoveDown,
-  ArrayMoveUp,
-  ArrayRemove,
-} from './locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
   return createBehavior(
@@ -26,14 +11,9 @@ export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
       selector: (node) => node.props['x-component'] === name,
       designerProps: {
         droppable: true,
-        // propsSchema: createFieldSchema(AllSchemas[name]),
-        propsSchema: createFieldSchema(
-          name === 'ArrayCards' ? ArrayCardsSchema : ArrayTableSchema
-        ),
+        propsSchema: createFieldSchema(AllSchemas[name]),
       },
-      // designerLocales: AllLocales[name],
-      designerLocales:
-        name === 'ArrayTable' ? ArrayTableLocales : ArrayCardsLocales,
+      designerLocales: AllLocales[name],
     },
     {
       name: `${name}.Addition`,
@@ -43,15 +23,9 @@ export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
         allowDrop(parent) {
           return parent.props['x-component'] === name
         },
-        // propsSchema: createVoidFieldSchema(AllSchemas[name].Addition),
-        propsSchema: createVoidFieldSchema(
-          name === 'ArrayCards'
-            ? ArrayCardsSchema.Addition
-            : ArrayTableSchema.Addition
-        ),
+        propsSchema: createVoidFieldSchema(AllSchemas[name].Addition),
       },
-      // designerLocales: AllLocales.ArrayAddition,
-      designerLocales: ArrayAddition,
+      designerLocales: AllLocales.ArrayAddition,
     },
     {
       name: `${name}.Remove`,
@@ -63,8 +37,7 @@ export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
         },
         propsSchema: createVoidFieldSchema(),
       },
-      // designerLocales: AllLocales.ArrayRemove,
-      designerLocales: ArrayRemove,
+      designerLocales: AllLocales.ArrayRemove,
     },
     {
       name: `${name}.Index`,
@@ -76,8 +49,7 @@ export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
         },
         propsSchema: createVoidFieldSchema(),
       },
-      // designerLocales: AllLocales.ArrayIndex,
-      designerLocales: ArrayIndex,
+      designerLocales: AllLocales.ArrayIndex,
     },
     {
       name: `${name}.MoveUp`,
@@ -89,8 +61,7 @@ export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
         },
         propsSchema: createVoidFieldSchema(),
       },
-      // designerLocales: AllLocales.ArrayMoveUp,
-      designerLocales: ArrayMoveUp,
+      designerLocales: AllLocales.ArrayMoveUp,
     },
     {
       name: `${name}.MoveDown`,
@@ -102,8 +73,7 @@ export const createArrayBehavior = (name: 'ArrayCards' | 'ArrayTable') => {
         },
         propsSchema: createVoidFieldSchema(),
       },
-      // designerLocales: AllLocales.ArrayMoveDown,
-      designerLocales: ArrayMoveDown,
+      designerLocales: AllLocales.ArrayMoveDown,
     }
   )
 }

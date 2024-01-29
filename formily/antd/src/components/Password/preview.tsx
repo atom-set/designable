@@ -3,10 +3,8 @@ import { Password as FormilyPassword } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { PasswordSchema } from './schema'
-import { PasswordLocal } from './locales'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const Password: DnFC<React.ComponentProps<typeof FormilyPassword>> =
   FormilyPassword
@@ -16,11 +14,9 @@ Password.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'Password',
   designerProps: {
-    // propsSchema: createFieldSchema(AllSchemas.Password),
-    propsSchema: createFieldSchema(PasswordSchema),
+    propsSchema: createFieldSchema(AllSchemas.Password),
   },
-  // designerLocales: AllLocales.Password,
-  designerLocales: PasswordLocal,
+  designerLocales: AllLocales.Password,
 })
 
 Password.Resource = createResource({

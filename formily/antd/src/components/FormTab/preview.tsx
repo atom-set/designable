@@ -13,11 +13,9 @@ import {
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
 import { createVoidFieldSchema } from '../Field'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
-import { FormTabSchema } from './schema'
-import { FormTabLocales, FormTabPaneLocales } from './locales'
 
 const parseTabs = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
@@ -146,11 +144,9 @@ FormTab.Behavior = createBehavior(
       allowAppend: (target, source) =>
         target.children.length === 0 ||
         source.every((node) => node.props['x-component'] === 'FormTab.TabPane'),
-      // propsSchema: createVoidFieldSchema(AllSchemas.FormTab),
-      propsSchema: createVoidFieldSchema(FormTabSchema),
+      propsSchema: createVoidFieldSchema(AllSchemas.FormTab),
     },
-    // designerLocales: AllLocales.FormTab,
-    designerLocales: FormTabLocales,
+    designerLocales: AllLocales.FormTab,
   },
   {
     name: 'FormTab.TabPane',
@@ -159,11 +155,9 @@ FormTab.Behavior = createBehavior(
     designerProps: {
       droppable: true,
       allowDrop: (node) => node.props['x-component'] === 'FormTab',
-      // propsSchema: createVoidFieldSchema(AllSchemas.FormTab.TabPane),
-      propsSchema: createVoidFieldSchema(FormTabSchema.TabPane),
+      propsSchema: createVoidFieldSchema(AllSchemas.FormTab.TabPane),
     },
-    // designerLocales: AllLocales.FormTabPane,
-    designerLocales: FormTabPaneLocales,
+    designerLocales: AllLocales.FormTabPane,
   }
 )
 

@@ -3,8 +3,7 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
 import { Container } from '../../common/Container'
-import { ObjectLocales } from './locales'
-// import { AllLocales } from '../../locales'
+import { AllLocales } from '../../locales'
 
 export const ObjectContainer: DnFC<React.ComponentProps<typeof Container>> =
   Container
@@ -16,8 +15,7 @@ ObjectContainer.Behavior = createBehavior({
     droppable: true,
     propsSchema: createFieldSchema(),
   },
-  designerLocales: ObjectLocales,
-  // designerLocales: AllLocales.ObjectLocale,
+  designerLocales: AllLocales.ObjectLocale,
 })
 
 ObjectContainer.Resource = createResource({

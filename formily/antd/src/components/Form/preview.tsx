@@ -4,11 +4,9 @@ import { createForm } from '@formily/core'
 import { observer } from '@formily/react'
 import { Form as FormilyForm } from '@formily/antd'
 import { usePrefix, DnFC } from '@designable/react'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 import './styles.less'
-import { FormSchema } from './schema'
-import { FormLocales } from './locales'
 
 export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(
   (props) => {
@@ -42,22 +40,20 @@ Form.Behavior = createBehavior({
       cloneable: !node.isRoot,
       deletable: !node.isRoot,
       droppable: true,
-      // propsSchema: {
-      //   type: 'object',
-      //   properties: {
-      //     ...(AllSchemas.FormLayout.properties as any),
-      //     style: AllSchemas.CSSStyle,
-      //   },
-      // },
-      propsSchema: FormSchema,
+      propsSchema: {
+        type: 'object',
+        properties: {
+          ...(AllSchemas.FormLayout.properties as any),
+          style: AllSchemas.CSSStyle,
+        },
+      },
       defaultProps: {
         labelCol: 6,
         wrapperCol: 12,
       },
     }
   },
-  // designerLocales: AllLocales.Form,
-  designerLocales: FormLocales,
+  designerLocales: AllLocales.Form,
 })
 
 Form.Resource = createResource({
@@ -73,5 +69,3 @@ Form.Resource = createResource({
     },
   ],
 })
-
-console.log('FormLocales:', FormLocales)

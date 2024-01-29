@@ -3,10 +3,8 @@ import { Switch as AntdSwitch } from 'antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { SwitchSchema } from './schema'
-import { SwitchLocales } from './locales'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const Switch: DnFC<React.ComponentProps<typeof AntdSwitch>> = AntdSwitch
 
@@ -15,11 +13,9 @@ Switch.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'Switch',
   designerProps: {
-    // propsSchema: createFieldSchema(AllSchemas.Switch),
-    propsSchema: createFieldSchema(SwitchSchema),
+    propsSchema: createFieldSchema(AllSchemas.Switch),
   },
-  // designerLocales: AllLocales.Switch,
-  designerLocales: SwitchLocales,
+  designerLocales: AllLocales.Switch,
 })
 
 Switch.Resource = createResource({

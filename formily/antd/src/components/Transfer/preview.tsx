@@ -3,10 +3,8 @@ import { Transfer as FormilyTransfer } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { TransferSchema } from './schema'
-import { TransferLocales } from './locales'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const Transfer: DnFC<React.ComponentProps<typeof FormilyTransfer>> =
   FormilyTransfer
@@ -16,11 +14,9 @@ Transfer.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'Transfer',
   designerProps: {
-    // propsSchema: createFieldSchema(AllSchemas.Transfer),
-    propsSchema: createFieldSchema(TransferSchema),
+    propsSchema: createFieldSchema(AllSchemas.Transfer),
   },
-  // designerLocales: AllLocales.Transfer,
-  designerLocales: TransferLocales,
+  designerLocales: AllLocales.Transfer,
 })
 
 Transfer.Resource = createResource({

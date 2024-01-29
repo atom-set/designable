@@ -108,7 +108,7 @@ export const useDragDropEffect = (engine: Engine) => {
     sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', 'el-', el)
 
     const point = new Point(event.data.topClientX, event.data.topClientY)
-    const nodeId = 'aaa' || el?.getAttribute(engine.props.nodeIdAttrName)
+    const nodeId = el?.getAttribute(engine.props.nodeIdAttrName)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName)
 
     sendLog(true, '2024-01-12 Engine Drag DragMoveEvent:', 'point-', point)

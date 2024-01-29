@@ -4,10 +4,8 @@ import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { withContainer } from '../../common/Container'
 import { createVoidFieldSchema } from '../Field'
-import { FormLayoutLocales } from './locales'
-import { FormLayoutSchema } from './schema'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const FormLayout: DnFC<React.ComponentProps<typeof FormilyFormLayout>> =
   withContainer(FormilyFormLayout)
@@ -18,11 +16,9 @@ FormLayout.Behavior = createBehavior({
   selector: (node) => node.props['x-component'] === 'FormLayout',
   designerProps: {
     droppable: true,
-    // propsSchema: createVoidFieldSchema(AllSchemas.FormLayout),
-    propsSchema: createVoidFieldSchema(FormLayoutSchema),
+    propsSchema: createVoidFieldSchema(AllSchemas.FormLayout),
   },
-  // designerLocales: AllLocales.FormLayout,
-  designerLocales: FormLayoutLocales,
+  designerLocales: AllLocales.FormLayout,
 })
 
 FormLayout.Resource = createResource({

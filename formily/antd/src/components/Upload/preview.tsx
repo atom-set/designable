@@ -3,10 +3,8 @@ import { Upload as FormilyUpload } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
-import { UploadSchema } from './schema'
-import { UploadLocales, UploadDraggerLocales } from './locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> =
   FormilyUpload
@@ -17,22 +15,18 @@ Upload.Behavior = createBehavior(
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Upload',
     designerProps: {
-      // propsSchema: createFieldSchema(AllSchemas.Upload),
-      propsSchema: createFieldSchema(UploadSchema),
+      propsSchema: createFieldSchema(AllSchemas.Upload),
     },
-    //  designerLocales: AllLocales.Upload,
-    designerLocales: UploadLocales,
+    designerLocales: AllLocales.Upload,
   },
   {
     name: 'Upload.Dragger',
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Upload.Dragger',
     designerProps: {
-      // propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
-      propsSchema: createFieldSchema(UploadSchema.Dragger),
+      propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
     },
-    // designerLocales: AllLocales.UploadDragger,
-    designerLocales: UploadDraggerLocales,
+    designerLocales: AllLocales.UploadDragger,
   }
 )
 

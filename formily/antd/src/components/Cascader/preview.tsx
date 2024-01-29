@@ -3,10 +3,8 @@ import { Cascader as FormilyCascader } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { CascaderLocales } from './locales'
-import { CascaderSchema } from './schema'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const Cascader: DnFC<React.ComponentProps<typeof FormilyCascader>> =
   FormilyCascader
@@ -16,11 +14,9 @@ Cascader.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'Cascader',
   designerProps: {
-    // propsSchema: createFieldSchema(AllSchemas.Cascader),
-    propsSchema: createFieldSchema(CascaderSchema),
+    propsSchema: createFieldSchema(AllSchemas.Cascader),
   },
-  // designerLocales: AllLocales.Cascader,
-  designerLocales: CascaderLocales,
+  designerLocales: AllLocales.Cascader,
 })
 
 Cascader.Resource = createResource({

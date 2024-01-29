@@ -22,10 +22,8 @@ import { useDropTemplate } from '../../hooks'
 import { createArrayBehavior } from '../ArrayBase'
 import './styles.less'
 import { createVoidFieldSchema } from '../Field'
-import { ArrayTableSchema } from './schema'
-import { ArrayTableColumnLocales } from './locales'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')
 
@@ -444,11 +442,9 @@ ArrayTable.Behavior = createBehavior(createArrayBehavior('ArrayTable'), {
     allowDrop: (node) =>
       node.props['type'] === 'object' &&
       node.parent?.props?.['x-component'] === 'ArrayTable',
-    // propsSchema: createVoidFieldSchema(AllSchemas.ArrayTable.Column),
-    propsSchema: createVoidFieldSchema(ArrayTableSchema.Column),
+    propsSchema: createVoidFieldSchema(AllSchemas.ArrayTable.Column),
   },
-  // designerLocales: AllLocales.ArrayTableColumn,
-  designerLocales: ArrayTableColumnLocales,
+  designerLocales: AllLocales.ArrayTableColumn,
 })
 
 ArrayTable.Resource = createResource({

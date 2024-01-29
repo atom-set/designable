@@ -3,10 +3,8 @@ import { TreeSelect as FormilyTreeSelect } from '@formily/antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { TreeSelectSchema } from './schema'
-import { TreeSelectLocales } from './locales'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const TreeSelect: DnFC<React.ComponentProps<typeof FormilyTreeSelect>> =
   FormilyTreeSelect
@@ -16,11 +14,9 @@ TreeSelect.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'TreeSelect',
   designerProps: {
-    // propsSchema: createFieldSchema(AllSchemas.TreeSelect),
-    propsSchema: createFieldSchema(TreeSelectSchema),
+    propsSchema: createFieldSchema(AllSchemas.TreeSelect),
   },
-  // designerLocales: AllLocales.TreeSelect,
-  designerLocales: TreeSelectLocales,
+  designerLocales: AllLocales.TreeSelect,
 })
 
 TreeSelect.Resource = createResource({

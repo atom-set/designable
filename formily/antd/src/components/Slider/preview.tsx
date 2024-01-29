@@ -3,10 +3,8 @@ import { Slider as AntdSlider } from 'antd'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
 import { createFieldSchema } from '../Field'
-import { SliderSchema } from './schema'
-import { SliderLocales } from './locales'
-// import { AllSchemas } from '../../schemas'
-// import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { AllLocales } from '../../locales'
 
 export const Slider: DnFC<React.ComponentProps<typeof AntdSlider>> = AntdSlider
 
@@ -15,11 +13,9 @@ Slider.Behavior = createBehavior({
   extends: ['Field'],
   selector: (node) => node.props['x-component'] === 'Slider',
   designerProps: {
-    // propsSchema: createFieldSchema(AllSchemas.Slider),
-    propsSchema: createFieldSchema(SliderSchema),
+    propsSchema: createFieldSchema(AllSchemas.Slider),
   },
-  // designerLocales: AllLocales.Slider,
-  designerLocales: SliderLocales,
+  designerLocales: AllLocales.Slider,
 })
 
 Slider.Resource = createResource({
