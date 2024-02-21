@@ -1,0 +1,1 @@
+pnpm install @designer/shared@latest @designer/core@latest @designer/react@latest @designer/settings-form@latest -w

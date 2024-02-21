@@ -1,0 +1,26 @@
+{
+  "name": "@designer/shared",
+  "version": "1.0.0-beta.1",
+  "license": "MIT",
+  "main": "./dist/lib",
+  "module": "./dist/esm",
+  "types": "./dist/esm/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom-set/designable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atom-set/designable/issues"
+  },
+  "homepage": "https://github.com/atom-set/designable#readme",
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npx father build"
+  },
+  "dependencies": {
+    "requestidlecallback": "^0.3.0"
+  }
+}
