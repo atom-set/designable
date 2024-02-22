@@ -48,7 +48,6 @@ import {
   FormCollapse,
   FormLayout,
   FormGrid,
-  Submit,
 } from "../preset";
 import { saveSchema } from "./utils";
 import {
@@ -107,7 +106,6 @@ export const App = () => {
           <CompositePanel.Item title="panels.Component" icon="Component">
             <ResourceWidget
               title="sources.Inputs"
-              defaultExpand={false}
               sources={[
                 Input,
                 Password,
@@ -129,7 +127,6 @@ export const App = () => {
             />
             <ResourceWidget
               title="sources.Layouts"
-              defaultExpand={false}
               sources={[
                 Card,
                 FormGrid,
@@ -141,10 +138,9 @@ export const App = () => {
             />
             <ResourceWidget
               title="sources.Arrays"
-              defaultExpand={false}
               sources={[ArrayCards, ArrayTable]}
             />
-            <ResourceWidget title="sources.Displays" sources={[Text, Submit]} />
+            <ResourceWidget title="sources.Displays" sources={[Text]} />
           </CompositePanel.Item>
           <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
             <OutlineTreeWidget />
@@ -193,7 +189,6 @@ export const App = () => {
                       FormGrid,
                       FormLayout,
                       ObjectContainer,
-                      Submit,
                     }}
                   />
                 )}
