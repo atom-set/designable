@@ -48,6 +48,7 @@ import {
   FormCollapse,
   FormLayout,
   FormGrid,
+  Submit,
 } from "../preset";
 import { saveSchema } from "./utils";
 import {
@@ -58,8 +59,8 @@ import {
   SchemaEditorWidget,
 } from "./widgets";
 
-// setNpmCDNRegistry("//unpkg.com");
-setNpmCDNRegistry("https://cdn.jsdelivr.net/npm");
+setNpmCDNRegistry("//unpkg.com");
+// setNpmCDNRegistry("https://cdn.jsdelivr.net/npm");
 
 GlobalRegistry.registerDesignerLocales({
   "zh-CN": {
@@ -106,6 +107,7 @@ export const App = () => {
           <CompositePanel.Item title="panels.Component" icon="Component">
             <ResourceWidget
               title="sources.Inputs"
+              defaultExpand={false}
               sources={[
                 Input,
                 Password,
@@ -127,6 +129,7 @@ export const App = () => {
             />
             <ResourceWidget
               title="sources.Layouts"
+              defaultExpand={false}
               sources={[
                 Card,
                 FormGrid,
@@ -138,9 +141,10 @@ export const App = () => {
             />
             <ResourceWidget
               title="sources.Arrays"
+              defaultExpand={false}
               sources={[ArrayCards, ArrayTable]}
             />
-            <ResourceWidget title="sources.Displays" sources={[Text]} />
+            <ResourceWidget title="sources.Displays" sources={[Text, Submit]} />
           </CompositePanel.Item>
           <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
             <OutlineTreeWidget />
@@ -189,6 +193,7 @@ export const App = () => {
                       FormGrid,
                       FormLayout,
                       ObjectContainer,
+                      Submit,
                     }}
                   />
                 )}
