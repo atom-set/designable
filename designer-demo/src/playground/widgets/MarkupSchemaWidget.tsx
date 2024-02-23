@@ -90,6 +90,7 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
+  FormButtonGroup,
 } from '@formily/antd'
 import { Card, Slider, Rate } from 'antd'
 
@@ -143,6 +144,10 @@ export default ()=>{
     <SchemaField>
       ${printChildren(root!)}
     </SchemaField>
+    <FormButtonGroup.FormItem>
+      <Submit onSubmit={console.log}>提交</Submit>
+      <Reset>重置</Reset>
+    </FormButtonGroup.FormItem>
   </Form>
 }
   
