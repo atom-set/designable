@@ -7,6 +7,7 @@ import {
   DatePicker,
   Editable,
   Form,
+  FormButtonGroup,
   FormCollapse,
   FormGrid,
   FormItem,
@@ -88,6 +89,10 @@ export const PreviewWidget: React.FC<
   return (
     <Form {...formProps} form={form}>
       <SchemaField schema={schema} />
+      <FormButtonGroup.FormItem>
+        <Submit onSubmit={console.log}>提交</Submit>
+        <Reset>重置</Reset>
+      </FormButtonGroup.FormItem>
     </Form>
   );
 };
