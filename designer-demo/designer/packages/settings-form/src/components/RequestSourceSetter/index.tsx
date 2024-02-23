@@ -2,7 +2,7 @@ import { TextWidget, usePrefix, useTheme } from "@designer/react";
 import { Form } from "@formily/core";
 import { observable } from "@formily/reactive";
 import { observer } from "@formily/reactive-react";
-import { Button, Modal } from "antd";
+import { Button, Drawer } from "antd";
 import cls from "classnames";
 import React, { Fragment, useMemo, useState } from "react";
 import { DataSettingPanel } from "./DataSettingPanel";
@@ -37,7 +37,7 @@ export const RequestSourceSetter: React.FC<
     effects = () => { },
   } = props;
   const theme = useTheme();
-  const prefix = usePrefix("data-source-setter");
+  const prefix = usePrefix("data-request-setter");
   const [modalVisible, setModalVisible] = useState(false);
   const treeDataSource: ITreeDataSource = useMemo(
     () =>
@@ -54,20 +54,18 @@ export const RequestSourceSetter: React.FC<
       <Button block onClick={openModal}>
         <TextWidget token="SettingComponents.RequestSourceSetter.configureRequest" />
       </Button>
-      <Modal
+      <Drawer
         title={
           <TextWidget token="SettingComponents.RequestSourceSetter.configureRequest" />
         }
         width="65%"
         bodyStyle={{ padding: 10 }}
-        transitionName=""
-        maskTransitionName=""
         open={modalVisible}
-        onCancel={closeModal}
-        onOk={() => {
-          onChange(transformDataToValue(treeDataSource.dataSource));
-          closeModal();
-        }}
+        onClose={closeModal}
+      // onOk={() => {
+      //   onChange(transformDataToValue(treeDataSource.dataSource));
+      //   closeModal();
+      // }}
       >
         <div
           className={`${cls(
@@ -90,7 +88,7 @@ export const RequestSourceSetter: React.FC<
             ></DataSettingPanel>
           </div>
         </div>
-      </Modal>
+      </Drawer>
     </Fragment>
   );
 });

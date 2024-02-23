@@ -69,14 +69,14 @@ export default {
       },
       RequestSourceSetter: {
         configureRequest: "Configure",
-        // todo
+        dataSourceTree: "Data Source Tree",
+        addNode: "Add Data Source",
+        defaultTitle: "Default Title",
         nodeProperty: "Node Property",
         pleaseSelectNode: "please select node from the tree on the left",
-        addKeyValuePair: "Add Key Value Pair",
+        // TODO:
+        // addKeyValuePair: "Add Key Value Pair",
         dataSource: "Options",
-        defaultTitle: "Default Title",
-        dataSourceTree: "Options Tree",
-        addNode: "Add Node",
         label: "label",
         value: "value",
         item: "Item",

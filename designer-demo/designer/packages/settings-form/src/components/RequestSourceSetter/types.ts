@@ -6,9 +6,9 @@ export interface IDataSourceItem {
 
 export interface INodeItem {
   key: string;
+  title: string;
   duplicateKey?: string;
-  map?: { label: string; value: any }[];
-  children?: INodeItem[];
+  config?: Record<string, any>
 }
 
 export interface ITreeDataSource {

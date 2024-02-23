@@ -67,15 +67,15 @@ export default {
         item: "选项",
       },
       RequestSourceSetter: {
-        configureRequest: "接口配置",
-        // todo
-        nodeProperty: "节点属性",
-        pleaseSelectNode: "请先选择左侧树节点",
-        addKeyValuePair: "添加键值对",
-        dataSource: "可选项",
+        configureRequest: "数据源配置",
+        dataSourceTree: "数据源列表",
+        addNode: "新增数据源",
         defaultTitle: "默认标题",
-        dataSourceTree: "可选项节点树",
-        addNode: "新增节点",
+        nodeProperty: "数据源属性",
+        pleaseSelectNode: "请先选择左侧数据源进行配置",
+        // TODO:
+        // addKeyValuePair: "添加键值对",
+        dataSource: "可选项",
         label: "键名",
         value: "键值",
         item: "选项",
