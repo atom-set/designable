@@ -67,6 +67,20 @@ export default {
         value: "value",
         item: "Item",
       },
+      RequestSourceSetter: {
+        configureRequest: "Configure",
+        // todo
+        nodeProperty: "Node Property",
+        pleaseSelectNode: "please select node from the tree on the left",
+        addKeyValuePair: "Add Key Value Pair",
+        dataSource: "Options",
+        defaultTitle: "Default Title",
+        dataSourceTree: "Options Tree",
+        addNode: "Add Node",
+        label: "label",
+        value: "value",
+        item: "Item",
+      },
       ReactionsSetter: {
         configureReactions: "Configure",
         relationsFields: "Associated Fields",

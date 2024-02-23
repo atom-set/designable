@@ -66,6 +66,20 @@ export default {
         value: "键值",
         item: "选项",
       },
+      RequestSourceSetter: {
+        configureRequest: "接口配置",
+        // todo
+        nodeProperty: "节点属性",
+        pleaseSelectNode: "请先选择左侧树节点",
+        addKeyValuePair: "添加键值对",
+        dataSource: "可选项",
+        defaultTitle: "默认标题",
+        dataSourceTree: "可选项节点树",
+        addNode: "新增节点",
+        label: "键名",
+        value: "键值",
+        item: "选项",
+      },
       ReactionsSetter: {
         configureReactions: "配置响应器",
         relationsFields: "依赖字段",
