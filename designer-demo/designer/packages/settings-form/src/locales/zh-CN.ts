@@ -71,14 +71,17 @@ export default {
         dataSourceTree: "数据源列表",
         addNode: "新增数据源",
         defaultTitle: "默认标题",
+        dataSourceTitle: "数据源名称",
         nodeProperty: "数据源属性",
         pleaseSelectNode: "请先选择左侧数据源进行配置",
-        // TODO:
-        // addKeyValuePair: "添加键值对",
-        dataSource: "可选项",
-        label: "键名",
-        value: "键值",
-        item: "选项",
+        name: '名称',
+        description: "描述",
+        requestPath: '请求地址',
+        requestMethod: '请求方法',
+        requestParam: '请求参数',
+        requestBody: '请求体',
+        requestHeader: '请求头',
+        addition: "添加"
       },
       ReactionsSetter: {
         configureReactions: "配置响应器",

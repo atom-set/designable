@@ -1,17 +1,31 @@
-export interface IDataSourceItem {
-  label?: "";
-  value?: any;
-  children?: any[];
+
+export interface IDataSourceItemConfig {
+  name: string;
+  desc?: string;
+  path: string;
+  method: "GET" | "POST";
+  requestParam?: Array<{
+    paramKey: string;
+    paramValue: string;
+  }>;
+  requestBody?: Array<{
+    paramKey: string;
+    paramValue: string;
+  }>;
+  requestHeader?: Array<{
+    paramKey: string;
+    paramValue: string;
+  }>;
 }
 
-export interface INodeItem {
+export interface IDataSourceItem {
   key: string;
   title: string;
   duplicateKey?: string;
-  config?: Record<string, any>
+  config?: IDataSourceItemConfig
 }
 
-export interface ITreeDataSource {
-  dataSource: INodeItem[];
+export interface IDataSource {
+  dataSource: IDataSourceItem[];
   selectedKey: string;
 }

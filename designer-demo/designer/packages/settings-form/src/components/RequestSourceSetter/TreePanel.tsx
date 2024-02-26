@@ -1,86 +1,46 @@
-import { GlobalRegistry } from "@designer/core";
 import { IconWidget, TextWidget, usePrefix } from "@designer/react";
 import { observer } from "@formily/reactive-react";
 import { uid } from "@formily/shared";
-import { Button, Tree, TreeProps } from "antd";
-import React, { Fragment } from "react";
+import { Button, Tree } from "antd";
+import React, { Fragment, useCallback } from "react";
 import { Header } from "./Header";
 import { Title } from "./Title";
-// import { traverseTree } from "./shared";
 import "./styles.less";
-import { INodeItem, ITreeDataSource } from "./types";
-
-const limitTreeDrag = ({ dropPosition }: { dropPosition: number }) => {
-  if (dropPosition === 0) {
-    return false;
-  }
-  return true;
-};
+import { IDataSourceItem, IDataSource } from "./types";
+import { toJS } from '@formily/reactive';
+import { GlobalRegistry } from "@designer/core";
 
 export interface ITreePanelProps {
-  treeDataSource: ITreeDataSource;
-  allowTree: boolean;
-  defaultOptionValue: {
-    label: string;
-    value: any;
-  }[];
+  treeDataSource: IDataSource;
 }
 
 export const TreePanel: React.FC<React.PropsWithChildren<ITreePanelProps>> =
   observer((props) => {
     const prefix = usePrefix("data-request-setter");
-    // const dropHandler = (
-    //   info: Parameters<Required<TreeProps>["onDrop"]>[0],
-    // ) => {
-    //   const dropKey = info.node?.key;
-    //   const dragKey = info.dragNode?.key;
-    //   const dropPos = info.node.pos.split("-");
-    //   const dropPosition =
-    //     info.dropPosition - Number(dropPos[dropPos.length - 1]);
-    //   const data = [...props.treeDataSource.dataSource];
-    //   // Find dragObject
-    //   let dragObj: INodeItem = undefined!;
-    //   traverseTree(data, (item, index, arr) => {
-    //     if (arr[index].key === dragKey) {
-    //       arr.splice(index, 1);
-    //       dragObj = item;
-    //     }
-    //   });
-    //   if (!info.dropToGap) {
-    //     traverseTree(data, (item) => {
-    //       if (item.key === dropKey) {
-    //         item.children = item.children || [];
-    //         item.children.unshift(dragObj);
-    //       }
-    //     });
-    //   } else if (
-    //     (info.node.children || []).length > 0 &&
-    //     info.node.expanded &&
-    //     dropPosition === 1
-    //   ) {
-    //     traverseTree(data, (item) => {
-    //       if (item.key === dropKey) {
-    //         item.children = item.children || [];
-    //         item.children.unshift(dragObj);
-    //       }
-    //     });
-    //   } else {
-    //     let ar: any[] = [];
-    //     let i: number = undefined!;
-    //     traverseTree(data, (item, index, arr) => {
-    //       if (item.key === dropKey) {
-    //         ar = arr;
-    //         i = index;
-    //       }
-    //     });
-    //     if (dropPosition === -1) {
-    //       ar.splice(i, 0, dragObj);
-    //     } else {
-    //       ar.splice(i + 1, 0, dragObj);
-    //     }
-    //   }
-    //   props.treeDataSource.dataSource = data;
-    // };
+
+    const addClick = useCallback(() => {
+      const uuid = uid();
+      const dataSource = props.treeDataSource.dataSource;
+      props.treeDataSource.dataSource = dataSource.concat({
+        key: uuid,
+        title: GlobalRegistry.getDesignerMessage(
+          "SettingComponents.RequestSourceSetter.dataSourceTitle",
+        ),
+        duplicateKey: uuid,
+        config: {
+          name: GlobalRegistry.getDesignerMessage(
+            "SettingComponents.RequestSourceSetter.dataSourceTitle",
+          ),
+          path: 'https://mock.com/api/xxxx',
+          method: 'POST',
+        }
+      });
+
+      console.log('add:', toJS(props.treeDataSource.dataSource));
+    }, [props.treeDataSource.dataSource]);
+
+    console.log('TreePanel Render props:', toJS(props.treeDataSource.dataSource))
+
     return (
       <Fragment>
         <Header
@@ -90,17 +50,7 @@ export const TreePanel: React.FC<React.PropsWithChildren<ITreePanelProps>> =
           extra={
             <Button
               type="text"
-              onClick={() => {
-                console.log('add node')
-                const uuid = uid();
-                const dataSource = props.treeDataSource.dataSource;
-                props.treeDataSource.dataSource = dataSource.concat({
-                  key: uuid,
-                  title: '数据源名称',
-                  duplicateKey: uuid,
-                  config: {}
-                });
-              }}
+              onClick={addClick}
               icon={<IconWidget infer="Add" />}
             >
               <TextWidget token="SettingComponents.RequestSourceSetter.addNode" />
@@ -110,16 +60,10 @@ export const TreePanel: React.FC<React.PropsWithChildren<ITreePanelProps>> =
         <div className={`${`${prefix}-layout-item-content`}`}>
           <Tree
             blockNode
-            // onDragEnter={() => { }}
-            // onDrop={dropHandler}
             draggable={false}
-            allowDrop={props.allowTree ? () => true : limitTreeDrag}
-            defaultExpandAll
-            defaultExpandParent
-            autoExpandParent
             showLine={{ showLeafIcon: false }}
             treeData={props.treeDataSource.dataSource}
-            titleRender={(titleProps: INodeItem) => {
+            titleRender={(titleProps: IDataSourceItem) => {
               return (
                 <Title
                   {...titleProps}

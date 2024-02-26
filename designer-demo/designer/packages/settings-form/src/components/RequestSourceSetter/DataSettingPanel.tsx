@@ -1,16 +1,14 @@
-import { PlusOutlined } from "@ant-design/icons";
 import { TextWidget, usePrefix } from "@designer/react";
 import { ValueInput } from "../ValueInput";
 import { ArrayItems, Form, FormButtonGroup, FormItem, Input, Reset, Select, Submit } from "@formily/antd";
 import { Form as FormCore, createForm } from "@formily/core";
 import { createSchemaField } from "@formily/react";
 import { observer } from "@formily/reactive-react";
-import { Button } from "antd";
 import React, { useMemo, Fragment } from "react";
 import { Header } from "./Header";
-import { traverseTree } from "./shared";
+import { traverseData } from "./shared";
 import "./styles.less";
-import { ITreeDataSource } from "./types";
+import { IDataSource } from "./types";
 
 const SchemaField = createSchemaField({
   components: {
@@ -23,19 +21,19 @@ const SchemaField = createSchemaField({
 });
 
 export interface IDataSettingPanelProps {
-  treeDataSource: ITreeDataSource;
-  allowExtendOption?: boolean;
+  treeDataSource: IDataSource;
   effects?: (form: FormCore<any>) => void;
 }
 
 export const DataSettingPanel: React.FC<
   React.PropsWithChildren<IDataSettingPanelProps>
 > = observer((props) => {
-  const { allowExtendOption, effects } = props;
+  const { effects } = props;
   const prefix = usePrefix("data-request-setter");
+
   const form = useMemo(() => {
     let values: any;
-    traverseTree(props.treeDataSource.dataSource, (dataItem) => {
+    traverseData(props.treeDataSource.dataSource, (dataItem) => {
       if (dataItem.key === props.treeDataSource.selectedKey) {
         values = dataItem;
       }
@@ -48,7 +46,8 @@ export const DataSettingPanel: React.FC<
     props.treeDataSource.selectedKey,
     props.treeDataSource.dataSource.length,
   ]);
-  if (!props.treeDataSource.selectedKey)
+
+  if (!props.treeDataSource.selectedKey) {
     return (
       <Fragment>
         <Header
@@ -62,6 +61,8 @@ export const DataSettingPanel: React.FC<
         </div>
       </Fragment>
     );
+  }
+
   return (
     <Fragment>
       <Header
@@ -69,49 +70,43 @@ export const DataSettingPanel: React.FC<
           <TextWidget token="SettingComponents.RequestSourceSetter.nodeProperty" />
         }
         extra={null}
-      // extra={
-      //   allowExtendOption ? (
-      //     <Button
-      //       type="text"
-      //       onClick={() => {
-      //         form.setFieldState("map", (state) => {
-      //           state.value.push({});
-      //         });
-      //       }}
-      //       icon={<PlusOutlined />}
-      //     >
-      //       <TextWidget token="SettingComponents.DataSourceSetter.addKeyValuePair" />
-      //     </Button>
-      //   ) : null
-      // }
       />
       <div className={`${`${prefix}-layout-item-content`}`}>
         <Form form={form} labelWidth={140} >
           <SchemaField>
-            <SchemaField.Object>
+            <SchemaField.Object name="config">
               <SchemaField.String
                 name="name"
-                title="名称"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.name" />
+                }
                 required
                 x-decorator="FormItem"
                 x-component="Input"
               />
               <SchemaField.String
                 name="desc"
-                title="描述"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.description" />
+                }
                 x-decorator="FormItem"
                 x-component="Input"
               />
               <SchemaField.String
                 name="path"
-                title="HTTP URL"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.requestPath" />
+                }
                 required
+                x-validator="url"
                 x-decorator="FormItem"
                 x-component="Input"
               />
               <SchemaField.String
                 name="method"
-                title="HTTP Method"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.requestMethod" />
+                }
                 required
                 x-decorator="FormItem"
                 x-component="Select"
@@ -122,7 +117,9 @@ export const DataSettingPanel: React.FC<
               />
               <SchemaField.Array
                 name="requestParam"
-                title="请求参数"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.requestParam" />
+                }
                 x-decorator="FormItem"
                 x-component="ArrayItems"
               >
@@ -147,12 +144,16 @@ export const DataSettingPanel: React.FC<
                 </SchemaField.Object>
                 <SchemaField.Void
                   x-component="ArrayItems.Addition"
-                  title="添加"
+                  title={
+                    <TextWidget token="SettingComponents.RequestSourceSetter.addition" />
+                  }
                 />
               </SchemaField.Array>
               <SchemaField.Array
                 name="requestBody"
-                title="请求体"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.requestBody" />
+                }
                 x-decorator="FormItem"
                 x-component="ArrayItems"
               >
@@ -177,12 +178,16 @@ export const DataSettingPanel: React.FC<
                 </SchemaField.Object>
                 <SchemaField.Void
                   x-component="ArrayItems.Addition"
-                  title="添加"
+                  title={
+                    <TextWidget token="SettingComponents.RequestSourceSetter.addition" />
+                  }
                 />
               </SchemaField.Array>
               <SchemaField.Array
                 name="requestHeader"
-                title="请求头"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.requestHeader" />
+                }
                 x-decorator="FormItem"
                 x-component="ArrayItems"
               >
@@ -207,51 +212,13 @@ export const DataSettingPanel: React.FC<
                 </SchemaField.Object>
                 <SchemaField.Void
                   x-component="ArrayItems.Addition"
-                  title="添加"
+                  title={
+                    <TextWidget token="SettingComponents.RequestSourceSetter.addition" />
+                  }
                 />
               </SchemaField.Array>
             </SchemaField.Object>
-            {/* <SchemaField.Array name="map" x-component="ArrayItems">
-              <SchemaField.Object
-                x-decorator="ArrayItems.Item"
-                x-decorator-props={{ type: "divide" }}
-              >
-                <SchemaField.String
-                  title={
-                    <TextWidget token="SettingComponents.DataSourceSetter.label" />
-                  }
-                  x-decorator="FormItem"
-                  x-disabled={!allowExtendOption}
-                  name="label"
-                  x-component="Input"
-                />
-                <SchemaField.String
-                  title={
-                    <TextWidget token="SettingComponents.DataSourceSetter.value" />
-                  }
-                  x-decorator="FormItem"
-                  name="value"
-                  x-component="ValueInput"
-                />
-                <SchemaField.Void
-                  x-component="ArrayItems.Remove"
-                  x-visible={allowExtendOption}
-                  x-component-props={{
-                    style: {
-                      margin: 5,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    },
-                  }}
-                />
-              </SchemaField.Object>
-            </SchemaField.Array> */}
           </SchemaField>
-          <FormButtonGroup.FormItem>
-            <Submit onSubmit={console.log}>保存</Submit>
-            <Reset>取消</Reset>
-          </FormButtonGroup.FormItem>
         </Form>
       </div >
     </Fragment >

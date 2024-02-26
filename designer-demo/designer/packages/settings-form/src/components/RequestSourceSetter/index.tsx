@@ -1,26 +1,21 @@
 import { TextWidget, usePrefix, useTheme } from "@designer/react";
 import { Form } from "@formily/core";
-import { observable } from "@formily/reactive";
+import { observable, toJS } from "@formily/reactive";
 import { observer } from "@formily/reactive-react";
-import { Button, Drawer } from "antd";
+import { Button, Drawer, Space } from "antd";
 import cls from "classnames";
 import React, { Fragment, useMemo, useState } from "react";
 import { DataSettingPanel } from "./DataSettingPanel";
 import { TreePanel } from "./TreePanel";
 import { transformDataToValue, transformValueToData } from "./shared";
+import type { IDataSourceItem, IDataSourceItemConfig, IDataSource } from "./types";
 import "./styles.less";
-import { IDataSourceItem, ITreeDataSource } from "./types";
+
 export interface IRequestSourceSetterProps {
   className?: string;
   style?: React.CSSProperties;
   onChange: (dataSource: IDataSourceItem[]) => void;
   value: IDataSourceItem[];
-  allowTree?: boolean;
-  allowExtendOption?: boolean;
-  defaultOptionValue?: {
-    label: string;
-    value: any;
-  }[];
   effects?: (form: Form<any>) => void;
 }
 
@@ -31,27 +26,28 @@ export const RequestSourceSetter: React.FC<
     className,
     value = [],
     onChange,
-    allowTree = true,
-    allowExtendOption = true,
-    defaultOptionValue,
     effects = () => { },
   } = props;
+
   const theme = useTheme();
   const prefix = usePrefix("data-request-setter");
-  const [modalVisible, setModalVisible] = useState(false);
-  const treeDataSource: ITreeDataSource = useMemo(
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const requestDataSource: IDataSource = useMemo(
     () =>
       observable({
         dataSource: transformValueToData(value),
         selectedKey: "",
       }),
-    [value, modalVisible],
+    [value, drawerVisible],
   );
-  const openModal = () => setModalVisible(true);
-  const closeModal = () => setModalVisible(false);
+
+  const openDrawer = () => setDrawerVisible(true);
+  const closeDrawer = () => setDrawerVisible(false);
+
   return (
     <Fragment>
-      <Button block onClick={openModal}>
+      <Button block onClick={openDrawer}>
         <TextWidget token="SettingComponents.RequestSourceSetter.configureRequest" />
       </Button>
       <Drawer
@@ -60,12 +56,20 @@ export const RequestSourceSetter: React.FC<
         }
         width="65%"
         bodyStyle={{ padding: 10 }}
-        open={modalVisible}
-        onClose={closeModal}
-      // onOk={() => {
-      //   onChange(transformDataToValue(treeDataSource.dataSource));
-      //   closeModal();
-      // }}
+        open={drawerVisible}
+        onClose={closeDrawer}
+        extra={
+          <Space>
+            <Button onClick={closeDrawer}>Cancel</Button>
+            <Button type="primary" onClick={() => {
+              console.log(toJS(requestDataSource.dataSource))
+              onChange(transformDataToValue(requestDataSource.dataSource));
+              closeDrawer();
+            }}>
+              OK
+            </Button>
+          </Space>
+        }
       >
         <div
           className={`${cls(
@@ -75,17 +79,14 @@ export const RequestSourceSetter: React.FC<
         >
           <div className={`${`${prefix}-layout-item left`}`}>
             <TreePanel
-              defaultOptionValue={defaultOptionValue!}
-              allowTree={allowTree}
-              treeDataSource={treeDataSource}
-            ></TreePanel>
+              treeDataSource={requestDataSource}
+            />
           </div>
           <div className={`${`${prefix}-layout-item right`}`}>
             <DataSettingPanel
-              allowExtendOption={allowExtendOption}
-              treeDataSource={treeDataSource}
+              treeDataSource={requestDataSource}
               effects={effects}
-            ></DataSettingPanel>
+            />
           </div>
         </div>
       </Drawer>
