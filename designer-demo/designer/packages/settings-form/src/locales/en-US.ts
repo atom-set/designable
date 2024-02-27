@@ -86,15 +86,22 @@ export default {
       },
       FormEffectSetter: {
         configureFormEffect: "Configure",
+        fromPath: 'Form Fields',
+        pleaseSelect: "Please Select",
+        fieldTitle: "Field Title",
+        fieldName: "Field Name",
+        fieldPath: "Field Path",
+        operations: "Operations",
+        addFormField: "Add Form Field",
+        fieldType: "Field Type",
+        // TODO:
         relationsFields: "Associated Fields",
-        variableName: "Variable Name",
         variableNameValidateMessage: "This is not a standard variable name",
         pleaseInput: "Please Input",
         sourceField: "Source Field",
         sourceProperty: "Field Property",
-        variableType: "Variable Type",
-        operations: "Operations",
-        addRelationField: "Add Associated Field",
+
+
         propertyReactions:
           "Property Reactions(Only Support Javascript Expression)",
         actionReactions:
@@ -113,7 +120,6 @@ export default {
         componentProps: "Component Props",
         decorator: "Decorator",
         decoratorProps: "Decorator Props",
-        pleaseSelect: "Please Select",
         expressionValueTypeIs: "Expression value type is",
       },
       ReactionsSetter: {

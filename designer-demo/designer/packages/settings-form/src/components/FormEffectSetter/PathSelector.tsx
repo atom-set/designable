@@ -105,10 +105,13 @@ export const PathSelector: React.FC<
       }
     }
   };
+
+  console.log('dataSource:', dataSource, props);
   return (
     <TreeSelect
       {...props}
       onChange={(value) => {
+        console.log('TreeSelect value:', value, findNode(dataSource, value))
         props.onChange?.(value, findNode(dataSource, value)!);
       }}
       treeDefaultExpandAll

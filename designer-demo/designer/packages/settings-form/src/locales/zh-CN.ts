@@ -85,16 +85,18 @@ export default {
       },
       FormEffectSetter: {
         configureFormEffect: "表单事件配置",
+        fromPath: "表单路径查询",
+        pleaseSelect: "请选择",
+        fieldTitle: "字段标题",
+        fieldName: "字段名",
+        fieldPath: "字段路径",
+        operations: "操作",
+        addFormField: "添加表单字段",
+        fieldType: "字段类型",
         // TODO:
-        relationsFields: "依赖字段",
-        variableName: "变量名",
         variableNameValidateMessage: "不符合变量命名规则",
         pleaseInput: "请输入",
-        sourceField: "来源字段",
-        sourceProperty: "字段属性",
-        variableType: "变量类型",
-        operations: "操作",
-        addRelationField: "添加依赖字段",
+
         propertyReactions: "属性响应(仅支持JS表达式)",
         actionReactions: "动作响应(高级，可选，支持JS语句)",
         visible: "显示/隐藏",
@@ -111,7 +113,6 @@ export default {
         componentProps: "组件属性",
         decorator: "容器",
         decoratorProps: "容器属性",
-        pleaseSelect: "请选择",
         expressionValueTypeIs: "表达式值类型为",
       },
       ReactionsSetter: {

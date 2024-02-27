@@ -1,5 +1,5 @@
 import { GlobalRegistry } from "@designer/core";
-import { TextWidget, usePrefix } from "@designer/react";
+import { TextWidget, usePrefix, useSelectedNode } from "@designer/react";
 import { MonacoInput } from "../MonacoInput";
 import { requestIdle } from "@designer/shared";
 import {
@@ -10,8 +10,8 @@ import {
   Input,
   Select,
 } from "@formily/antd";
-import { createForm, isVoidField } from "@formily/core";
-import { createSchemaField } from "@formily/react";
+import { createForm, isVoidField, onFieldInputValueChange } from "@formily/core";
+import { createSchemaField, useField } from "@formily/react";
 import { clone, uid } from "@formily/shared";
 import { Button, Card, Modal, Tag, Tooltip } from "antd";
 import React, { useEffect, useMemo, useState } from "react";
@@ -23,7 +23,7 @@ import "./styles.less";
 import { IReaction } from "./types";
 
 export interface IFormEffectSetterProps {
-  value?: IReaction;
+  value?: IReaction; //  TODO:
   onChange?: (value: IReaction) => void;
 }
 
@@ -64,95 +64,28 @@ const SchemaField = createSchemaField({
   },
 });
 
-const FieldStateProperties = [
-  "value",
-  "initialValue",
-  "inputValue",
-  "inputValues",
-  "modified",
-  "initialized",
-  "title",
-  "description",
-  "mounted",
-  "unmounted",
-  "active",
-  "visited",
-  "loading",
-  "errors",
-  "warnings",
-  "successes",
-  "feedbacks",
-  "valid",
-  "invalid",
-  "pattern",
-  "display",
-  "disabled",
-  "readOnly",
-  "readPretty",
-  "visible",
-  "hidden",
-  "editable",
-  "validateStatus",
-  "validating",
-];
-
-const FieldStateValueTypes = {
-  modified: "boolean",
-  initialized: "boolean",
-  title: "string",
-  description: "string",
-  mounted: "boolean",
-  unmounted: "boolean",
-  active: "boolean",
-  visited: "boolean",
-  loading: "boolean",
-  errors: "string[]",
-  warnings: "string[]",
-  successes: "string[]",
-  feedbacks: `Array<
-  triggerType?: 'onInput' | 'onFocus' | 'onBlur'
-  type?: 'error' | 'success' | 'warning'
-  code?:
-    | 'ValidateError'
-    | 'ValidateSuccess'
-    | 'ValidateWarning'
-    | 'EffectError'
-    | 'EffectSuccess'
-    | 'EffectWarning'
-  messages?: string[]
->
-`,
-  valid: "boolean",
-  invalid: "boolean",
-  pattern: "'editable' | 'disabled' | 'readOnly' | 'readPretty'",
-  display: "'visible' | 'hidden' | 'none'",
-  disabled: "boolean",
-  readOnly: "boolean",
-  readPretty: "boolean",
-  visible: "boolean",
-  hidden: "boolean",
-  editable: "boolean",
-  validateStatus: "'error' | 'warning' | 'success' | 'validating'",
-  validating: "boolean",
-};
-
 export const FormEffectSetter: React.FC<
   React.PropsWithChildren<IFormEffectSetterProps>
 > = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [innerVisible, setInnerVisible] = useState(false);
-  const prefix = usePrefix("reactions-setter");
+  const prefix = usePrefix("effects-setter");
+
   const form = useMemo(() => {
+    console.log('clone(props.value),:', clone(props.value))
     return createForm({
       values: clone(props.value),
     });
   }, [modalVisible, props.value]);
+
   const formCollapse = useMemo(
-    () => FormCollapse.createFormCollapse?.(["deps", "state"]),
+    () => FormCollapse.createFormCollapse?.(["field", "state"]),
     [modalVisible],
   );
+
   const openModal = () => setModalVisible(true);
   const closeModal = () => setModalVisible(false);
+
   useEffect(() => {
     if (modalVisible) {
       requestIdle(
@@ -169,6 +102,49 @@ export const FormEffectSetter: React.FC<
       setInnerVisible(false);
     }
   }, [modalVisible]);
+
+  const FieldStateValueTypes = {
+    modified: 'boolean',
+    initialized: 'boolean',
+    title: 'string',
+    description: 'string',
+    mounted: 'boolean',
+    unmounted: 'boolean',
+    active: 'boolean',
+    visited: 'boolean',
+    loading: 'boolean',
+    errors: 'string[]',
+    warnings: 'string[]',
+    successes: 'string[]',
+    feedbacks: `Array<
+    triggerType?: 'onInput' | 'onFocus' | 'onBlur'
+    type?: 'error' | 'success' | 'warning'
+    code?:
+      | 'ValidateError'
+      | 'ValidateSuccess'
+      | 'ValidateWarning'
+      | 'EffectError'
+      | 'EffectSuccess'
+      | 'EffectWarning'
+    messages?: string[]
+  >
+  `,
+    valid: 'boolean',
+    invalid: 'boolean',
+    pattern: "'editable' | 'disabled' | 'readOnly' | 'readPretty'",
+    display: "'visible' | 'hidden' | 'none'",
+    disabled: 'boolean',
+    readOnly: 'boolean',
+    readPretty: 'boolean',
+    visible: 'boolean',
+    hidden: 'boolean',
+    editable: 'boolean',
+    validateStatus: "'error' | 'warning' | 'success' | 'validating'",
+    validating: 'boolean',
+  }
+
+
+  console.log('form:', form)
   return (
     <>
       <Button block onClick={openModal}>
@@ -201,22 +177,21 @@ export const FormEffectSetter: React.FC<
                   x-component="FormCollapse"
                   x-component-props={{
                     formCollapse,
-                    defaultActiveKey: ["deps", "state"],
+                    defaultActiveKey: ["field", "state"],
                     style: { marginBottom: 10 },
                   }}
                 >
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
-                      key: "deps",
+                      key: "field",
                       header: GlobalRegistry.getDesignerMessage(
-                        "SettingComponents.FormEffectSetter.relationsFields",
+                        "SettingComponents.FormEffectSetter.fromPath",
                       ),
                     }}
                   >
                     <SchemaField.Array
-                      name="dependencies"
-                      default={[{}]}
+                      name="fieldList"
                       x-component="ArrayTable"
                     >
                       <SchemaField.Object>
@@ -224,131 +199,107 @@ export const FormEffectSetter: React.FC<
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              "SettingComponents.FormEffectSetter.sourceField",
+                              "SettingComponents.FormEffectSetter.fieldTitle",
                             ),
                             width: 240,
                           }}
                         >
                           <SchemaField.String
-                            name="source"
+                            name="fieldTitle"
                             x-decorator="FormItem"
-                            x-component="PathSelector"
-                            x-component-props={{
-                              placeholder: GlobalRegistry.getDesignerMessage(
-                                "SettingComponents.FormEffectSetter.pleaseSelect",
-                              ),
-                            }}
-                          />
-                        </SchemaField.Void>
-                        <SchemaField.Void
-                          x-component="ArrayTable.Column"
-                          x-component-props={{
-                            title: GlobalRegistry.getDesignerMessage(
-                              "SettingComponents.FormEffectSetter.sourceProperty",
-                            ),
-                            width: 200,
-                          }}
-                        >
-                          <SchemaField.String
-                            name="property"
-                            default="value"
-                            x-decorator="FormItem"
-                            x-component="Select"
-                            x-component-props={{ showSearch: true }}
-                            enum={FieldStateProperties}
-                          />
-                        </SchemaField.Void>
-                        <SchemaField.Void
-                          x-component="ArrayTable.Column"
-                          x-component-props={{
-                            title: GlobalRegistry.getDesignerMessage(
-                              "SettingComponents.FormEffectSetter.variableName",
-                            ),
-                            width: 200,
-                          }}
-                        >
-                          <SchemaField.String
-                            name="name"
-                            x-decorator="FormItem"
-                            x-validator={{
-                              pattern: /^[$_a-zA-Z]+[$_a-zA-Z0-9]*$/,
-                              message: GlobalRegistry.getDesignerMessage(
-                                "SettingComponents.FormEffectSetter.variableNameValidateMessage",
-                              ),
-                            }}
-                            x-component="Input"
-                            x-component-props={{
-                              addonBefore: "$deps.",
-                              placeholder: GlobalRegistry.getDesignerMessage(
-                                "SettingComponents.FormEffectSetter.pleaseInput",
-                              ),
-                            }}
-                            x-reactions={(field) => {
-                              if (isVoidField(field)) return;
-                              field.query(".source").take((source) => {
-                                if (isVoidField(source)) return;
-                                if (
-                                  source.value &&
-                                  !field.value &&
-                                  !field.modified
-                                ) {
-                                  field.value =
-                                    source.inputValues[1]?.props?.name ||
-                                    `v_${uid()}`;
-                                }
-                              });
-                            }}
-                          />
-                        </SchemaField.Void>
+                            x-component={(props) => {
+                              const index = ArrayTable.useIndex?.();
+                              console.log('props:', props)
+                              return (
+                                <PathSelector
+                                  value={props.value}
+                                  placeholder={GlobalRegistry.getDesignerMessage(
+                                    "SettingComponents.FormEffectSetter.pleaseSelect",
+                                  )}
+                                  onChange={(value, node) => {
+                                    form.setFieldState(
+                                      `fieldList.${index}.fieldTitle`,
+                                      (state) => {
+                                        state.value = node.props.title || node.props['x-component-props'].title
+                                      },
+                                    );
+                                    form.setFieldState(
+                                      `fieldList.${index}.fieldName`,
+                                      (state) => {
+                                        state.value = node.props.name
+                                      },
+                                    );
+                                    form.setFieldState(
+                                      `fieldList.${index}.fieldPath`,
+                                      (state) => {
+                                        state.value = value
+                                      },
+                                    );
 
+                                    form.setFieldState(
+                                      `fieldList.${index}.fieldType`,
+                                      (state) => {
+                                        state.value = node.props?.type || 'any'
+                                      },
+                                    );
+
+                                  }}
+                                />
+                              )
+                            }}
+                          />
+                        </SchemaField.Void>
                         <SchemaField.Void
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              "SettingComponents.FormEffectSetter.variableType",
+                              'SettingComponents.FormEffectSetter.fieldType'
                             ),
                             ellipsis: {
                               showTitle: false,
                             },
                             width: 200,
-                            align: "center",
+                            align: 'center',
                           }}
                         >
                           <SchemaField.String
-                            name="type"
+                            name="fieldType"
                             default="any"
                             x-decorator="FormItem"
                             x-component="TypeView"
-                            x-reactions={(field) => {
-                              if (isVoidField(field)) return;
-                              const property = field
-                                .query(".property")
-                                .get("inputValues");
-                              if (!property) return;
-                              property[0] = property[0] || "value";
-                              field.query(".source").take((source) => {
-                                if (isVoidField(source)) return;
-                                if (source.value) {
-                                  if (
-                                    property[0] === "value" ||
-                                    property[0] === "initialValue" ||
-                                    property[0] === "inputValue"
-                                  ) {
-                                    field.value =
-                                      source.inputValues[1]?.props?.type ||
-                                      "any";
-                                  } else if (property[0] === "inputValues") {
-                                    field.value = "any[]";
-                                  } else if (property[0]) {
-                                    field.value = (FieldStateValueTypes as any)[
-                                      property[0]
-                                    ];
-                                  } else {
-                                    field.value = "any";
-                                  }
-                                }
-                              });
-                            }}
+                          />
+                        </SchemaField.Void>
+                        <SchemaField.Void
+                          x-component="ArrayTable.Column"
+                          x-component-props={{
+                            title: GlobalRegistry.getDesignerMessage(
+                              "SettingComponents.FormEffectSetter.FieldName",
+                            ),
+                            width: 200,
+                          }}
+                        >
+                          <SchemaField.String
+                            name="fieldName"
+                            x-decorator="FormItem"
+                            x-component="Input"
+                            x-disabled
+                          />
+                        </SchemaField.Void>
+                        <SchemaField.Void
+                          x-component="ArrayTable.Column"
+                          x-component-props={{
+                            title: GlobalRegistry.getDesignerMessage(
+                              "SettingComponents.FormEffectSetter.fieldPath",
+                            ),
+                            width: 200,
+                          }}
+                        >
+                          <SchemaField.String
+                            name="fieldPath"
+                            x-decorator="FormItem"
+                            x-component="Input"
+                            x-disabled
+
                           />
                         </SchemaField.Void>
                         <SchemaField.Void
@@ -369,14 +320,14 @@ export const FormEffectSetter: React.FC<
                       </SchemaField.Object>
                       <SchemaField.Void
                         title={GlobalRegistry.getDesignerMessage(
-                          "SettingComponents.FormEffectSetter.addRelationField",
+                          "SettingComponents.FormEffectSetter.addFormField",
                         )}
                         x-component="ArrayTable.Addition"
                         x-component-props={{ style: { marginTop: 8 } }}
                       />
                     </SchemaField.Array>
                   </SchemaField.Void>
-
+                  {/* 
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
@@ -430,7 +381,7 @@ export const FormEffectSetter: React.FC<
                         }
                       }}
                     />
-                  </SchemaField.Void>
+                  </SchemaField.Void> */}
                 </SchemaField.Void>
               </SchemaField>
             </Form>
