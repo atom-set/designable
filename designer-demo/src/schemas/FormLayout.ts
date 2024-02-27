@@ -1,4 +1,4 @@
-import { RequestSourceSetter } from "@designer/settings-form";
+import { RequestSourceSetter, FormEffectSetter } from "@designer/settings-form";
 import { ISchema } from "@formily/react";
 
 export const FormLayout: ISchema = {
@@ -7,6 +7,10 @@ export const FormLayout: ISchema = {
     'x-requestSource': {
       "x-decorator": "FormItem",
       "x-component": RequestSourceSetter,
+    },
+    'effects': {
+      "x-decorator": "FormItem",
+      "x-component": FormEffectSetter,
     },
     labelCol: {
       type: "number",

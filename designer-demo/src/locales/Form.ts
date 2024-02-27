@@ -5,7 +5,6 @@ export const Form = createLocales(Component, {
 	"zh-CN": {
 		title: "表单",
 		settings: {
-			requestSource: '接口数据',
 			labelCol: "标签网格宽度",
 			wrapperCol: "组件网格宽度",
 			colon: "是否有冒号",
@@ -40,7 +39,6 @@ export const Form = createLocales(Component, {
 	"en-US": {
 		title: "Form",
 		settings: {
-			requestSource: 'Request Source',
 			labelCol: "Label Col",
 			wrapperCol: "Wrapper Col",
 			colon: "Colon",
