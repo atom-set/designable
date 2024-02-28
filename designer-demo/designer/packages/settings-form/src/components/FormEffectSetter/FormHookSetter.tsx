@@ -1,8 +1,8 @@
 import { TextWidget, usePrefix } from "@designer/react";
-import { MonacoInput } from "../MonacoInput";
 import { isPlainObj, reduce } from "@formily/shared";
 import { Menu } from "antd";
 import React, { useState } from "react";
+import { MonacoInput } from "../MonacoInput";
 import { FormHookProperties } from "./properties";
 
 interface IHooksProperty {
@@ -23,8 +23,9 @@ const template = (code: string) => {
 export const FormHookSetter: React.FC<
   React.PropsWithChildren<IFormHookSetterProps>
 > = (props) => {
-  const [selectKeys, setSelectKeys] = useState(["onFormMount"]);
   const prefix = usePrefix("form-hook-setter");
+  const [selectKeys, setSelectKeys] = useState(["onFormMount"]);
+
   const value = { ...props.value };
 
   const parseExpression = (expression: string) => {
@@ -85,7 +86,7 @@ export const FormHookSetter: React.FC<
           setSelectKeys(selectedKeys);
         }}
         items={items}
-      ></Menu>
+      />
       <div className={`${prefix}-coder-wrapper`}>
         <div className={`${prefix}-coder-start`}>
           {`${selectKeys[0]} = ((form) => {`}

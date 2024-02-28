@@ -20,6 +20,7 @@ const transformDataSource = (node: TreeNode) => {
     }
     return dots;
   };
+
   const targetPath = (parentNode: TreeNode, targetNode: TreeNode) => {
     const path: (string | number)[] = [];
     const transform = (node: TreeNode) => {
@@ -32,23 +33,27 @@ const transformDataSource = (node: TreeNode) => {
     transform(targetNode);
     return path.reverse().join(".");
   };
+
   const hasNoVoidChildren = (node: TreeNode): boolean => {
     return node.children?.some((node) => {
       if (node.props?.["type"] !== "void" && node !== currentNode) return true;
       return hasNoVoidChildren(node);
     });
   };
+
   const findRoot = (node: TreeNode): TreeNode => {
     if (!node?.parent) return node;
     if (node?.parent?.componentName !== node.componentName) return node.parent;
     return findRoot(node.parent);
   };
+
   const findArrayParent = (node: TreeNode): TreeNode | undefined => {
     if (!node?.parent) return;
     if (node.parent.props?.["type"] === "array") return node.parent;
     if (node.parent === root) return;
     return findArrayParent(node.parent);
   };
+
   const transformRelativePath = (arrayNode: TreeNode, targetNode: TreeNode) => {
     if (targetNode.depth === currentNode.depth)
       return `.${targetNode.props?.["name"] || targetNode.id}`;
@@ -57,6 +62,7 @@ const transformDataSource = (node: TreeNode) => {
       targetNode,
     )}`;
   };
+
   const transformChildren = (children: TreeNode[], path = []): TreeNode[] => {
     return children.reduce((buf, node) => {
       if (node === currentNode) return buf;
@@ -83,6 +89,7 @@ const transformDataSource = (node: TreeNode) => {
       });
     }, [] as TreeNode[]);
   };
+
   const root = findRoot(node);
   if (root) {
     return transformChildren(root.children);
@@ -106,12 +113,10 @@ export const PathSelector: React.FC<
     }
   };
 
-  console.log('dataSource:', dataSource, props);
   return (
     <TreeSelect
       {...props}
       onChange={(value) => {
-        console.log('TreeSelect value:', value, findNode(dataSource, value))
         props.onChange?.(value, findNode(dataSource, value)!);
       }}
       treeDefaultExpandAll

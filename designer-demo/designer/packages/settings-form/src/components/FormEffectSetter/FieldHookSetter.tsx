@@ -1,8 +1,8 @@
 import { TextWidget, usePrefix } from "@designer/react";
-import { MonacoInput } from "../MonacoInput";
 import { isPlainObj, reduce } from "@formily/shared";
 import { Menu } from "antd";
 import React, { useState } from "react";
+import { MonacoInput } from "../MonacoInput";
 import { FieldHookProperties } from "./properties";
 import { genFunctionBodyCode } from "./helpers";
 
@@ -24,8 +24,9 @@ const template = (code: string) => {
 export const FieldHookSetter: React.FC<
   React.PropsWithChildren<IFieldHookSetterProps>
 > = (props) => {
-  const [selectKeys, setSelectKeys] = useState(["onFieldInit"]);
   const prefix = usePrefix("field-hook-setter");
+  const [selectKeys, setSelectKeys] = useState(["onFieldInit"]);
+
   const value = { ...props.value };
 
   const parseExpression = (expression: string) => {
@@ -86,7 +87,7 @@ export const FieldHookSetter: React.FC<
           setSelectKeys(selectedKeys);
         }}
         items={items}
-      ></Menu>
+      />
       <div className={`${prefix}-coder-wrapper`}>
         <div className={`${prefix}-coder`}>
           <MonacoInput

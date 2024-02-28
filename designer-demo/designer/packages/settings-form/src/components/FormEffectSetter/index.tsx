@@ -1,6 +1,5 @@
 import { GlobalRegistry } from "@designer/core";
 import { TextWidget, usePrefix, useSelectedNode } from "@designer/react";
-import { MonacoInput } from "../MonacoInput";
 import { requestIdle } from "@designer/shared";
 import {
   ArrayTable,
@@ -15,6 +14,7 @@ import { createSchemaField, useField } from "@formily/react";
 import { clone } from "@formily/shared";
 import { Button, Card, Modal, Tag, Tooltip } from "antd";
 import React, { useEffect, useMemo, useState } from "react";
+import { MonacoInput } from "../MonacoInput";
 import { FormHookSetter } from "./FormHookSetter";
 import { FieldHookSetter } from "./FieldHookSetter";
 import { PathSelector } from "./PathSelector";
@@ -81,7 +81,7 @@ export const FormEffectSetter: React.FC<
   }, [modalVisible, props.value]);
 
   const formCollapse = useMemo(
-    () => FormCollapse.createFormCollapse?.(["formHook", 'fieldHook']),
+    () => FormCollapse.createFormCollapse?.(["formHookTab", 'fieldHookTab']),
     [modalVisible],
   );
 
@@ -138,21 +138,21 @@ export const FormEffectSetter: React.FC<
                   x-component="FormCollapse"
                   x-component-props={{
                     formCollapse,
-                    defaultActiveKey: ["formHook", 'fieldHook'],
+                    defaultActiveKey: ["formHookTab", 'fieldHookTab'],
                     style: { marginBottom: 10 },
                   }}
                 >
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
-                      key: "fieldMenu",
+                      key: "formPathTab",
                       header: GlobalRegistry.getDesignerMessage(
                         "SettingComponents.FormEffectSetter.fromPath",
                       ),
                     }}
                   >
                     <SchemaField.Array
-                      name="fieldList"
+                      name="formPath"
                       x-component="ArrayTable"
                     >
                       <SchemaField.Object>
@@ -166,11 +166,10 @@ export const FormEffectSetter: React.FC<
                           }}
                         >
                           <SchemaField.String
-                            name="fieldTitle"
+                            name="title"
                             x-decorator="FormItem"
                             x-component={(props) => {
                               const index = ArrayTable.useIndex?.();
-                              console.log('props:', props)
                               return (
                                 <PathSelector
                                   value={props.value}
@@ -179,31 +178,32 @@ export const FormEffectSetter: React.FC<
                                   )}
                                   onChange={(value, node) => {
                                     form.setFieldState(
-                                      `fieldList.${index}.fieldTitle`,
+                                      `formPath.${index}.title`,
                                       (state) => {
                                         state.value = node.props.title || node.props['x-component-props'].title
                                       },
                                     );
+
                                     form.setFieldState(
-                                      `fieldList.${index}.fieldName`,
+                                      `formPath.${index}.name`,
                                       (state) => {
                                         state.value = node.props.name
                                       },
                                     );
+
                                     form.setFieldState(
-                                      `fieldList.${index}.fieldPath`,
+                                      `formPath.${index}.path`,
                                       (state) => {
                                         state.value = value
                                       },
                                     );
 
                                     form.setFieldState(
-                                      `fieldList.${index}.fieldType`,
+                                      `formPath.${index}.type`,
                                       (state) => {
                                         state.value = node.props?.type || 'any'
                                       },
                                     );
-
                                   }}
                                 />
                               )
@@ -224,7 +224,7 @@ export const FormEffectSetter: React.FC<
                           }}
                         >
                           <SchemaField.String
-                            name="fieldType"
+                            name="type"
                             default="any"
                             x-decorator="FormItem"
                             x-component="TypeView"
@@ -240,10 +240,10 @@ export const FormEffectSetter: React.FC<
                           }}
                         >
                           <SchemaField.String
-                            name="fieldName"
+                            name="name"
                             x-decorator="FormItem"
                             x-component="Input"
-                            x-disabled
+                            readOnly
                           />
                         </SchemaField.Void>
                         <SchemaField.Void
@@ -256,11 +256,10 @@ export const FormEffectSetter: React.FC<
                           }}
                         >
                           <SchemaField.String
-                            name="fieldPath"
+                            name="path"
                             x-decorator="FormItem"
                             x-component="Input"
-                            x-disabled
-
+                            readOnly
                           />
                         </SchemaField.Void>
                         <SchemaField.Void
@@ -295,12 +294,12 @@ export const FormEffectSetter: React.FC<
                       header: GlobalRegistry.getDesignerMessage(
                         "SettingComponents.FormEffectSetter.formEffectHook",
                       ),
-                      key: "formHook",
+                      key: "formHookTab",
                       className: "form-hooks",
                     }}
                   >
                     <SchemaField.Markup
-                      name="formHook"
+                      name="hooks[0]"
                       x-component="FormHookSetter"
                     />
                   </SchemaField.Void>
@@ -311,15 +310,16 @@ export const FormEffectSetter: React.FC<
                       header: GlobalRegistry.getDesignerMessage(
                         "SettingComponents.FormEffectSetter.fieldEffectHook",
                       ),
-                      key: "fieldHook",
+                      key: "fieldHookTab",
                       className: "field-hooks",
                     }}
                   >
                     <SchemaField.Markup
-                      name="fieldHook"
+                      name="hooks[1]"
                       x-component="FieldHookSetter"
                     />
                   </SchemaField.Void>
+
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
@@ -331,7 +331,7 @@ export const FormEffectSetter: React.FC<
                     }}
                   >
                     <SchemaField.String
-                      name="custom"
+                      name="hooks[2]"
                       x-component="MonacoInput"
                       x-component-props={{
                         width: "100%",

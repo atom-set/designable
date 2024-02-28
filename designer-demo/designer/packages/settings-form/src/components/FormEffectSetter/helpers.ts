@@ -122,4 +122,4 @@ ${functionName}(pattern, (field) => {
 })
 `
   return valCode;
-}
+};
