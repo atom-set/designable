@@ -1,9 +1,9 @@
 import { GlobalRegistry } from "@designer/core";
 import { TextWidget, useDesigner } from "@designer/react";
 import { observer } from "@formily/react";
-import { Button, Radio, Space } from "antd";
+import { Button, Radio, Space, Popconfirm } from "antd";
 import React, { useEffect } from "react";
-import { loadInitialSchema, saveSchema } from "../utils";
+import { loadInitialSchema, resetSchema, saveSchema } from "../utils";
 
 export const ActionsWidget = observer(() => {
   const designer = useDesigner();
@@ -36,6 +36,18 @@ export const ActionsWidget = observer(() => {
       >
         <TextWidget>Save</TextWidget>
       </Button>
+      <Popconfirm
+        title={() => {
+          return <TextWidget>confirmReset</TextWidget>
+        }}
+        onConfirm={() => {
+          resetSchema(designer);
+        }}
+        okText="Confirm"
+        cancelText="Cancel"
+      >
+        <Button danger><TextWidget>reset</TextWidget></Button>
+      </Popconfirm>
       <Button
         type="primary"
         onClick={() => {

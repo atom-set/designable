@@ -10,6 +10,14 @@ export const saveSchema = (designer: Engine) => {
   message.success("Save Success");
 };
 
+export const resetSchema = (designer: Engine) => {
+  if (designer?.workbench?.currentWorkspace?.id) {
+    designer?.workbench?.removeWorkspace(designer?.workbench?.currentWorkspace?.id)
+  }
+  localStorage.removeItem("formily-schema",);
+  message.success("Reset Success");
+};
+
 export const loadInitialSchema = (designer: Engine) => {
   try {
     designer.setCurrentTree(
