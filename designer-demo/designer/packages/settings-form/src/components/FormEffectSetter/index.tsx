@@ -10,23 +10,22 @@ import {
   Input,
   Select,
 } from "@formily/antd";
-import { createForm, isVoidField, onFieldInputValueChange } from "@formily/core";
+import { createForm } from "@formily/core";
 import { createSchemaField, useField } from "@formily/react";
-import { clone, uid } from "@formily/shared";
+import { clone } from "@formily/shared";
 import { Button, Card, Modal, Tag, Tooltip } from "antd";
 import React, { useEffect, useMemo, useState } from "react";
-import { FieldPropertySetter } from "./FieldPropertySetter";
 import { FormHookSetter } from "./FormHookSetter";
 import { FieldHookSetter } from "./FieldHookSetter";
 import { PathSelector } from "./PathSelector";
 import { initDeclaration } from "./declarations";
-import { FulfillRunHelper } from "./helpers";
+import { CustomEffectHookHelper } from "./helpers";
+import { IEffectHooks } from "./types";
 import "./styles.less";
-import { IReaction } from "./types";
 
 export interface IFormEffectSetterProps {
-  value?: IReaction; //  TODO:
-  onChange?: (value: IReaction) => void;
+  value?: IEffectHooks;
+  onChange?: (value: IEffectHooks) => void;
 }
 
 const TypeView = ({ value }: { value: any }) => {
@@ -61,7 +60,6 @@ const SchemaField = createSchemaField({
     FormItem,
     PathSelector,
     MonacoInput,
-    FieldPropertySetter,
     FormHookSetter,
     FieldHookSetter,
     ArrayTable,
@@ -302,7 +300,7 @@ export const FormEffectSetter: React.FC<
                     }}
                   >
                     <SchemaField.Markup
-                      name="form.formHook"
+                      name="formHook"
                       x-component="FormHookSetter"
                     />
                   </SchemaField.Void>
@@ -318,28 +316,28 @@ export const FormEffectSetter: React.FC<
                     }}
                   >
                     <SchemaField.Markup
-                      name="form.fieldHook"
+                      name="fieldHook"
                       x-component="FieldHookSetter"
                     />
                   </SchemaField.Void>
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
-                      key: "run",
+                      key: "customHook",
                       header: GlobalRegistry.getDesignerMessage(
                         "SettingComponents.FormEffectSetter.actionEffects",
                       ),
-                      className: "reaction-runner",
+                      className: "custom-hooks",
                     }}
                   >
                     <SchemaField.String
-                      name="fulfill.run"
+                      name="custom"
                       x-component="MonacoInput"
                       x-component-props={{
                         width: "100%",
                         height: 400,
                         language: "typescript",
-                        helpCode: FulfillRunHelper,
+                        helpCode: CustomEffectHookHelper,
                         options: {
                           minimap: {
                             enabled: false,

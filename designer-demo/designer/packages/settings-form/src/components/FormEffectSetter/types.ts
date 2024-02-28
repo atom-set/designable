@@ -1,12 +1,17 @@
-export interface IReaction {
-  dependencies?: {
-    [key: string]: string;
+export interface IEffectHooks {
+  fieldList?: {
+    [key: string]: Array<{
+      "fieldType": string;
+      "fieldTitle": string;
+      "fieldName": string;
+      "fieldPath": string;
+    }>;
   };
-  fulfill?: {
-    state?: {
+  form?: {
+    fieldHook?: {
       [key: string]: string;
     };
-    schema?: {
+    formHook?: {
       [key: string]: string;
     };
   };

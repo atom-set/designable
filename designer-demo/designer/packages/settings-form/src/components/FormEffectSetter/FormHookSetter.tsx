@@ -4,14 +4,15 @@ import { isPlainObj, reduce } from "@formily/shared";
 import { Menu } from "antd";
 import React, { useState } from "react";
 import { FormHookProperties } from "./properties";
-export interface IFieldProperty {
+
+interface IHooksProperty {
   [key: string]: string;
 }
 
 export interface IFormHookSetterProps {
   extraLib?: string;
-  value?: IFieldProperty;
-  onChange?: (value: IFieldProperty) => void;
+  value?: IHooksProperty;
+  onChange?: (value: IHooksProperty) => void;
 }
 
 const template = (code: string) => {

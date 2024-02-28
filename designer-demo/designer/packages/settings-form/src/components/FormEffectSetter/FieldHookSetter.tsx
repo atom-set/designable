@@ -5,14 +5,15 @@ import { Menu } from "antd";
 import React, { useState } from "react";
 import { FieldHookProperties } from "./properties";
 import { genFunctionBodyCode } from "./helpers";
-export interface IFieldProperty {
+
+interface IHooksProperty {
   [key: string]: string;
 }
 
 export interface IFieldHookSetterProps {
   extraLib?: string;
-  value?: IFieldProperty;
-  onChange?: (value: IFieldProperty) => void;
+  value?: IHooksProperty;
+  onChange?: (value: IHooksProperty) => void;
 }
 
 const template = (code: string) => {
@@ -28,7 +29,6 @@ export const FieldHookSetter: React.FC<
   const value = { ...props.value };
 
   const parseExpression = (expression: string) => {
-    console.log('expression:', expression);
     if (!expression) return "";
     return String(expression).match(/^\{\{([\s\S]*)\}\}$/)?.[1] || "";
   };
@@ -68,15 +68,6 @@ export const FieldHookSetter: React.FC<
       };
     return item;
   });
-
-  const renderValue = (val) => {
-    const valCode = `
-onFieldReact(pattern, (field) => {
-
-})
-  `
-    return valCode;
-  }
 
   return (
     <div className={prefix}>

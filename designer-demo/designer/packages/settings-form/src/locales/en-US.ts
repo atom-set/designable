@@ -107,29 +107,6 @@ export default {
         onFieldInputValueChange: 'onFieldInputValueChange',
         actionEffects:
           "Form Effects(Optional, Support Javascript Statement)",
-        // TODO:
-        relationsFields: "Associated Fields",
-        variableNameValidateMessage: "This is not a standard variable name",
-        pleaseInput: "Please Input",
-        sourceField: "Source Field",
-        sourceProperty: "Field Property",
-        propertyReactions:
-          "Property Reactions(Only Support Javascript Expression)",
-
-        visible: "Show/None",
-        hidden: "Show/UI Hidden",
-        display: "Display",
-        pattern: "Pattern",
-        title: "Title",
-        description: "Description",
-        value: "Value",
-        initialValue: "InitialValue",
-        dataSource: "Options",
-        required: "Required",
-        component: "Component",
-        componentProps: "Component Props",
-        decorator: "Decorator",
-        decoratorProps: "Decorator Props",
       },
       ReactionsSetter: {
         configureReactions: "Configure",

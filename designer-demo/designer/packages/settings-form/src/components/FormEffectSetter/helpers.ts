@@ -7,7 +7,7 @@ export const GlobalHelper = `
  **/
 `;
 
-export const FulfillRunHelper = `
+export const CustomEffectHookHelper = `
 /** 
  * Example 1
  * onFormMount
@@ -30,7 +30,6 @@ onFieldInputValueChange('target', (field) => {
 ${GlobalHelper}
 `;
 
-// TODO:
 export const FormMountHelper = `
 /** 
  * Example 1
