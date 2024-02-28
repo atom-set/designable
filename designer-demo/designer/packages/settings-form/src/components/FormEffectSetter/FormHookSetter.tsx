@@ -1,9 +1,10 @@
 import { TextWidget, usePrefix } from "@designer/react";
 import { isPlainObj, reduce } from "@formily/shared";
 import { Menu } from "antd";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { MonacoInput } from "../MonacoInput";
 import { FormHookProperties } from "./properties";
+import { getFormHooksBlockCode } from "./helpers";
 
 interface IHooksProperty {
   [key: string]: string;
@@ -69,6 +70,13 @@ export const FormHookSetter: React.FC<
     return item;
   });
 
+  const defaultCode = useMemo((): string => {
+    if (selectKeys[0] && parseExpression(value[selectKeys[0]])) {
+      return parseExpression(value[selectKeys[0]]);
+    }
+    return getFormHooksBlockCode(selectKeys[0])
+  }, [value, selectKeys[0]])
+
   return (
     <div className={prefix}>
       <Menu
@@ -88,30 +96,13 @@ export const FormHookSetter: React.FC<
         items={items}
       />
       <div className={`${prefix}-coder-wrapper`}>
-        <div className={`${prefix}-coder-start`}>
-          {`${selectKeys[0]} = ((form) => {`}
-          <span
-            style={{
-              fontSize: 14,
-              marginLeft: 10,
-              color: "#888",
-              fontWeight: "normal",
-            }}
-          >
-            {"//"}{" "}
-            <TextWidget token="SettingComponents.FormEffectSetter.expressionValueTypeIs" />{" "}
-            {"`"}
-            {currentProperty?.type}
-            {"`"}
-          </span>
-        </div>
         <div className={`${prefix}-coder`}>
           <MonacoInput
             key={selectKeys[0]}
             language="javascript.expression"
             extraLib={props.extraLib}
             helpCode={template(currentProperty?.helpCode!)}
-            value={parseExpression(value[selectKeys[0]])}
+            value={defaultCode}
             options={{
               lineNumbers: "off",
               wordWrap: "on",
@@ -133,7 +124,6 @@ export const FormHookSetter: React.FC<
             }}
           />
         </div>
-        <div className={`${prefix}-coder-end`}>{"})"}</div>
       </div>
     </div>
   );

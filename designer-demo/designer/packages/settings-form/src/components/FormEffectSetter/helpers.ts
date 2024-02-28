@@ -112,10 +112,19 @@ onFieldInputValueChange(pattern, (field) => {
 })
 `;
 
-export const genFunctionBodyCode = (functionName: string, functionBody) => {
-  const valCode = `
-${functionName}(pattern, (field) => {
+export const getFormHooksBlockCode: (str: string) => string = (functionName: string) => {
+  const valCode = `${functionName}((form) => {
 
+
+
+  
+})
+`
+  return valCode;
+};
+
+export const getFieldHooksBlockCode: (str: string) => string = (functionName: string) => {
+  const valCode = `${functionName}('pattern', (field) => {
 
 
   

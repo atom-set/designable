@@ -299,7 +299,7 @@ export const FormEffectSetter: React.FC<
                     }}
                   >
                     <SchemaField.Markup
-                      name="hooks[0]"
+                      name="formHook"
                       x-component="FormHookSetter"
                     />
                   </SchemaField.Void>
@@ -315,7 +315,7 @@ export const FormEffectSetter: React.FC<
                     }}
                   >
                     <SchemaField.Markup
-                      name="hooks[1]"
+                      name="fieldHook"
                       x-component="FieldHookSetter"
                     />
                   </SchemaField.Void>
@@ -331,7 +331,7 @@ export const FormEffectSetter: React.FC<
                     }}
                   >
                     <SchemaField.String
-                      name="hooks[2]"
+                      name="customHook"
                       x-component="MonacoInput"
                       x-component-props={{
                         width: "100%",

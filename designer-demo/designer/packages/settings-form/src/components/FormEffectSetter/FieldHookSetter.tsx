@@ -1,10 +1,10 @@
 import { TextWidget, usePrefix } from "@designer/react";
 import { isPlainObj, reduce } from "@formily/shared";
 import { Menu } from "antd";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { MonacoInput } from "../MonacoInput";
 import { FieldHookProperties } from "./properties";
-import { genFunctionBodyCode } from "./helpers";
+import { getFieldHooksBlockCode } from "./helpers";
 
 interface IHooksProperty {
   [key: string]: string;
@@ -70,6 +70,13 @@ export const FieldHookSetter: React.FC<
     return item;
   });
 
+  const defaultCode = useMemo((): string => {
+    if (selectKeys[0] && parseExpression(value[selectKeys[0]])) {
+      return parseExpression(value[selectKeys[0]]);
+    }
+    return getFieldHooksBlockCode(selectKeys[0])
+  }, [value, selectKeys[0]])
+
   return (
     <div className={prefix}>
       <Menu
@@ -95,7 +102,7 @@ export const FieldHookSetter: React.FC<
             language="javascript.expression"
             extraLib={props.extraLib}
             helpCode={template(currentProperty?.helpCode!)}
-            value={genFunctionBodyCode(selectKeys[0], parseExpression(value[selectKeys[0]]))}
+            value={defaultCode}
             options={{
               lineNumbers: "off",
               wordWrap: "on",
