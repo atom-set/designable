@@ -16,6 +16,8 @@ import { clone, uid } from "@formily/shared";
 import { Button, Card, Modal, Tag, Tooltip } from "antd";
 import React, { useEffect, useMemo, useState } from "react";
 import { FieldPropertySetter } from "./FieldPropertySetter";
+import { FormHookSetter } from "./FormHookSetter";
+import { FieldHookSetter } from "./FieldHookSetter";
 import { PathSelector } from "./PathSelector";
 import { initDeclaration } from "./declarations";
 import { FulfillRunHelper } from "./helpers";
@@ -60,6 +62,8 @@ const SchemaField = createSchemaField({
     PathSelector,
     MonacoInput,
     FieldPropertySetter,
+    FormHookSetter,
+    FieldHookSetter,
     ArrayTable,
   },
 });
@@ -79,7 +83,7 @@ export const FormEffectSetter: React.FC<
   }, [modalVisible, props.value]);
 
   const formCollapse = useMemo(
-    () => FormCollapse.createFormCollapse?.(["field", "state"]),
+    () => FormCollapse.createFormCollapse?.(["formHook", 'fieldHook']),
     [modalVisible],
   );
 
@@ -102,47 +106,6 @@ export const FormEffectSetter: React.FC<
       setInnerVisible(false);
     }
   }, [modalVisible]);
-
-  const FieldStateValueTypes = {
-    modified: 'boolean',
-    initialized: 'boolean',
-    title: 'string',
-    description: 'string',
-    mounted: 'boolean',
-    unmounted: 'boolean',
-    active: 'boolean',
-    visited: 'boolean',
-    loading: 'boolean',
-    errors: 'string[]',
-    warnings: 'string[]',
-    successes: 'string[]',
-    feedbacks: `Array<
-    triggerType?: 'onInput' | 'onFocus' | 'onBlur'
-    type?: 'error' | 'success' | 'warning'
-    code?:
-      | 'ValidateError'
-      | 'ValidateSuccess'
-      | 'ValidateWarning'
-      | 'EffectError'
-      | 'EffectSuccess'
-      | 'EffectWarning'
-    messages?: string[]
-  >
-  `,
-    valid: 'boolean',
-    invalid: 'boolean',
-    pattern: "'editable' | 'disabled' | 'readOnly' | 'readPretty'",
-    display: "'visible' | 'hidden' | 'none'",
-    disabled: 'boolean',
-    readOnly: 'boolean',
-    readPretty: 'boolean',
-    visible: 'boolean',
-    hidden: 'boolean',
-    editable: 'boolean',
-    validateStatus: "'error' | 'warning' | 'success' | 'validating'",
-    validating: 'boolean',
-  }
-
 
   console.log('form:', form)
   return (
@@ -177,14 +140,14 @@ export const FormEffectSetter: React.FC<
                   x-component="FormCollapse"
                   x-component-props={{
                     formCollapse,
-                    defaultActiveKey: ["field", "state"],
+                    defaultActiveKey: ["formHook", 'fieldHook'],
                     style: { marginBottom: 10 },
                   }}
                 >
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
-                      key: "field",
+                      key: "fieldMenu",
                       header: GlobalRegistry.getDesignerMessage(
                         "SettingComponents.FormEffectSetter.fromPath",
                       ),
@@ -327,20 +290,36 @@ export const FormEffectSetter: React.FC<
                       />
                     </SchemaField.Array>
                   </SchemaField.Void>
-                  {/* 
+
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       header: GlobalRegistry.getDesignerMessage(
-                        "SettingComponents.FormEffectSetter.propertyReactions",
+                        "SettingComponents.FormEffectSetter.formEffectHook",
                       ),
-                      key: "state",
-                      className: "reaction-state",
+                      key: "formHook",
+                      className: "form-hooks",
                     }}
                   >
                     <SchemaField.Markup
-                      name="fulfill.state"
-                      x-component="FieldPropertySetter"
+                      name="form.formHook"
+                      x-component="FormHookSetter"
+                    />
+                  </SchemaField.Void>
+
+                  <SchemaField.Void
+                    x-component="FormCollapse.CollapsePanel"
+                    x-component-props={{
+                      header: GlobalRegistry.getDesignerMessage(
+                        "SettingComponents.FormEffectSetter.fieldEffectHook",
+                      ),
+                      key: "fieldHook",
+                      className: "field-hooks",
+                    }}
+                  >
+                    <SchemaField.Markup
+                      name="form.fieldHook"
+                      x-component="FieldHookSetter"
                     />
                   </SchemaField.Void>
                   <SchemaField.Void
@@ -348,7 +327,7 @@ export const FormEffectSetter: React.FC<
                     x-component-props={{
                       key: "run",
                       header: GlobalRegistry.getDesignerMessage(
-                        "SettingComponents.FormEffectSetter.actionReactions",
+                        "SettingComponents.FormEffectSetter.actionEffects",
                       ),
                       className: "reaction-runner",
                     }}
@@ -367,21 +346,8 @@ export const FormEffectSetter: React.FC<
                           },
                         },
                       }}
-                      x-reactions={(field) => {
-                        const deps = field.query("dependencies").value();
-                        if (Array.isArray(deps)) {
-                          field.componentProps["extraLib"] = `
-                          declare var $deps : {
-                            ${deps.map(({ name, type }) => {
-                            if (!name) return "";
-                            return `${name}?:${type || "any"},`;
-                          })}
-                          }
-                          `;
-                        }
-                      }}
                     />
-                  </SchemaField.Void> */}
+                  </SchemaField.Void>
                 </SchemaField.Void>
               </SchemaField>
             </Form>

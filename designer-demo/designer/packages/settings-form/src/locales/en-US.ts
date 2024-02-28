@@ -94,18 +94,28 @@ export default {
         operations: "Operations",
         addFormField: "Add Form Field",
         fieldType: "Field Type",
+        formEffectHook: 'Form Effects Hook',
+        onFormMount: 'onFormMount',
+        onFormUnmount: 'onFormUnmount',
+        onFormSubmit: 'onFormSubmit',
+        expressionValueTypeIs: "Expression value type is",
+        fieldEffectHook: 'Form Effects Hook',
+        onFieldInit: 'onFieldInit',
+        onFieldUnmount: 'onFieldUnmount',
+        onFieldReact: 'onFieldReact',
+        onFieldValueChange: 'onFieldValueChange',
+        onFieldInputValueChange: 'onFieldInputValueChange',
+        actionEffects:
+          "Form Effects(Optional, Support Javascript Statement)",
         // TODO:
         relationsFields: "Associated Fields",
         variableNameValidateMessage: "This is not a standard variable name",
         pleaseInput: "Please Input",
         sourceField: "Source Field",
         sourceProperty: "Field Property",
-
-
         propertyReactions:
           "Property Reactions(Only Support Javascript Expression)",
-        actionReactions:
-          "Action Reactions(Optional, Support Javascript Statement)",
+
         visible: "Show/None",
         hidden: "Show/UI Hidden",
         display: "Display",
@@ -120,7 +130,6 @@ export default {
         componentProps: "Component Props",
         decorator: "Decorator",
         decoratorProps: "Decorator Props",
-        expressionValueTypeIs: "Expression value type is",
       },
       ReactionsSetter: {
         configureReactions: "Configure",

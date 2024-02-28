@@ -1,51 +1,64 @@
 import {
-  BooleanHelper,
-  PatternHelper,
-  StringHelper,
-  AnyHelper,
-  DataSourceHelper,
-  DecoratorPropsHelper,
-  DisplayHelper,
-  ComponentPropsHelper,
+  FormMountHelper,
+  FormUnmountHelper,
+  FormSubmitHelper,
+  FieldInitHelper,
+  FieldUnmountHelper,
+  FieldReactHelper,
+  FieldValueChangeHelper,
+  FieldInputValueChangeHelper,
 } from "./helpers";
 
-export const FieldProperties = [
+export const FormHookProperties = [
   {
-    key: "visible",
-    type: "boolean",
-    helpCode: BooleanHelper,
-  },
-  { key: "hidden", type: "boolean", helpCode: BooleanHelper },
-  {
-    key: "display",
-    type: '"visible" | "hidden" | "none"',
-    helpCode: DisplayHelper,
+    key: "onFormMount",
+    token: "onFormMount",
+    type: "function",
+    helpCode: FormMountHelper,
   },
   {
-    key: "pattern",
-    type: '"editable" | "disabled" | "readOnly" | "readPretty"',
-    helpCode: PatternHelper,
-  },
-  { key: "title", type: "string", helpCode: StringHelper },
-  { key: "description", type: "string", helpCode: StringHelper },
-  { key: "value", type: "any", helpCode: AnyHelper },
-  { key: "initialValue", type: "any", helpCode: AnyHelper },
-  { key: "required", type: "boolean", helpCode: BooleanHelper },
-  {
-    key: "dataSource",
-    type: "Array<{label?:string,value?:any}>",
-    helpCode: DataSourceHelper,
+    key: "onFormUnmount",
+    token: "onFormUnmount",
+    type: "function",
+    helpCode: FormUnmountHelper,
   },
   {
-    key: "componentProps",
-    token: "componentProps",
-    type: "object",
-    helpCode: ComponentPropsHelper,
+    key: "onFormSubmit",
+    token: "onFormSubmit",
+    type: "function",
+    helpCode: FormSubmitHelper,
+  },
+];
+
+export const FieldHookProperties = [
+  {
+    key: "onFieldInit",
+    token: "onFieldInit",
+    type: "function",
+    helpCode: FieldInitHelper,
   },
   {
-    key: "decoratorProps",
-    token: "decoratorProps",
-    type: "object",
-    helpCode: DecoratorPropsHelper,
+    key: "onFieldUnmount",
+    token: "onFieldUnmount",
+    type: "function",
+    helpCode: FieldUnmountHelper,
+  },
+  {
+    key: "onFieldReact",
+    token: "onFieldReact",
+    type: "function",
+    helpCode: FieldReactHelper,
+  },
+  {
+    key: "onFieldValueChange",
+    token: "onFieldValueChange",
+    type: "function",
+    helpCode: FieldValueChangeHelper,
+  },
+  {
+    key: "onFieldInputValueChange",
+    token: "onFieldInputValueChange",
+    type: "function",
+    helpCode: FieldInputValueChangeHelper,
   },
 ];
