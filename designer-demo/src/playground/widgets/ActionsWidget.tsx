@@ -3,7 +3,7 @@ import { TextWidget, useDesigner } from "@designer/react";
 import { observer } from "@formily/react";
 import { Button, Radio, Space, Popconfirm } from "antd";
 import React, { useEffect } from "react";
-import { loadInitialSchema, resetSchema, saveSchema } from "../utils";
+import { loadInitialSchema, publicSchema, resetSchema, saveSchema } from "../utils";
 
 export const ActionsWidget = observer(() => {
   const designer = useDesigner();
@@ -51,7 +51,7 @@ export const ActionsWidget = observer(() => {
       <Button
         type="primary"
         onClick={() => {
-          saveSchema(designer);
+          publicSchema(designer);
         }}
       >
         <TextWidget>Publish</TextWidget>

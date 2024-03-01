@@ -4,7 +4,7 @@ import { ISchema } from "@formily/react";
 export const FormLayout: ISchema = {
   type: "object",
   properties: {
-    'x-requestSource': {
+    'scope': {
       "x-decorator": "FormItem",
       "x-component": RequestSourceSetter,
     },

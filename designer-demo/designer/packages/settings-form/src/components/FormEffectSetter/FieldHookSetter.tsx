@@ -71,8 +71,8 @@ export const FieldHookSetter: React.FC<
   });
 
   const defaultCode = useMemo((): string => {
-    if (selectKeys[0] && parseExpression(value[selectKeys[0]])) {
-      return parseExpression(value[selectKeys[0]]);
+    if (selectKeys[0] && value[selectKeys[0]]) {
+      return value[selectKeys[0]];
     }
     return getFieldHooksBlockCode(selectKeys[0])
   }, [value, selectKeys[0]])
@@ -118,7 +118,7 @@ export const FieldHookSetter: React.FC<
               props.onChange?.(
                 filterEmpty({
                   ...value,
-                  [selectKeys[0]]: `{{${expression}}}`,
+                  [selectKeys[0]]: `${expression}`,
                 }),
               );
             }}

@@ -29,10 +29,10 @@ export const FormHookSetter: React.FC<
 
   const value = { ...props.value };
 
-  const parseExpression = (expression: string) => {
-    if (!expression) return "";
-    return String(expression).match(/^\{\{([\s\S]*)\}\}$/)?.[1] || "";
-  };
+  // const parseExpression = (expression: string) => {
+  //   if (!expression) return "";
+  //   return String(expression).match(/^\{\{([\s\S]*)\}\}$/)?.[1] || "";
+  // };
 
   const filterEmpty = (value: object) => {
     return reduce(
@@ -71,8 +71,8 @@ export const FormHookSetter: React.FC<
   });
 
   const defaultCode = useMemo((): string => {
-    if (selectKeys[0] && parseExpression(value[selectKeys[0]])) {
-      return parseExpression(value[selectKeys[0]]);
+    if (selectKeys[0] && value[selectKeys[0]]) {
+      return value[selectKeys[0]];
     }
     return getFormHooksBlockCode(selectKeys[0])
   }, [value, selectKeys[0]])
@@ -118,7 +118,7 @@ export const FormHookSetter: React.FC<
               props.onChange?.(
                 filterEmpty({
                   ...value,
-                  [selectKeys[0]]: `{{${expression}}}`,
+                  [selectKeys[0]]: `${expression}`,
                 }),
               );
             }}

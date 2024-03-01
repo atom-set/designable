@@ -12,8 +12,10 @@ export const saveSchema = (designer: Engine) => {
 
 export const resetSchema = (designer: Engine) => {
   if (designer?.workbench?.currentWorkspace?.id) {
-    designer?.workbench?.removeWorkspace(designer?.workbench?.currentWorkspace?.id)
+    delete designer.getCurrentTree().props.effects;
+    delete designer.getCurrentTree().props.scope;
   }
+  designer.setCurrentTree(transformToTreeNode({}));
   localStorage.removeItem("formily-schema",);
   message.success("Reset Success");
 };
@@ -24,4 +26,14 @@ export const loadInitialSchema = (designer: Engine) => {
       transformToTreeNode(JSON.parse(localStorage.getItem("formily-schema")!)),
     );
   } catch { }
+};
+
+export const publicSchema = (designer: Engine) => {
+  const jsonSchema = transformToSchema(designer.getCurrentTree());
+  localStorage.setItem(
+    "formily-schema",
+    JSON.stringify(jsonSchema!),
+  );
+
+  message.success("Public Success");
 };

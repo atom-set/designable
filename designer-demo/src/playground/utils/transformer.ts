@@ -1,5 +1,6 @@
 import { ITreeNode } from "@designer/core";
 import { clone, uid } from "@designer/shared";
+import { IFormProps, } from "@formily/core";
 import { ISchema, Schema } from "@formily/json-schema";
 
 export interface ITransformerOptions {
@@ -9,6 +10,8 @@ export interface ITransformerOptions {
 
 export interface IFormilySchema {
   schema?: ISchema;
+  effect?: string[];
+  scope?: Record<string, string>;
   form?: Record<string, any>;
 }
 
@@ -19,6 +22,47 @@ const createOptions = (options: ITransformerOptions): ITransformerOptions => {
     ...options,
   };
 };
+
+// form effect
+export const parseFormEffect = (effects) => {
+  const res = [];
+  const { fieldHook = {}, formHook = {}, customHook = '' } = effects;
+
+  for (let item in formHook) {
+    if (formHook[item]) {
+      res.push(formHook[item])
+    }
+  }
+
+  for (let item in fieldHook) {
+    if (fieldHook[item]) {
+      res.push(fieldHook[item])
+    }
+  }
+
+  if (customHook) {
+    res.push(customHook)
+  }
+
+  return res;
+}
+
+// form scope
+export const parseFormScope = (scope) => {
+  const fetchAddress = (field) => {
+    field.loading = true
+    fetch('//unpkg.com/china-location/dist/location.json')
+      .then((res) => res.json())
+      .then((data) => {
+        field.dataSource = data
+        field.loading = false
+      })
+  }
+
+  return {
+    fetchAddress: fetchAddress,
+  }
+}
 
 const findNode = (node: ITreeNode, finder?: (node: ITreeNode) => boolean) => {
   if (!node) return;
@@ -75,7 +119,14 @@ export const transformToSchema = (
     }
     return schema;
   };
-  return { form: clone(root.props), schema: createSchema(root, schema) };
+
+  const cloneForm = clone(root.props);
+  const effect = parseFormEffect(cloneForm?.effects);
+  return {
+    form: cloneForm,
+    schema: createSchema(root, schema),
+    effect: effect
+  };
 };
 
 export const transformToTreeNode = (
