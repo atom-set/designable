@@ -54,7 +54,7 @@ export const RequestSourceSetter: React.FC<
         title={
           <TextWidget token="SettingComponents.RequestSourceSetter.configureRequest" />
         }
-        width="65%"
+        width="80%"
         bodyStyle={{ padding: 10 }}
         open={drawerVisible}
         onClose={closeDrawer}

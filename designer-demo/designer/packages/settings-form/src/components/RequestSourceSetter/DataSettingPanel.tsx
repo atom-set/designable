@@ -1,10 +1,12 @@
 import { TextWidget, usePrefix } from "@designer/react";
 import { ValueInput } from "../ValueInput";
-import { ArrayItems, Form, FormButtonGroup, FormItem, Input, Reset, Select, Submit } from "@formily/antd";
+import { ArrayItems, Form, FormButtonGroup, FormItem, FormTab, Input, Reset, Select, Submit } from "@formily/antd";
 import { Form as FormCore, createForm } from "@formily/core";
 import { createSchemaField } from "@formily/react";
 import { observer } from "@formily/reactive-react";
 import React, { useMemo, Fragment } from "react";
+import { MonacoInput } from "../MonacoInput";
+import { requestAdapterCode, responseAdapterCode } from "./helper";
 import { Header } from "./Header";
 import { traverseData } from "./shared";
 import "./styles.less";
@@ -17,6 +19,8 @@ const SchemaField = createSchemaField({
     ArrayItems,
     ValueInput,
     Select,
+    FormTab,
+    MonacoInput,
   },
 });
 
@@ -24,6 +28,8 @@ export interface IDataSettingPanelProps {
   treeDataSource: IDataSource;
   effects?: (form: FormCore<any>) => void;
 }
+
+const formTab = FormTab.createFormTab();
 
 export const DataSettingPanel: React.FC<
   React.PropsWithChildren<IDataSettingPanelProps>
@@ -217,6 +223,62 @@ export const DataSettingPanel: React.FC<
                   }
                 />
               </SchemaField.Array>
+              <SchemaField.Void
+                type="void"
+                x-component="FormTab"
+                x-component-props={{
+                  formTab,
+                }}
+              >
+                <SchemaField.Void
+                  type="void"
+                  x-component="FormTab.TabPane"
+                  x-component-props={{ tab: '请求参数剪裁', key: "requestAdapter" }}
+                >
+                  <SchemaField.String
+                    name="requestAdapter"
+                    x-component="MonacoInput"
+                    x-component-props={{
+                      width: "100%",
+                      height: 400,
+                      language: "typescript",
+                      options: {
+                        minimap: {
+                          enabled: false,
+                        },
+                      },
+                      defaultValue: `${requestAdapterCode}`,
+                      onChange: (expression) => {
+                        console.log('expression:', expression)
+                      }
+                    }}
+                  />
+                </SchemaField.Void>
+                <SchemaField.Void
+                  type="void"
+                  x-component="FormTab.TabPane"
+                  x-component-props={{ tab: '响应数据剪裁', key: "responseAdapter" }}
+                >
+                  <SchemaField.String
+                    name="responseAdapter"
+                    x-component="MonacoInput"
+                    x-component-props={{
+                      width: "100%",
+                      height: 400,
+                      language: "typescript",
+                      options: {
+                        minimap: {
+                          enabled: false,
+                        },
+                      },
+                      defaultValue: `${responseAdapterCode}`,
+                      onChange: (expression) => {
+                        console.log('expression:', expression)
+                      }
+                    }}
+                  />
+                </SchemaField.Void>
+              </SchemaField.Void>
             </SchemaField.Object>
           </SchemaField>
         </Form>
