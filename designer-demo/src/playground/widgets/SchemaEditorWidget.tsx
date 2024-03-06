@@ -11,6 +11,7 @@ export interface ISchemaEditorWidgetProps {
 export const SchemaEditorWidget: React.FC<
   React.PropsWithChildren<ISchemaEditorWidgetProps>
 > = (props) => {
+  console.log('transformToSchema(props.tree):', transformToSchema(props.tree));
   return (
     <MonacoInput
       {...props}

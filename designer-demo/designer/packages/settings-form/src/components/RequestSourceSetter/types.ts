@@ -16,6 +16,8 @@ export interface IDataSourceItemConfig {
     paramKey: string;
     paramValue: string;
   }>;
+  requestAdapter?: string;
+  responseAdapter?: string;
 }
 
 export interface IDataSourceItem {

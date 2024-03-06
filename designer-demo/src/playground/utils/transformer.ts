@@ -2,6 +2,7 @@ import { ITreeNode } from "@designer/core";
 import { clone, uid } from "@designer/shared";
 import { IFormProps, } from "@formily/core";
 import { ISchema, Schema } from "@formily/json-schema";
+import { RequestSourceSetter } from "@designer/settings-form";
 
 export interface ITransformerOptions {
   designableFieldName?: string;
@@ -11,8 +12,35 @@ export interface ITransformerOptions {
 export interface IFormilySchema {
   schema?: ISchema;
   effect?: string[];
-  scope?: Record<string, string>;
+  scope?: Record<string, (field) => void>;
   form?: Record<string, any>;
+}
+
+export interface IDataSourceItemConfig {
+  name: string;
+  desc?: string;
+  path: string;
+  method: "GET" | "POST";
+  requestParam?: Array<{
+    paramKey: string;
+    paramValue: string;
+  }>;
+  requestBody?: Array<{
+    paramKey: string;
+    paramValue: string;
+  }>;
+  requestHeader?: Array<{
+    paramKey: string;
+    paramValue: string;
+  }>;
+  requestAdapter?: string;
+  responseAdapter?: string;
+}
+
+interface IEffectConfig {
+  fieldHook: any;
+  formHook: any;
+  customHook: string;
 }
 
 const createOptions = (options: ITransformerOptions): ITransformerOptions => {
@@ -24,9 +52,9 @@ const createOptions = (options: ITransformerOptions): ITransformerOptions => {
 };
 
 // form effect
-export const parseFormEffect = (effects) => {
+export const parseFormEffect = (effects: IEffectConfig) => {
   const res = [];
-  const { fieldHook = {}, formHook = {}, customHook = '' } = effects;
+  const { fieldHook = {}, formHook = {}, customHook = '' } = effects ?? {};
 
   for (let item in formHook) {
     if (formHook[item]) {
@@ -48,20 +76,31 @@ export const parseFormEffect = (effects) => {
 }
 
 // form scope
-export const parseFormScope = (scope) => {
-  const fetchAddress = (field) => {
-    field.loading = true
-    fetch('//unpkg.com/china-location/dist/location.json')
-      .then((res) => res.json())
-      .then((data) => {
-        field.dataSource = data
-        field.loading = false
-      })
-  }
+export const parseFormScope = (scopes) => {
+  const result = {};
+  for (let pos in scopes) {
+    const item = scopes[pos];
+    const config = item.config as IDataSourceItemConfig;
 
-  return {
-    fetchAddress: fetchAddress,
+    const func = `(field) => {
+      field.loading = true
+      fetch('${config.path}', {
+        method: '${config.method}',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      })
+        .then((res) => res.json())
+        .then((originRes) => (${config.responseAdapter})(originRes))
+        .then((data) => {
+          console.log('data:', data);
+          field.dataSource = data
+          field.loading = false
+        })
+    }`
+    result[`${config.name}`] = `${func}`;
   }
+  return result;
 }
 
 const findNode = (node: ITreeNode, finder?: (node: ITreeNode) => boolean) => {
@@ -122,11 +161,16 @@ export const transformToSchema = (
 
   const cloneForm = clone(root.props);
   const effect = parseFormEffect(cloneForm?.effects);
-  return {
+  const scope = parseFormScope(cloneForm?.scope);
+  console.log('scope:', scope)
+  const res = {
     form: cloneForm,
     schema: createSchema(root, schema),
+    scope: parseFormScope(cloneForm?.scope),
     effect: effect
   };
+  console.log('res:', res);
+  return res;
 };
 
 export const transformToTreeNode = (
