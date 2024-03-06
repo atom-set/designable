@@ -19,6 +19,7 @@ export * from "./FoldItem";
 export * from "./CollapseItem";
 export * from "./InputItems";
 export * from "./DataSourceSetter";
+export * from "./RemoteDataSourceSetter";
 export * from "./ValidatorSetter";
 export * from "./ReactionsSetter";
 export * from './RequestSourceSetter';

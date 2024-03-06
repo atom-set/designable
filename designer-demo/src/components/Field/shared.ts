@@ -2,6 +2,7 @@ import { ISchema } from "@formily/json-schema";
 import {
 	DataSourceSetter,
 	ReactionsSetter,
+	RemoteDataSourceSetter,
 	ValidatorSetter,
 } from "@designer/settings-form";
 import { FormItemSwitcher } from "../../common/FormItemSwitcher";
@@ -126,9 +127,13 @@ export const createFieldSchema = (
 						"x-decorator": "FormItem",
 						"x-component": DataSourceSetter,
 					},
+					// "x-reactions": {
+					// 	"x-decorator": "FormItem",
+					// 	"x-component": ReactionsSetter,
+					// },
 					"x-reactions": {
-						"x-decorator": "FormItem",
-						"x-component": ReactionsSetter,
+						// "x-decorator": "FormItem",
+						"x-component": RemoteDataSourceSetter,
 					},
 					"x-validator": {
 						type: "array",
@@ -204,9 +209,13 @@ export const createVoidFieldSchema = (
 							defaultValue: "editable",
 						},
 					},
+					// "x-reactions": {
+					// 	"x-decorator": "FormItem",
+					// 	"x-component": ReactionsSetter,
+					// },
 					"x-reactions": {
-						"x-decorator": "FormItem",
-						"x-component": ReactionsSetter,
+						// "x-decorator": "FormItem",
+						"x-component": RemoteDataSourceSetter,
 					},
 					"x-decorator": {
 						type: "string",
