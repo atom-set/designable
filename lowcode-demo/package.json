@@ -1,0 +1,59 @@
+{
+  "name": "@designer/preset-antd",
+  "version": "1.0.0-beta.3",
+  "scripts": {
+    "build": "npx father build",
+    "dev": "npx rsbuild dev"
+  },
+  "main": "./dist/umd/preset.min.js",
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/",
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom-set/designable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atom-set/designable/issues"
+  },
+  "homepage": "https://github.com/atom-set/designable#readme",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "modules/designer/packages/*"
+  ],
+  "dependencies": {
+    "@designer/core": "workspace:*",
+    "@designer/react": "workspace:*",
+    "@designer/settings-form": "workspace:*",
+    "@designer/shared": "workspace:*",
+    "@formily/antd": "^2.3.1",
+    "@formily/core": "^2.3.1",
+    "@formily/json-schema": "^2.3.1",
+    "@formily/react": "^2.3.1",
+    "@formily/reactive": "^2.3.1",
+    "@formily/reactive-react": "^2.3.1",
+    "@formily/shared": "^2.3.1",
+    "antd": "^4.24.15",
+    "classnames": "^2.5.1",
+    "react": "^18.2.*",
+    "react-dom": "^18.2.*",
+    "react-is": "^18.2.*"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@types/bun": "^1.0.4",
+    "@types/node": "^20.11.6",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@rsbuild/core": "^0.3.10",
+    "@rsbuild/plugin-react": "^0.3.10",
+    "father": "^4.4.0",
+    "typescript": "^5.3.3"
+  }
+}
