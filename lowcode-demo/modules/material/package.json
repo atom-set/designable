@@ -1,14 +1,18 @@
 {
-  "name": "demo",
+  "name": "@designer/preset-antd",
   "version": "1.0.0-beta.3",
   "scripts": {
-    "build": "npx rsbuild build",
+    "build": "npx father build",
     "dev": "npx rsbuild dev"
   },
+  "main": "./dist/umd/preset.min.js",
   "publishConfig": {
     "registry": "https://www.npmjs.com/",
     "access": "public"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom-set/designable.git"
@@ -21,13 +25,14 @@
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "modules/designer/packages/*"
+    "packages/*"
   ],
   "dependencies": {
     "@designer/core": "workspace:*",
     "@designer/react": "workspace:*",
     "@designer/settings-form": "workspace:*",
     "@designer/shared": "workspace:*",
+    "@material/antd": "workspace:*",
     "@formily/antd": "^2.3.1",
     "@formily/core": "^2.3.1",
     "@formily/json-schema": "^2.3.1",

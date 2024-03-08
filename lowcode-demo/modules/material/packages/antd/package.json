@@ -1,0 +1,44 @@
+{
+  "name": "@material/antd",
+  "version": "1.0.0-beta.1",
+  "license": "MIT",
+  "main": "./dist/lib",
+  "module": "./dist/esm",
+  "types": "./dist/esm/index.d.ts",
+  "engines": {
+    "npm": ">=3.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom-set/designable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atom-set/designable/issues"
+  },
+  "homepage": "https://github.com/atom-set/designable#readme",
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npx father build"
+  },
+  "dependencies": {
+    "@designer/core": "workspace:*",
+    "@designer/react": "workspace:*",
+    "@designer/settings-form": "workspace:*",
+    "@designer/shared": "workspace:*",
+    "@formily/antd": "^2.3.1",
+    "@formily/core": "^2.3.1",
+    "@formily/json-schema": "^2.3.1",
+    "@formily/react": "^2.3.1",
+    "@formily/reactive": "^2.3.1",
+    "@formily/reactive-react": "^2.3.1",
+    "@formily/shared": "^2.3.1",
+    "antd": "^4.24.15",
+    "classnames": "^2.5.1"
+  }
+}

@@ -16,11 +16,11 @@
     "moduleResolution": "Bundler",
     "paths": {
       "@designer/*": [
-        "./modules/designer/packages/*/src"
+        "../designer/packages/*/src"
       ],
       "@material/*": [
-        "./modules/material/packages/*/src"
-      ]
+        "./packages/*/src"
+      ],
     }
   }
 }

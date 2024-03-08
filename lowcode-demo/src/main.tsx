@@ -48,7 +48,7 @@ import {
   FormCollapse,
   FormLayout,
   FormGrid,
-} from "../preset";
+} from "@material/antd";
 import { saveSchema } from "./utils";
 import {
   ActionsWidget,
