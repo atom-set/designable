@@ -1,5 +1,5 @@
 {
-  "name": "@designer/shared",
+  "name": "@renderer/shared",
   "version": "1.0.0-beta.1",
   "license": "MIT",
   "main": "./dist/lib",

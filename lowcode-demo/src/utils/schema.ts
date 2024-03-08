@@ -1,6 +1,6 @@
 import { Engine } from "@designer/core";
 import { message } from "antd";
-import { transformToSchema, transformToTreeNode } from "./transformer";
+import { transformToSchema, transformToTreeNode } from "@renderer/shared"
 
 export const saveSchema = (designer: Engine) => {
   localStorage.setItem(

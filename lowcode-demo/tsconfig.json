@@ -20,6 +20,9 @@
       ],
       "@material/*": [
         "./modules/material/packages/*/src"
+      ],
+      "@renderer/*": [
+        "./modules/renderer/packages/*/src"
       ]
     }
   }

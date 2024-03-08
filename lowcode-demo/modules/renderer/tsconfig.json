@@ -16,6 +16,9 @@
     "moduleResolution": "Bundler",
     "paths": {
       "@designer/*": [
+        "../designer/packages/*/src"
+      ],
+      "@renderer/*": [
         "./packages/*/src"
       ]
     }

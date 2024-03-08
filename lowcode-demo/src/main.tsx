@@ -17,9 +17,6 @@ import {
   WorkspacePanel,
 } from "@designer/react";
 import { SettingsForm, setNpmCDNRegistry } from "@designer/settings-form";
-import "antd/dist/antd.less";
-import React, { useMemo } from "react";
-
 import {
   Form,
   Field,
@@ -49,17 +46,16 @@ import {
   FormLayout,
   FormGrid,
 } from "@material/antd";
+import { Renderer } from "@renderer/core";
+import "antd/dist/antd.less";
+import React, { useMemo } from "react";
 import { saveSchema } from "./utils";
 import {
   ActionsWidget,
   LogoWidget,
-  MarkupSchemaWidget,
-  PreviewWidget,
-  SchemaEditorWidget,
 } from "./widgets";
 
 setNpmCDNRegistry("//unpkg.com");
-// setNpmCDNRegistry("https://cdn.jsdelivr.net/npm");
 
 GlobalRegistry.registerDesignerLocales({
   "zh-CN": {
@@ -195,14 +191,14 @@ export const App = () => {
               </ViewPanel>
               <ViewPanel type="JSONTREE" scrollable={false}>
                 {(tree, onChange) => (
-                  <SchemaEditorWidget tree={tree} onChange={onChange} />
+                  <Renderer schema="JSON" type="Editor" tree={tree} onChange={onChange} />
                 )}
               </ViewPanel>
               <ViewPanel type="MARKUP" scrollable={false}>
-                {(tree) => <MarkupSchemaWidget tree={tree} />}
+                {(tree) => <Renderer tree={tree} schema="Markup" type="Editor" />}
               </ViewPanel>
               <ViewPanel type="PREVIEW">
-                {(tree) => <PreviewWidget tree={tree} />}
+                {(tree) => <Renderer tree={tree} schema="Markup" type="Preview" />}
               </ViewPanel>
             </ViewportPanel>
           </WorkspacePanel>
