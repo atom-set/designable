@@ -115,7 +115,7 @@ export const FormEffectSetter: React.FC<
         title={GlobalRegistry.getDesignerMessage(
           "SettingComponents.FormEffectSetter.configureFormEffect",
         )}
-        width="70%"
+        width="80%"
         centered
         bodyStyle={{ padding: 10 }}
         transitionName=""
@@ -142,7 +142,7 @@ export const FormEffectSetter: React.FC<
                     style: { marginBottom: 10 },
                   }}
                 >
-                  <SchemaField.Void
+                  {/* <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       key: "formPathTab",
@@ -286,7 +286,7 @@ export const FormEffectSetter: React.FC<
                         x-component-props={{ style: { marginTop: 8 } }}
                       />
                     </SchemaField.Array>
-                  </SchemaField.Void>
+                  </SchemaField.Void> */}
 
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
@@ -304,7 +304,7 @@ export const FormEffectSetter: React.FC<
                     />
                   </SchemaField.Void>
 
-                  <SchemaField.Void
+                  {/* <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       header: GlobalRegistry.getDesignerMessage(
@@ -318,9 +318,9 @@ export const FormEffectSetter: React.FC<
                       name="fieldHook"
                       x-component="FieldHookSetter"
                     />
-                  </SchemaField.Void>
+                  </SchemaField.Void> */}
 
-                  <SchemaField.Void
+                  {/* <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       key: "customHook",
@@ -345,7 +345,7 @@ export const FormEffectSetter: React.FC<
                         },
                       }}
                     />
-                  </SchemaField.Void>
+                  </SchemaField.Void> */}
                 </SchemaField.Void>
               </SchemaField>
             </Form>

@@ -43,7 +43,6 @@ export const RequestSourceSetter: React.FC<
   const openDrawer = () => setDrawerVisible(true);
   const closeDrawer = () => setDrawerVisible(false);
 
-  console.log('requestDataSource:', requestDataSource)
   return (
     <Fragment>
       <Button block onClick={openDrawer}>

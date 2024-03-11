@@ -28,12 +28,12 @@ export const TreePanel: React.FC<React.PropsWithChildren<ITreePanelProps>> =
           "SettingComponents.RequestSourceSetter.dataSourceTitle",
         ),
         name: '',
-        path: 'https://mock.com/api/xxxx',
+        path: 'https://mock.com/api/basename',
         method: 'GET',
       });
     }, [props.treeDataSource.dataSource]);
 
-    console.log('TreePanel Render props:', toJS(props.treeDataSource.dataSource))
+    // console.log('TreePanel Render props:', toJS(props.treeDataSource.dataSource))
 
     return (
       <Fragment>

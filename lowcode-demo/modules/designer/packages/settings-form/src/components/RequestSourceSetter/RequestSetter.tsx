@@ -23,9 +23,6 @@ export const RequestSetter: React.FC<
 
   return (
     <div className={`${prefix}-coder-wrapper`}>
-      {/* <div className={`${prefix}-coder-start`}>
-        {"(options, context) => {"}
-      </div> */}
       <div className={`${prefix}-coder`}>
         <MonacoInput
           language="javascript.expression"
@@ -45,12 +42,10 @@ export const RequestSetter: React.FC<
             },
           }}
           onChange={(expression) => {
-            console.log('expression:', expression)
             props.onChange?.(`${expression}`);
           }}
         />
       </div>
-      {/* <div className={`${prefix}-coder-end`}>{"}"}</div> */}
     </div>
   );
 };

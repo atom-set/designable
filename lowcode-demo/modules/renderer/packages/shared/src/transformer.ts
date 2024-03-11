@@ -113,7 +113,7 @@ const parseFormScope = (scopes) => {
     }
 
     // 拼接请求函数
-    const func = `() => {
+    const func = `(content) => {
       fetch('${url}', {
         method: '${item.method}',
         headers: {
@@ -123,9 +123,6 @@ const parseFormScope = (scopes) => {
       })
       .then((res) => res.json())
       .then((originRes) => (${item.responseAdapter})(originRes))
-      .then((data) => {
-        console.log('data:', data);
-      })
     }`
     result[`${item.name} `] = `${func} `;
   }

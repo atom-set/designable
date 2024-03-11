@@ -21,7 +21,6 @@ export const Title: React.FC<ITitleProps> = observer((props) => {
         <TextWidget token="SettingComponents.RequestSourceSetter.defaultTitle" />
       );
     }
-
     return `${nodeTitle}`;
   };
 
