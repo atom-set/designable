@@ -15,10 +15,7 @@ export interface IFormilySchema {
 }
 
 interface IDataSourceItem {
-  key: string;
-  title: string;
   name: string;
-  desc?: string;
   path: string;
   method: "GET" | "POST";
   requestParam?: Array<{

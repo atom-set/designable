@@ -23,6 +23,7 @@ export const TreePanel: React.FC<React.PropsWithChildren<ITreePanelProps>> =
       const dataSource = props.treeDataSource.dataSource;
       props.treeDataSource.dataSource = dataSource.concat({
         key: uuid,
+        duplicateKey: uuid,
         title: GlobalRegistry.getDesignerMessage(
           "SettingComponents.RequestSourceSetter.dataSourceTitle",
         ),

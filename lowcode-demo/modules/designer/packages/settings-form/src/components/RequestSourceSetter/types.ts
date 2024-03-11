@@ -1,5 +1,6 @@
 export interface IDataSourceItem {
   key: string;
+  duplicateKey: string;
   title: string;
   name: string;
   desc?: string;

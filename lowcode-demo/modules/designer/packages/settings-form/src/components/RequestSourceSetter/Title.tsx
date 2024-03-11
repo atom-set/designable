@@ -37,8 +37,7 @@ export const Title: React.FC<ITitleProps> = observer((props) => {
         onClick={() => {
           const newDataSource = clone(props?.treeDataSource?.dataSource);
           traverseData(newDataSource || [], (dataItem, i, data) => {
-            debugger
-            if (data[i].key === props.key) toArr(data).splice(i, 1);
+            if (data[i].key === props.duplicateKey) toArr(data).splice(i, 1);
           });
           props.treeDataSource.dataSource = newDataSource;
         }}
