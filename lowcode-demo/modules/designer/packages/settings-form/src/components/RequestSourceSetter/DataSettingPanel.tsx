@@ -81,7 +81,16 @@ export const DataSettingPanel: React.FC<
       <div className={`${`${prefix}-layout-item-content`}`}>
         <Form form={form} labelWidth={140} >
           <SchemaField>
-            <SchemaField.Object name="config">
+            <SchemaField.Void>
+              <SchemaField.String
+                name="title"
+                title={
+                  <TextWidget token="SettingComponents.RequestSourceSetter.title" />
+                }
+                required
+                x-decorator="FormItem"
+                x-component="Input"
+              />
               <SchemaField.String
                 name="name"
                 title={
@@ -122,7 +131,7 @@ export const DataSettingPanel: React.FC<
                   { label: 'POST', value: 'POST' },
                 ]}
               />
-              <SchemaField.Array
+              {/* <SchemaField.Array
                 name="requestParam"
                 title={
                   <TextWidget token="SettingComponents.RequestSourceSetter.requestParam" />
@@ -155,7 +164,7 @@ export const DataSettingPanel: React.FC<
                     <TextWidget token="SettingComponents.RequestSourceSetter.addition" />
                   }
                 />
-              </SchemaField.Array>
+              </SchemaField.Array> */}
               <SchemaField.Array
                 name="requestBody"
                 title={
@@ -253,7 +262,7 @@ export const DataSettingPanel: React.FC<
                 </SchemaField.Void>
 
               </SchemaField.Void>
-            </SchemaField.Object>
+            </SchemaField.Void>
           </SchemaField>
         </Form>
       </div >

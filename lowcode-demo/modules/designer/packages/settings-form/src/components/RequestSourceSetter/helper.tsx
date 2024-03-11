@@ -1,4 +1,4 @@
-export const requestAdapterCode = `const requestAdapter = (options, context) => {
+export const requestAdapterCode = `(options, context) => {
   // 此处的返回值会作为这个接口的入参
   return options;
 }

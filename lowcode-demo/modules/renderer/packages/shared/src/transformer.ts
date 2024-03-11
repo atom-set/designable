@@ -14,7 +14,9 @@ export interface IFormilySchema {
   form?: Record<string, any>;
 }
 
-export interface IDataSourceItemConfig {
+interface IDataSourceItem {
+  key: string;
+  title: string;
   name: string;
   desc?: string;
   path: string;
@@ -34,6 +36,7 @@ export interface IDataSourceItemConfig {
   requestAdapter?: string;
   responseAdapter?: string;
 }
+
 
 interface IEffectConfig {
   fieldHook: any;
@@ -77,26 +80,57 @@ const parseFormEffect = (effects: IEffectConfig) => {
 const parseFormScope = (scopes) => {
   const result = {};
   for (let pos in scopes) {
-    const item = scopes[pos];
-    const config = item.config as IDataSourceItemConfig;
+    const item = scopes[pos] as IDataSourceItem;
 
-    const func = `(field) => {
-      field.loading = true
-      fetch('${config.path}', {
-        method: '${config.method}',
+    // 处理请求参数
+    let url = item.path;
+    if ((item.requestParam ?? []).length > 0) {
+      let searchParam = '';
+      for (let i = 0; i < item.requestParam.length; i++) {
+        searchParam += `&${item.requestParam[i].paramKey}=${item.requestParam[i].paramValue}`;
+      }
+      url = url.includes('?') ? `${url}${searchParam}` : `${url}?${searchParam}`.replace('?&', '?');
+    }
+
+    // 处理请求头
+    const headers = [`'Content-Type': 'application/json'`]
+    if ((item.requestHeader ?? []).length > 0) {
+      for (let i = 0; i < item.requestParam.length; i++) {
+        const itemStr = `'${item.requestParam[i].paramKey}': '${item.requestParam[i].paramValue}'`;
+        headers.push(itemStr);
+      }
+    }
+
+    // 处理请求体
+    let body = {}
+    for (let i = 0; i < Object.keys(item.requestBody).length; i++) {
+      body[`${item.requestBody[i].paramKey}`] = item.requestBody[i].paramValue;
+    }
+    if (item.requestAdapter && Object.keys(body).length > 0) {
+      body = eval(item.requestAdapter)(body);
+    }
+
+    let bodyStr = null;
+    if (Object.keys(body).length > 0) {
+      bodyStr = `'${JSON.stringify(body)}'`
+    }
+
+    // 拼接请求函数
+    const func = `() => {
+      fetch('${url}', {
+        method: '${item.method}',
         headers: {
-          'Content-Type': 'application/json'
+          ${headers.join()}
         },
+        body: ${bodyStr},
       })
-        .then((res) => res.json())
-        .then((originRes) => (${config.responseAdapter})(originRes))
-        .then((data) => {
-          console.log('data:', data);
-          field.dataSource = data
-          field.loading = false
-        })
+      .then((res) => res.json())
+      .then((originRes) => (${item.responseAdapter})(originRes))
+      .then((data) => {
+        console.log('data:', data);
+      })
     }`
-    result[`${config.name}`] = `${func}`;
+    result[`${item.name} `] = `${func} `;
   }
   return result;
 }
@@ -160,7 +194,6 @@ export const transformToSchema = (
   const cloneForm = clone(root.props);
   const effect = parseFormEffect(cloneForm?.effects);
   const scope = parseFormScope(cloneForm?.scope);
-  console.log('scope:', scope)
   const res = {
     form: cloneForm,
     schema: createSchema(root, schema),

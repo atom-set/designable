@@ -150,7 +150,8 @@ export const App = () => {
             <ToolbarPanel>
               <DesignerToolsWidget />
               <ViewToolsWidget
-                use={["DESIGNABLE", "JSONTREE", "MARKUP", "PREVIEW"]}
+                // use={["DESIGNABLE", "JSONTREE", "MARKUP", "PREVIEW"]}
+                use={["DESIGNABLE", "JSONTREE", "PREVIEW"]}
               />
             </ToolbarPanel>
             <ViewportPanel style={{ height: "100%" }}>
@@ -194,9 +195,9 @@ export const App = () => {
                   <Renderer schema="JSON" type="Editor" tree={tree} onChange={onChange} />
                 )}
               </ViewPanel>
-              <ViewPanel type="MARKUP" scrollable={false}>
+              {/* <ViewPanel type="MARKUP" scrollable={false}>
                 {(tree) => <Renderer tree={tree} schema="Markup" type="Editor" />}
-              </ViewPanel>
+              </ViewPanel> */}
               <ViewPanel type="PREVIEW">
                 {(tree) => <Renderer tree={tree} schema="Markup" type="Preview" />}
               </ViewPanel>

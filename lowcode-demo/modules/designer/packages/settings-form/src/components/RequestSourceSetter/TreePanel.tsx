@@ -26,17 +26,10 @@ export const TreePanel: React.FC<React.PropsWithChildren<ITreePanelProps>> =
         title: GlobalRegistry.getDesignerMessage(
           "SettingComponents.RequestSourceSetter.dataSourceTitle",
         ),
-        duplicateKey: uuid,
-        config: {
-          name: GlobalRegistry.getDesignerMessage(
-            "SettingComponents.RequestSourceSetter.dataSourceTitle",
-          ),
-          path: 'https://mock.com/api/xxxx',
-          method: 'POST',
-        }
+        name: '',
+        path: 'https://mock.com/api/xxxx',
+        method: 'GET',
       });
-
-      console.log('add:', toJS(props.treeDataSource.dataSource));
     }, [props.treeDataSource.dataSource]);
 
     console.log('TreePanel Render props:', toJS(props.treeDataSource.dataSource))

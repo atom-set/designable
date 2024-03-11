@@ -74,6 +74,7 @@ export default {
         dataSourceTitle: "数据源名称",
         nodeProperty: "数据源属性",
         pleaseSelectNode: "请先选择左侧数据源进行配置",
+        title: '标题',
         name: '名称',
         description: "描述",
         requestPath: '请求地址',

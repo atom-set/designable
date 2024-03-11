@@ -1,5 +1,6 @@
-import { uid, clone, toArr } from '@formily/shared'
+import { uid, clone } from '@formily/shared'
 import { IDataSourceItem } from './types'
+import { GlobalRegistry } from '@designer/core'
 
 export const traverseData = <T extends IDataSourceItem>(
   data: T[],
@@ -11,7 +12,7 @@ export const traverseData = <T extends IDataSourceItem>(
 }
 
 export const transformValueToData = (value: IDataSourceItem[]): IDataSourceItem[] => {
-  const data = clone(value)
+  const data = clone(value);
   return data
 }
 

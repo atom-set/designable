@@ -1,5 +1,6 @@
-
-export interface IDataSourceItemConfig {
+export interface IDataSourceItem {
+  key: string;
+  title: string;
   name: string;
   desc?: string;
   path: string;
@@ -18,13 +19,6 @@ export interface IDataSourceItemConfig {
   }>;
   requestAdapter?: string;
   responseAdapter?: string;
-}
-
-export interface IDataSourceItem {
-  key: string;
-  title: string;
-  duplicateKey?: string;
-  config?: IDataSourceItemConfig
 }
 
 export interface IDataSource {

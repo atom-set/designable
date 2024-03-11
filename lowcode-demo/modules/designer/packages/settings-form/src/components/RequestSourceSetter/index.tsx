@@ -8,7 +8,7 @@ import React, { Fragment, useMemo, useState } from "react";
 import { DataSettingPanel } from "./DataSettingPanel";
 import { TreePanel } from "./TreePanel";
 import { transformDataToValue, transformValueToData } from "./shared";
-import type { IDataSourceItem, IDataSourceItemConfig, IDataSource } from "./types";
+import type { IDataSourceItem, IDataSource } from "./types";
 import "./styles.less";
 
 export interface IRequestSourceSetterProps {
@@ -16,7 +16,6 @@ export interface IRequestSourceSetterProps {
   style?: React.CSSProperties;
   onChange: (dataSource: IDataSourceItem[]) => void;
   value: IDataSourceItem[];
-  effects?: (form: Form<any>) => void;
 }
 
 export const RequestSourceSetter: React.FC<
@@ -26,7 +25,6 @@ export const RequestSourceSetter: React.FC<
     className,
     value = [],
     onChange,
-    effects = () => { },
   } = props;
 
   const theme = useTheme();
@@ -37,7 +35,7 @@ export const RequestSourceSetter: React.FC<
     () =>
       observable({
         dataSource: transformValueToData(value),
-        selectedKey: "",
+        selectedKey: ''
       }),
     [value, drawerVisible],
   );
@@ -45,6 +43,7 @@ export const RequestSourceSetter: React.FC<
   const openDrawer = () => setDrawerVisible(true);
   const closeDrawer = () => setDrawerVisible(false);
 
+  console.log('requestDataSource:', requestDataSource)
   return (
     <Fragment>
       <Button block onClick={openDrawer}>
@@ -62,7 +61,6 @@ export const RequestSourceSetter: React.FC<
           <Space>
             <Button onClick={closeDrawer}>Cancel</Button>
             <Button type="primary" onClick={() => {
-              console.log(toJS(requestDataSource.dataSource))
               onChange(transformDataToValue(requestDataSource.dataSource));
               closeDrawer();
             }}>
@@ -83,10 +81,7 @@ export const RequestSourceSetter: React.FC<
             />
           </div>
           <div className={`${`${prefix}-layout-item right`}`}>
-            <DataSettingPanel
-              treeDataSource={requestDataSource}
-              effects={effects}
-            />
+            <DataSettingPanel treeDataSource={requestDataSource} />
           </div>
         </div>
       </Drawer>

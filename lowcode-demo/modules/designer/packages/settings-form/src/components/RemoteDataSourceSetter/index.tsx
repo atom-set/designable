@@ -24,7 +24,6 @@ export const RemoteDataSourceSetter: React.FC<
   const options = scope.map((item) => {
     return { label: item.config.desc || item.config.name, value: `{{${item.config.name}}}` };
   })
-  debugger
   return (
     <FoldItem label={"数据源接口"}>
       <FoldItem.Base>

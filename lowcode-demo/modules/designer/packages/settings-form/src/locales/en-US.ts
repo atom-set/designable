@@ -75,6 +75,7 @@ export default {
         dataSourceTitle: "DataSource Title",
         nodeProperty: "Data Source Property",
         pleaseSelectNode: "please select item from the list on the left",
+        title: 'Title',
         name: 'Name',
         description: "Description",
         requestPath: 'Request Path',
