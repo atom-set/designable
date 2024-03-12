@@ -25,21 +25,23 @@ export const FormHookSetter: React.FC<
   React.PropsWithChildren<IFormHookSetterProps>
 > = (props) => {
   const prefix = usePrefix("form-hook-setter");
-  const [selectKeys, setSelectKeys] = useState(["onFormMount"]);
+  const [selectKeys, setSelectKeys] = useState(["onFormInit"]);
 
   const value = { ...props.value };
 
-  // const parseExpression = (expression: string) => {
-  //   if (!expression) return "";
-  //   return String(expression).match(/^\{\{([\s\S]*)\}\}$/)?.[1] || "";
-  // };
+  const parseExpression = (expression: string) => {
+    if (!expression) return "";
+    return String(expression).replace(/[/\n\s]/g, '').match(/^on\S+\(\(form\)\=>\{(\s*\S*)+\}\)$/)?.[1] || "";
+  };
 
   const filterEmpty = (value: object) => {
     return reduce(
       value,
       (buf, value, key) => {
-        if (!value || value === "{{}}") return buf;
-        buf[key] = value;
+        const newValue = !parseExpression(value) ? '' : value;
+        if (!newValue) return buf;
+
+        buf[key] = newValue;
         return buf;
       },
       {} as any,

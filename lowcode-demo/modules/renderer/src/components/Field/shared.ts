@@ -127,15 +127,10 @@ export const createFieldSchema = (
             "x-decorator": "FormItem",
             "x-component": DataSourceSetter,
           },
-          // "x-reactions": {
-          //   "x-decorator": "FormItem",
-          //   "x-component": ReactionsSetter,
-          // },
           "x-reactions": {
-            // "x-decorator": "FormItem",
-            "x-component": RemoteDataSourceSetter,
+            "x-decorator": "FormItem",
+            "x-component": ReactionsSetter,
           },
-
           "x-validator": {
             type: "array",
             "x-component": ValidatorSetter,
@@ -210,13 +205,9 @@ export const createVoidFieldSchema = (
               defaultValue: "editable",
             },
           },
-          // "x-reactions": {
-          //   "x-decorator": "FormItem",
-          //   "x-component": ReactionsSetter,
-          // },
           "x-reactions": {
-            // "x-decorator": "FormItem",
-            "x-component": RemoteDataSourceSetter,
+            "x-decorator": "FormItem",
+            "x-component": ReactionsSetter,
           },
           "x-decorator": {
             type: "string",

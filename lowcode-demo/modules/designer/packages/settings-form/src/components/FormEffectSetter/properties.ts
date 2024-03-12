@@ -1,64 +1,84 @@
 import {
-  FormMountHelper,
-  FormUnmountHelper,
-  FormSubmitHelper,
-  FieldInitHelper,
-  FieldUnmountHelper,
-  FieldReactHelper,
-  FieldValueChangeHelper,
-  FieldInputValueChangeHelper,
+  FormEffectHookHelper,
+  FieldEffectHookHelper
 } from "./helpers";
 
-export const FormHookProperties = [
-  {
-    key: "onFormMount",
-    token: "onFormMount",
-    type: "function",
-    helpCode: FormMountHelper,
-  },
-  {
-    key: "onFormUnmount",
-    token: "onFormUnmount",
-    type: "function",
-    helpCode: FormUnmountHelper,
-  },
-  {
-    key: "onFormSubmit",
-    token: "onFormSubmit",
-    type: "function",
-    helpCode: FormSubmitHelper,
-  },
+const formEffectHooks = [
+  'onFormInit',
+  'onFormMount',
+  'onFormUnmount',
+  'onFormValuesChange',
+  'onFormInitialValuesChange',
+  'onFormInputChange',
+  'onFormSubmit',
+  'onFormReset',
+  'onFormSubmitStart',
+  'onFormSubmitEnd',
+  'onFormSubmitSuccess',
+  'onFormSubmitFailed',
+  'onFormSubmitValidateStart',
+  'onFormSubmitValidateSuccess',
+  'onFormSubmitValidateFailed',
+  'onFormSubmitValidateEnd',
+  'onFormValidateStart',
+  'onFormValidateSuccess',
+  'onFormValidateFailed',
+  'onFormValidateEnd',
+  'onFormGraphChange',
+  'onFormLoading',
+  'onFormReact',
 ];
 
-export const FieldHookProperties = [
-  {
-    key: "onFieldInit",
-    token: "onFieldInit",
-    type: "function",
-    helpCode: FieldInitHelper,
-  },
-  {
-    key: "onFieldUnmount",
-    token: "onFieldUnmount",
-    type: "function",
-    helpCode: FieldUnmountHelper,
-  },
-  {
-    key: "onFieldReact",
-    token: "onFieldReact",
-    type: "function",
-    helpCode: FieldReactHelper,
-  },
-  {
-    key: "onFieldValueChange",
-    token: "onFieldValueChange",
-    type: "function",
-    helpCode: FieldValueChangeHelper,
-  },
-  {
-    key: "onFieldInputValueChange",
-    token: "onFieldInputValueChange",
-    type: "function",
-    helpCode: FieldInputValueChangeHelper,
-  },
+const fieldEffectHooks = [
+  'onFieldInit',
+  'onFieldMount',
+  'onFieldUnmount',
+  'onFieldValueChange',
+  'onFieldInitialValueChange',
+  'onFieldInputValueChange',
+  'onFieldValidateStart',
+  'onFieldValidateEnd',
+  'onFieldValidating',
+  'onFieldValidateFailed',
+  'onFieldValidateSuccess',
+  'onFieldSubmit',
+  'onFieldSubmitStart',
+  'onFieldSubmitEnd',
+  'onFieldSubmitValidateStart',
+  'onFieldSubmitValidateEnd',
+  'onFieldSubmitSuccess',
+  'onFieldSubmitFailed',
+  'onFieldSubmitValidateSuccess',
+  'onFieldSubmitValidateFailed',
+  'onFieldReset',
+  'onFieldLoading',
+  'onFieldReact',
+  'onFieldChange',
 ];
+
+// 生成配置
+const genFormEffectHookConfig = () => {
+  return formEffectHooks.map((item) => {
+    return {
+      key: item,
+      token: item,
+      type: "function",
+      helpCode: FormEffectHookHelper,
+    }
+  })
+};
+
+const genFieldEffectHookConfig = () => {
+  return fieldEffectHooks.map((item) => {
+    return {
+      key: item,
+      token: item,
+      type: "function",
+      helpCode: FieldEffectHookHelper,
+    }
+  })
+};
+
+export const FormHookProperties = genFormEffectHookConfig();
+
+export const FieldHookProperties = genFieldEffectHookConfig();

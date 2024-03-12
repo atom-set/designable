@@ -19,7 +19,6 @@ import { FormHookSetter } from "./FormHookSetter";
 import { FieldHookSetter } from "./FieldHookSetter";
 import { PathSelector } from "./PathSelector";
 import { initDeclaration } from "./declarations";
-import { CustomEffectHookHelper } from "./helpers";
 import { IEffectHooks } from "./types";
 import "./styles.less";
 
@@ -142,7 +141,7 @@ export const FormEffectSetter: React.FC<
                     style: { marginBottom: 10 },
                   }}
                 >
-                  {/* <SchemaField.Void
+                  <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       key: "formPathTab",
@@ -286,7 +285,7 @@ export const FormEffectSetter: React.FC<
                         x-component-props={{ style: { marginTop: 8 } }}
                       />
                     </SchemaField.Array>
-                  </SchemaField.Void> */}
+                  </SchemaField.Void>
 
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
@@ -304,7 +303,7 @@ export const FormEffectSetter: React.FC<
                     />
                   </SchemaField.Void>
 
-                  {/* <SchemaField.Void
+                  <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       header: GlobalRegistry.getDesignerMessage(
@@ -318,34 +317,7 @@ export const FormEffectSetter: React.FC<
                       name="fieldHook"
                       x-component="FieldHookSetter"
                     />
-                  </SchemaField.Void> */}
-
-                  {/* <SchemaField.Void
-                    x-component="FormCollapse.CollapsePanel"
-                    x-component-props={{
-                      key: "customHook",
-                      header: GlobalRegistry.getDesignerMessage(
-                        "SettingComponents.FormEffectSetter.actionEffects",
-                      ),
-                      className: "custom-hooks",
-                    }}
-                  >
-                    <SchemaField.String
-                      name="customHook"
-                      x-component="MonacoInput"
-                      x-component-props={{
-                        width: "100%",
-                        height: 400,
-                        language: "typescript",
-                        helpCode: CustomEffectHookHelper,
-                        options: {
-                          minimap: {
-                            enabled: false,
-                          },
-                        },
-                      }}
-                    />
-                  </SchemaField.Void> */}
+                  </SchemaField.Void>
                 </SchemaField.Void>
               </SchemaField>
             </Form>

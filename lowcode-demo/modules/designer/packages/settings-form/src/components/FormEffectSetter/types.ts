@@ -14,8 +14,5 @@ export interface IEffectHooks {
     formHook?: {
       [key: string]: string;
     };
-    customHook?: {
-      [key: string]: string;
-    };
   };
 }

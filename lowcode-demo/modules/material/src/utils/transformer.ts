@@ -40,7 +40,6 @@ export interface IDataSourceItemConfig {
 interface IEffectConfig {
   fieldHook: any;
   formHook: any;
-  customHook: string;
 }
 
 const createOptions = (options: ITransformerOptions): ITransformerOptions => {
@@ -54,7 +53,7 @@ const createOptions = (options: ITransformerOptions): ITransformerOptions => {
 // form effect
 export const parseFormEffect = (effects: IEffectConfig) => {
   const res = [];
-  const { fieldHook = {}, formHook = {}, customHook = '' } = effects ?? {};
+  const { fieldHook = {}, formHook = {} } = effects ?? {};
 
   for (let item in formHook) {
     if (formHook[item]) {
@@ -67,11 +66,6 @@ export const parseFormEffect = (effects: IEffectConfig) => {
       res.push(fieldHook[item])
     }
   }
-
-  if (customHook) {
-    res.push(customHook)
-  }
-
   return res;
 }
 
