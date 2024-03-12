@@ -31,7 +31,7 @@ export const FormHookSetter: React.FC<
 
   const parseExpression = (expression: string) => {
     if (!expression) return "";
-    return String(expression).replace(/[/\n\s]/g, '').match(/^on\S+\(\(form\)\=>\{(\s*\S*)+\}\)$/)?.[1] || "";
+    return String(expression).replace(/[/\n\s]/g, '').match(/^on\S+\(\(\S+\)\=>\{(\s*\S*)+\}\)$/)?.[1] || "";
   };
 
   const filterEmpty = (value: object) => {

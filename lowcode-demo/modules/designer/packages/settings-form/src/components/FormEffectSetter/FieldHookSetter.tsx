@@ -31,7 +31,7 @@ export const FieldHookSetter: React.FC<
 
   const parseExpression = (expression: string) => {
     if (!expression) return "";
-    return String(expression).replace(/[/\n\s]/g, '').match(/^on\S+\(\'pattern\'\,\(field\)\=>\{(\s*\S*)+\}\)$/)?.[1] || "";
+    return String(expression).replace(/[/\n\s]/g, '').match(/^on\S+\(\'\S+\'\,\(\S+\)\=>\{(\s*\S*)+\}\)$/)?.[1] || "";
   };
 
   const filterEmpty = (value: object) => {
