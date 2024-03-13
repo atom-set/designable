@@ -12,4 +12,5 @@ export * from "./HistoryWidget";
 export * from "./NodePathWidget";
 export * from "./NodeTitleWidget";
 export * from "./DroppableWidget";
+export * from "./DatabaseWidget";
 export * from "./NodeActionsWidget";

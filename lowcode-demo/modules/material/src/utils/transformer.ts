@@ -2,7 +2,6 @@ import { ITreeNode } from "@designer/core";
 import { clone, uid } from "@designer/shared";
 import { IFormProps, } from "@formily/core";
 import { ISchema, Schema } from "@formily/json-schema";
-import { RequestSourceSetter } from "@designer/settings-form";
 
 export interface ITransformerOptions {
   designableFieldName?: string;

@@ -51,3 +51,5 @@ export * from "./add";
 export * from "./help";
 export * from "./sources";
 export * from "./actions";
+export * from "./database";
+
