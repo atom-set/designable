@@ -9,12 +9,14 @@ export interface ITransformerOptions {
 
 export interface IFormilySchema {
   schema?: ISchema;
-  effect?: string[];
-  scope?: Record<string, (field) => void>;
+  effectHooks?: string[];
+  api?: Record<string, (content: any) => void>;
   form?: Record<string, any>;
+  scopes?: Array<string>;
 }
 
 interface IDataSourceItem {
+  duplicateKey: string;
   name: string;
   path: string;
   method: "GET" | "POST";
@@ -48,10 +50,10 @@ const createOptions = (options: ITransformerOptions): ITransformerOptions => {
   };
 };
 
-// form effect
-const parseFormEffect = (effects: IEffectConfig) => {
+// form effect hook
+const parseFormEffectHook = (effectHookConfig: IEffectConfig) => {
   const res = [];
-  const { fieldHook = {}, formHook = {} } = effects ?? {};
+  const { fieldHook = {}, formHook = {} } = effectHookConfig ?? {};
 
   for (let item in formHook) {
     if (formHook[item]) {
@@ -67,11 +69,11 @@ const parseFormEffect = (effects: IEffectConfig) => {
   return res;
 }
 
-// form scope
-const parseFormScope = (scopes) => {
+// effect scope
+const parseFormApi = (requestConfig = {}) => {
   const result = {};
-  for (let pos in scopes) {
-    const item = scopes[pos] as IDataSourceItem;
+  for (let pos in requestConfig) {
+    const item = requestConfig[pos] as IDataSourceItem;
 
     // 处理请求参数
     let url = item.path;
@@ -108,7 +110,7 @@ const parseFormScope = (scopes) => {
 
     // 拼接请求函数
     const func = `(content) => {
-      fetch('${url}', {
+      return fetch('${url}', {
         method: '${item.method}',
         headers: {
           ${headers.join()}
@@ -117,10 +119,20 @@ const parseFormScope = (scopes) => {
       })
       .then((res) => res.json())
       .then((originRes) => (${item.responseAdapter})(originRes))
+      .then((data) => {
+        return {
+          content,
+          data
+        }
+      })
     }`
-    result[`${item.name} `] = `${func} `;
+    result[`${item.name}`] = `${func} `;
   }
   return result;
+}
+
+const findReactionsNameByKey = (reactionKey: string, apiConfig: IDataSourceItem[]) => {
+  return (apiConfig ?? []).filter((item) => item.duplicateKey === reactionKey)[0]?.name ?? reactionKey;
 }
 
 const findNode = (node: ITreeNode, finder?: (node: ITreeNode) => boolean) => {
@@ -138,6 +150,7 @@ export const transformToSchema = (
   options?: ITransformerOptions,
 ): IFormilySchema => {
   const realOptions = createOptions(options!);
+  const scopes = [];
   const root = findNode(node, (child) => {
     return child.componentName === realOptions.designableFormName;
   });
@@ -163,6 +176,15 @@ export const transformToSchema = (
       node.children?.slice(1).forEach((child, index) => {
         if (child.componentName !== realOptions.designableFieldName) return;
         const key = child.props?.["name"] || child.id;
+
+        // 响应器规则查询
+        if (child.props?.['x-reactions-key']) {
+          const scopeName = findReactionsNameByKey(child.props['x-reactions-key'], root.props.api)
+          child.props['x-reactions'] = `{{${scopeName}}}`;
+          if (!scopes.includes(scopeName)) {
+            scopes.push(scopeName)
+          }
+        }
         schema.properties = schema.properties || {};
         (schema.properties as any)[key] = createSchema(child);
         (schema.properties as any)[key]["x-index"] = index;
@@ -171,6 +193,14 @@ export const transformToSchema = (
       node.children?.forEach((child, index) => {
         if (child.componentName !== realOptions.designableFieldName) return;
         const key = child.props?.["name"] || child.id;
+        // 响应器规则查询
+        if (child.props?.['x-reactions-key']) {
+          const scopeName = findReactionsNameByKey(child.props['x-reactions-key'], root.props.api)
+          child.props['x-reactions'] = `{{${scopeName}}}`;
+          if (!scopes.includes(scopeName)) {
+            scopes.push(scopeName)
+          }
+        }
         schema.properties = schema.properties || {};
         (schema.properties as any)[key] = createSchema(child);
         (schema.properties as any)[key]["x-index"] = index;
@@ -180,13 +210,14 @@ export const transformToSchema = (
   };
 
   const cloneForm = clone(root.props);
-  const effect = parseFormEffect(cloneForm?.effects);
-  const scope = parseFormScope(cloneForm?.scope);
+  const formApi = parseFormApi(cloneForm?.api);
+  const formEffectHooks = parseFormEffectHook(cloneForm.effectHooks);
   const res = {
     form: cloneForm,
-    schema: createSchema(root, schema),
-    scope: parseFormScope(cloneForm?.scope),
-    effect: effect
+    scopes: scopes,
+    schema: createSchema(clone(root), schema),
+    api: formApi,
+    effectHooks: formEffectHooks
   };
   console.log('res:', res);
   return res;

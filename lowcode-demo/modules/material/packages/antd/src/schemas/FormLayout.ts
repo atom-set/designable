@@ -4,11 +4,11 @@ import { ISchema } from "@formily/react";
 export const FormLayout: ISchema = {
   type: "object",
   properties: {
-    'scope': {
+    api: {
       "x-decorator": "FormItem",
       "x-component": RequestSourceSetter,
     },
-    'effects': {
+    effectHooks: {
       "x-decorator": "FormItem",
       "x-component": FormEffectSetter,
     },

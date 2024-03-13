@@ -30,7 +30,6 @@ export const RequestSourceSetter: React.FC<
   const theme = useTheme();
   const prefix = usePrefix("data-request-setter");
   const [drawerVisible, setDrawerVisible] = useState(false);
-
   const requestDataSource: IDataSource = useMemo(
     () =>
       observable({

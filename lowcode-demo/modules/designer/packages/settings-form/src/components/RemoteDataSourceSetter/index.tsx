@@ -20,19 +20,19 @@ export const RemoteDataSourceSetter: React.FC<
 > = observer((props) => {
   const field = useField<ArrayField>();
   const designer = useDesigner();
-  const scope = toJS(designer.getCurrentTree().props?.scope ?? []);
-  const options = scope.map((item) => {
-    return { label: item.config.desc || item.config.name, value: `{{${item.config.name}}}` };
+  const apiList = toJS(designer.getCurrentTree().props?.api ?? []);
+  const options = apiList.map((item) => {
+    return { label: `${item.title}`, value: item.duplicateKey };
   })
   return (
-    <FoldItem label={"数据源接口"}>
+    <FoldItem label={field.title}>
       <FoldItem.Base>
         <Select
           value={Array.isArray(props.value) ? undefined : props.value}
           onChange={props.onChange}
           allowClear
           placeholder={GlobalRegistry.getDesignerMessage(
-            "SettingComponents.ValidatorSetter.pleaseSelect",
+            "SettingComponents.RemoteDataSourceSetter.pleaseSelect",
           )}
           options={options}
         />

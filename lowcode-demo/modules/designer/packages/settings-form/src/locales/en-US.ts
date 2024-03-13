@@ -179,6 +179,10 @@ export default {
         pleaseSelect: "Please Select",
         expressionValueTypeIs: "Expression value type is",
       },
+      RemoteDataSourceSetter: {
+        title: 'DataSource Config',
+        pleaseSelect: "Please Select",
+      },
       ValidatorSetter: {
         pleaseSelect: "Please Select",
         formats: ValidatorFormats,

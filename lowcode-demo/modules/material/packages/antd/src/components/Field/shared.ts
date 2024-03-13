@@ -123,13 +123,14 @@ export const createFieldSchema = (
 						"x-decorator": "FormItem",
 						"x-component": "ValueInput",
 					},
-					enum: {
-						"x-decorator": "FormItem",
-						"x-component": DataSourceSetter,
-					},
-					"x-reactions": {
-						"x-decorator": "FormItem",
-						"x-component": ReactionsSetter,
+					// enum: {
+					// 	"x-decorator": "FormItem",
+					// 	"x-component": DataSourceSetter,
+					// },
+					"x-reactions-key": {
+						// "x-decorator": "FormItem",
+						// "x-component": ReactionsSetter,
+						"x-component": RemoteDataSourceSetter,
 					},
 					"x-validator": {
 						type: "array",

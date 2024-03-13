@@ -175,6 +175,10 @@ export default {
         pleaseSelect: "请选择",
         expressionValueTypeIs: "表达式值类型为",
       },
+      RemoteDataSourceSetter: {
+        title: '数据接口配置',
+        pleaseSelect: "请选择",
+      },
       ValidatorSetter: {
         pleaseSelect: "请选择",
         formats: ValidatorFormats,

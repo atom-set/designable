@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TreeNode } from "@designer/core";
 import {
   ArrayCards,
@@ -76,6 +77,7 @@ import {
   onFieldLoading,
   onFieldReact,
   onFieldChange,
+  Field,
 } from "@formily/core";
 import { createSchemaField } from "@formily/react";
 import { Card, Rate, Slider } from "antd";
@@ -185,27 +187,38 @@ export const PreviewWidget: React.FC<
   React.PropsWithChildren<IPreviewWidgetProps>
 > = (props) => {
   const form = useMemo(() => createForm(), []);
-  const { form: formProps, schema, scope, effect = [] } = transformToSchema(props.tree);
+  const { form: formProps, schema, api, effectHooks = [], scopes = [] } = transformToSchema(props.tree);
 
   const cloneFormProps = clone(formProps);
 
-  if (cloneFormProps.scope) {
-    delete cloneFormProps.scope;
+  if (cloneFormProps.api) {
+    delete cloneFormProps.api;
   }
-  if (cloneFormProps.effects) {
-    delete cloneFormProps.effects;
+  if (cloneFormProps.effectHooks) {
+    delete cloneFormProps.effectHooks;
   }
 
-  const newScope = useMemo(() => {
+  if (cloneFormProps.scopes) {
+    delete cloneFormProps.scopes;
+  }
+
+  const formScope = useMemo(() => {
     let scopeRes: any = {};
-    for (let [key, value] of Object.entries(scope ?? {})) {
-      scopeRes[key] = new Function(`{ return ${value}; } `)()
+    for (let i = 0; i < scopes.length; i++) {
+      const requestHandler = api[scopes[i]];
+      const func = new Function('$root', `with($root) { return ${requestHandler}; }`)
+      scopeRes[scopes[i]] = (field) => {
+        new Function('$root', `with($root) { return ${requestHandler}; }`)({})(field)
+          .then((res: { content: Field, data: FieldDataSource }) => {
+            res.content.dataSource = res.data;
+          })
+      }
     }
     return scopeRes;
   }, []);
 
   form.addEffects(form.id, () => {
-    effect.forEach((item) => {
+    effectHooks.forEach((item) => {
       let expression = `() => {\n ${item} \n}`
       // eslint-disable-next-line no-new-func
       new Function('$root', `with($root) { return ${expression}; }`)(effectHookScope)()
@@ -214,7 +227,10 @@ export const PreviewWidget: React.FC<
 
   return (
     <Form {...cloneFormProps} form={form}>
-      <SchemaField schema={schema} scope={newScope} />
+      <SchemaField
+        schema={schema}
+        scope={formScope}
+      />
       <FormButtonGroup.FormItem>
         <Submit onSubmit={console.log}>提交</Submit>
         <Reset>重置</Reset>
