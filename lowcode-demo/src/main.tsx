@@ -5,7 +5,6 @@ import {
   Designer,
   DesignerToolsWidget,
   HistoryWidget,
-  DatabaseWidget,
   OutlineTreeWidget,
   ResourceWidget,
   SettingsPanel,
@@ -144,9 +143,6 @@ export const App = () => {
           </CompositePanel.Item>
           <CompositePanel.Item title="panels.History" icon="History">
             <HistoryWidget />
-          </CompositePanel.Item>
-          <CompositePanel.Item title="panels.Database" icon="Database">
-            <DatabaseWidget />
           </CompositePanel.Item>
         </CompositePanel>
         <Workspace id="form">

@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0",
   "scripts": {
     "build": "npx rsbuild build",
     "dev": "npx rsbuild dev"
