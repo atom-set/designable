@@ -30,7 +30,7 @@ export const ActionsWidget = observer(() => {
           GlobalRegistry.setDesignerLanguage(e.target.value);
         }}
       />
-      <Button href="https://git.corp.relxtech.com/fe/done" target="_blank">
+      <Button href="#" target="_blank">
         <GithubOutlined />
         Github
       </Button>
